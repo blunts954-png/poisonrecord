@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apparel | Poison Well Records</title>
+  <meta name="description" content="Poison Well Records apparel, tees, and limited runs representing the Ventura 805 punk scene." />
+  <link rel="canonical" href="https://poisonwellrecords.netlify.app/apparel" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Apparel",
+    "description": "Official OLD805 / PWR apparel and limited-run gear from Poison Well Records."
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/">Poison Well Records</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <div class="nav-dropdown">
+          <a class="nav-main" href="/ventura-punk-record-store-online">Vinyl</a>
+          <div class="dropdown-content" aria-label="Vinyl subnavigation">
+            <a href="/ventura-punk-record-store-online#tab-vinyl">All Vinyl</a>
+            <a href="/ventura-punk-record-store-online#tab-test-pressings">Test Pressings</a>
+            <a href="/ventura-punk-record-store-online#tab-digital-releases">Digital Releases</a>
+            <a href="/ventura-punk-record-store-online#tab-rarities">Rarities</a>
+          </div>
+        </div>
+        <a href="/apparel">Apparel</a>
+        <a href="/805-punk-bands">Artists & 805 Archive</a>
+        <a href="/805-punk-shows-events">Shows & Events</a>
+        <a href="/about-poison-well-records">About</a>
+        <a href="/contact-wholesale">Contact / Wholesale</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>Apparel</h1>
+        <p class="lead">Official OLD805 / Poison Well apparel drops. Limited runs, collector pieces, and core logo wear representing the culture.</p>
+        <div class="grid grid-3">
+          <article class="card">
+            <img class="product-image" src="assets/apparel/pwr-tee-black.jpg" data-full-src="assets/apparel/pwr-tee-black@2x.jpg" alt="Poison Well Records black tee" />
+            <h3>PWR Logo Tee - Black</h3>
+            <p>Heavy cotton tee with classic Poison Well logo print.</p>
+            <div class="btn-row">
+              <label class="tag">Size:
+                <select onchange="(this.closest('.card').dataset.size=this.value; window.updateBuyButton && window.updateBuyButton(this.closest('.card')) )" aria-label="Select size for PWR Logo Tee">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </label>
+              <label class="tag">Qty:
+                <input class="qty-input" type="number" min="1" max="10" value="1" onchange="window.updateBuyButton && window.updateBuyButton(this.closest('.card'))" />
+              </label>
+              <span class="price">$28.00</span>
+            </div>
+            <p><button class="btn primary buy-btn" type="button" onclick="goToCheckoutVariant('pwrTeeBlack', this.closest('.card'))">Buy With Stripe</button></p>
+          </article>
+          <article class="card">
+            <img class="product-image" src="assets/apparel/pwr-hoodie.jpg" data-full-src="assets/apparel/pwr-hoodie@2x.jpg" alt="Poison Well Records hoodie" />
+            <h3>PWR Hoodie</h3>
+            <p>Limited-run heavyweight hoodie with front logo stamp.</p>
+            <div class="btn-row">
+              <label class="tag">Size:
+                <select onchange="(this.closest('.card').dataset.size=this.value; window.updateBuyButton && window.updateBuyButton(this.closest('.card')) )" aria-label="Select size for PWR Hoodie">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </label>
+              <label class="tag">Qty:
+                <input class="qty-input" type="number" min="1" max="10" value="1" onchange="window.updateBuyButton && window.updateBuyButton(this.closest('.card'))" />
+              </label>
+              <span class="price">$55.00</span>
+            </div>
+            <p><button class="btn primary buy-btn" type="button" onclick="goToCheckoutVariant('pwrHoodie', this.closest('.card'))">Buy With Stripe</button></p>
+          </article>
+          <article class="card">
+            <img class="product-image" src="assets/apparel/pwr-patch-pack.jpg" data-full-src="assets/apparel/pwr-patch-pack@2x.jpg" alt="Poison Well Records patch pack" />
+            <h3>PWR Patch Pack</h3>
+            <p>Sticker and patch bundle for collectors.</p>
+            <span class="price">$8.00</span>
+            <p>
+              <label class="tag">Qty:
+                <input class="qty-input" type="number" min="1" max="10" value="1" />
+              </label>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckoutVariant('pwrPatchPack', this.closest('.card'))">Buy With Stripe</button>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>Poison Well Records | Ventura, CA | 805 punk vinyl and apparel archive.</p>
+      <p>Ships worldwide from Ventura, California. <span data-current-year></span></p>
+    </div>
+  </footer>
+  <script src="stripe-config.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>

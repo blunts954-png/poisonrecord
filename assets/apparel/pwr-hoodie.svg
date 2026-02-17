@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <rect width="100%" height="100%" fill="#0f0f0f" />
+  <g transform="translate(100,120)">
+    <rect x="80" y="80" width="1040" height="1120" rx="80" fill="#121212" stroke="#1f1f1f" />
+    <text x="600" y="680" font-family="Arial, Helvetica, sans-serif" font-size="88" fill="#ff2b2b" text-anchor="middle">PWR HOODIE</text>
+    <text x="600" y="760" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#fff" text-anchor="middle">Limited Run</text>
+  </g>
+  <text x="600" y="1500" font-family="Arial, Helvetica, sans-serif" font-size="36" fill="#999" text-anchor="middle">Replace with real product photo</text>
+</svg>
