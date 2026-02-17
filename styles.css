@@ -27,6 +27,24 @@ html, body {
   line-height: 1.6;
 }
 
+/* Fixed logo watermark background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vmin;
+  height: 60vmin;
+  background-image: url('poison-well-records-logo-ventura-805-punk-label.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
+}
+
 a { color: var(--accent-2); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
