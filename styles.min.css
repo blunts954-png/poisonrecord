@@ -438,46 +438,53 @@ textarea { min-height: 140px; }
   font-size: 0.85rem;
 }
 
-.logo-door {
+.splash-video-wrap {
   position: relative;
-  width: min(460px, 90vw);
-  height: min(600px, 78vh);
+  width: min(980px, 92vw);
+  aspect-ratio: 16 / 9;
   margin: 0.4rem auto 1.1rem;
-  cursor: pointer;
-}
-
-.door-half {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background-image: url('poison-well-records-logo-ventura-805-punk-label.png');
-  background-size: 200% 100%;
-  background-repeat: no-repeat;
   border: 1px solid #2d2d34;
-  transition: transform 950ms cubic-bezier(.2,.85,.26,1), opacity 900ms ease;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
 }
 
-.door-left {
-  left: 0;
-  background-position: left center;
-  transform-origin: left center;
+.splash-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.door-right {
-  right: 0;
-  background-position: right center;
-  transform-origin: right center;
+.splash-video-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(8, 8, 10, 0.8);
+  color: #fff;
+  padding: 0.55rem 0.95rem;
+  border-radius: 4px;
+  font: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.73rem;
+  cursor: pointer;
+  display: none;
 }
 
-.splash-gate.open .door-left {
-  transform: translateX(-120%) rotateY(22deg);
-  opacity: 0.15;
+.splash-gate.video-awaiting-input .splash-video-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.splash-gate.open .door-right {
-  transform: translateX(120%) rotateY(-22deg);
-  opacity: 0.15;
+.splash-gate.open .splash-inner {
+  transform: translateY(12px) scale(0.985);
+  opacity: 0;
+  transition: transform 520ms ease, opacity 520ms ease;
 }
 
 .enter-hint {
@@ -1645,6 +1652,55 @@ main > section:first-of-type {
   padding: 12px;
 }
 
+.social-icons-bar .social-icon[href*="youtube.com"] {
+  background-color: #ff0000;
+  color: #fff;
+  border-color: #ff0000;
+}
+
+.social-icons-bar .social-icon[href*="spotify.com"] {
+  background-color: #1db954;
+  color: #fff;
+  border-color: #1db954;
+}
+
+.social-icons-bar .social-icon[href*="facebook.com"] {
+  background-color: #1877f2;
+  color: #fff;
+  border-color: #1877f2;
+}
+
+.social-icons-bar .social-icon[href*="instagram.com"] {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.social-icons-bar .social-icon[href*="tiktok.com"] {
+  background-color: #000;
+  color: #fff;
+  border-color: #00f2fe;
+  box-shadow: -2px -2px 0 0 #fe0050, 2px 2px 0 0 #00f2fe;
+}
+
+.social-icons-bar .social-icon[href*="discogs.com"] {
+  background-color: #f5df2e;
+  color: #121212;
+  border-color: #f5df2e;
+}
+
+.social-icons-bar .social-icon[href*="bandcamp.com"] {
+  background-color: #629aa9;
+  color: #fff;
+  border-color: #629aa9;
+}
+
+.social-icons-bar .vinyl-store-icon {
+  background-color: #f5a623;
+  color: #111;
+  border-color: #f5a623;
+}
+
 /* Bigger digital release cards */
 .digital-band-card {
   padding: 35px 30px;
@@ -1678,6 +1734,38 @@ main > section:first-of-type {
 
 .digital-band-card .stream-icon {
   padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #f3f3f3;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.digital-band-card .stream-icon:hover {
+  transform: translateY(-2px) scale(1.08);
+  filter: brightness(1.08);
+}
+
+.digital-band-card .stream-icon.spotify {
+  color: #1db954;
+}
+
+.digital-band-card .stream-icon.apple {
+  color: #fa243c;
+}
+
+.digital-band-card .stream-icon.amazon {
+  color: #00a8e1;
+}
+
+.digital-band-card .stream-icon.bandcamp {
+  color: #629aa9;
+}
+
+.digital-band-card .stream-icon.buy-vinyl img {
+  border: 1px solid #f5a623;
+  box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.35);
 }
 
 /* Bigger grid columns for digital releases */
@@ -1724,6 +1812,15 @@ main > section:first-of-type {
   --text-secondary: #a0a0a0;
   --bg-deep: #0a0a0a;
   --border-subtle: #222222;
+  --brand-youtube: #ff0000;
+  --brand-spotify: #1db954;
+  --brand-discord: #5865f2;
+  --brand-facebook: #1877f2;
+  --brand-instagram-start: #f09433;
+  --brand-instagram-end: #bc1888;
+  --brand-tiktok-cyan: #00f2fe;
+  --brand-tiktok-pink: #fe0050;
+  --brand-store: #f5a623;
 }
 
 body {
@@ -1775,10 +1872,10 @@ h2 {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: #111116;
+    color: #e8e8ea;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid #2a2a33;
 }
 
 .social-icon svg {
@@ -1791,14 +1888,23 @@ h2 {
     transform: translateY(-5px) scale(1.1);
 }
 
-/* Brand Colors on Hover */
-.icon-store:hover { background-color: #f5a623; color: #000; border-color: #f5a623; }
-.icon-youtube:hover { background-color: #FF0000; border-color: #FF0000; }
-.icon-spotify:hover { background-color: #1DB954; border-color: #1DB954; }
-.icon-discord:hover { background-color: #5865F2; border-color: #5865F2; }
-.icon-facebook:hover { background-color: #1877F2; border-color: #1877F2; }
-.icon-instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-color: transparent; }
-.icon-tiktok:hover { background-color: #000; color: #fff; border-color: #00f2fe; box-shadow: -2px -2px 0 0 #fe0050, 2px 2px 0 0 #00f2fe; }
+/* Brand Colors (default + hover) */
+.icon-store { background-color: var(--brand-store); color: #000; border-color: var(--brand-store); }
+.icon-youtube { background-color: var(--brand-youtube); color: #fff; border-color: var(--brand-youtube); }
+.icon-spotify { background-color: var(--brand-spotify); color: #fff; border-color: var(--brand-spotify); }
+.icon-discord { background-color: var(--brand-discord); color: #fff; border-color: var(--brand-discord); }
+.icon-facebook { background-color: var(--brand-facebook); color: #fff; border-color: var(--brand-facebook); }
+.icon-instagram {
+  background: linear-gradient(45deg, var(--brand-instagram-start) 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, var(--brand-instagram-end) 100%);
+  color: #fff;
+  border-color: transparent;
+}
+.icon-tiktok {
+  background-color: #000;
+  color: #fff;
+  border-color: var(--brand-tiktok-cyan);
+  box-shadow: -2px -2px 0 0 var(--brand-tiktok-pink), 2px 2px 0 0 var(--brand-tiktok-cyan);
+}
 
 /* Subtler Vinyl Spinner to stay elegant */
 .vinyl-bg-spinner {

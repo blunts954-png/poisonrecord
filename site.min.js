@@ -410,25 +410,77 @@
   }
 
   const gate = document.getElementById('splash-gate');
-  const logoDoor = document.getElementById('logo-door');
-  if (gate && logoDoor) {
+  const splashVideo = document.getElementById('splash-video');
+  const splashVideoWrap = document.getElementById('splash-video-wrap');
+  const splashVideoCta = document.getElementById('splash-video-cta');
+  const enterHint = document.getElementById('enter-hint');
+  if (gate && splashVideo) {
     document.body.classList.add('gate-active');
     const openGate = function () {
       if (gate.classList.contains('open')) return;
+      gate.classList.remove('video-awaiting-input');
+      gate.classList.remove('video-playing');
       gate.classList.add('open');
       window.setTimeout(function () {
         gate.classList.add('hide');
         document.body.classList.remove('gate-active');
-      }, 950);
+      }, 620);
     };
-    // Only open on click, not auto
-    logoDoor.addEventListener('click', openGate);
-    logoDoor.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openGate();
+
+    const showTapToPlay = function () {
+      gate.classList.remove('video-playing');
+      gate.classList.add('video-awaiting-input');
+      if (enterHint) enterHint.textContent = 'Tap video to start intro';
+    };
+
+    const markPlaying = function () {
+      gate.classList.add('video-playing');
+      gate.classList.remove('video-awaiting-input');
+      if (enterHint) enterHint.textContent = 'Playing intro...';
+    };
+
+    const playIntro = function () {
+      splashVideo.muted = true;
+      const playPromise = splashVideo.play();
+      if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.then(function () {
+          markPlaying();
+        }).catch(function () {
+          showTapToPlay();
+        });
+      } else {
+        markPlaying();
       }
-    });
+    };
+
+    splashVideo.addEventListener('ended', openGate);
+    splashVideo.addEventListener('error', openGate);
+
+    const startFromUser = function (e) {
+      if (e && typeof e.preventDefault === 'function') e.preventDefault();
+      playIntro();
+    };
+
+    if (splashVideoWrap) {
+      splashVideoWrap.addEventListener('click', function () {
+        if (gate.classList.contains('video-awaiting-input')) startFromUser();
+      });
+      splashVideoWrap.addEventListener('keydown', function (e) {
+        if (!gate.classList.contains('video-awaiting-input')) return;
+        if (e.key === 'Enter' || e.key === ' ') startFromUser(e);
+      });
+    }
+
+    if (splashVideoCta) {
+      splashVideoCta.addEventListener('click', startFromUser);
+    }
+
+    playIntro();
+    window.setTimeout(function () {
+      if (splashVideo.paused && !gate.classList.contains('open')) {
+        showTapToPlay();
+      }
+    }, 700);
   }
 
   // Newsletter form handling (Netlify-friendly + AJAX fallback)

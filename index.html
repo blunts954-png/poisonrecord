@@ -101,11 +101,14 @@
     <div class="splash-inner">
       <h2 class="splash-title">Welcome. Where Punk Lives.</h2>
       <p class="splash-sub">Poison Well Records</p>
-      <div class="logo-door" id="logo-door" role="button" tabindex="0" aria-label="Open Poison Well Records">
-        <div class="door-half door-left"></div>
-        <div class="door-half door-right"></div>
+      <div class="splash-video-wrap" id="splash-video-wrap" role="button" tabindex="0"
+        aria-label="Play Poison Well Records intro">
+        <video id="splash-video" class="splash-video" autoplay muted playsinline preload="auto">
+          <source src="startofsite.mp4" type="video/mp4" />
+        </video>
+        <button type="button" class="splash-video-cta" id="splash-video-cta">Tap to play intro</button>
       </div>
-      <p class="enter-hint">Tap logo to enter</p>
+      <p class="enter-hint" id="enter-hint">Playing intro...</p>
     </div>
   </div>
 
