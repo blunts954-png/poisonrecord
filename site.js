@@ -416,8 +416,47 @@
   const enterHint = document.getElementById('enter-hint');
   if (gate && splashVideo) {
     document.body.classList.add('gate-active');
+    let introFollowRaf = null;
+    const clamp = function (value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    };
+    const resetIntroView = function () {
+      splashVideo.style.setProperty('--intro-scale', '0.86');
+      splashVideo.style.setProperty('--intro-shift-y', '0%');
+      splashVideo.style.setProperty('--intro-origin-y', '50%');
+    };
+    const stopIntroFollow = function () {
+      if (introFollowRaf) {
+        window.cancelAnimationFrame(introFollowRaf);
+        introFollowRaf = null;
+      }
+    };
+    const runIntroFollow = function () {
+      const duration = splashVideo.duration;
+      const progress = duration && Number.isFinite(duration) ? clamp(splashVideo.currentTime / duration, 0, 1) : 0;
+      const diveStart = 0.55;
+      const diveProgress = clamp((progress - diveStart) / (1 - diveStart), 0, 1);
+      const eased = diveProgress * diveProgress * (3 - 2 * diveProgress);
+      const scale = 0.86 + (0.42 * eased);
+      const shiftY = -8 * eased;
+      const originY = 50 + (24 * eased);
+      splashVideo.style.setProperty('--intro-scale', scale.toFixed(3));
+      splashVideo.style.setProperty('--intro-shift-y', shiftY.toFixed(2) + '%');
+      splashVideo.style.setProperty('--intro-origin-y', originY.toFixed(1) + '%');
+      if (!splashVideo.paused && !splashVideo.ended && !gate.classList.contains('open')) {
+        introFollowRaf = window.requestAnimationFrame(runIntroFollow);
+      } else {
+        introFollowRaf = null;
+      }
+    };
+    const startIntroFollow = function () {
+      stopIntroFollow();
+      resetIntroView();
+      introFollowRaf = window.requestAnimationFrame(runIntroFollow);
+    };
     const openGate = function () {
       if (gate.classList.contains('open')) return;
+      stopIntroFollow();
       gate.classList.remove('video-awaiting-input');
       gate.classList.remove('video-playing');
       gate.classList.add('open');
@@ -428,6 +467,8 @@
     };
 
     const showTapToPlay = function () {
+      stopIntroFollow();
+      resetIntroView();
       gate.classList.remove('video-playing');
       gate.classList.add('video-awaiting-input');
       if (enterHint) enterHint.textContent = 'Tap video to start intro';
@@ -437,6 +478,7 @@
       gate.classList.add('video-playing');
       gate.classList.remove('video-awaiting-input');
       if (enterHint) enterHint.textContent = 'Playing intro...';
+      startIntroFollow();
     };
 
     const playIntro = function () {
@@ -475,6 +517,7 @@
       splashVideoCta.addEventListener('click', startFromUser);
     }
 
+    resetIntroView();
     playIntro();
     window.setTimeout(function () {
       if (splashVideo.paused && !gate.classList.contains('open')) {

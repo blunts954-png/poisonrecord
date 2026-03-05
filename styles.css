@@ -453,7 +453,13 @@ textarea { min-height: 140px; }
 .splash-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  --intro-scale: 0.86;
+  --intro-shift-y: 0%;
+  --intro-origin-y: 50%;
+  transform: translate3d(0, var(--intro-shift-y), 0) scale(var(--intro-scale));
+  transform-origin: 50% var(--intro-origin-y);
+  transition: transform 120ms linear, transform-origin 120ms linear;
   display: block;
 }
 
