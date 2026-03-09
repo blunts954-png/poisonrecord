@@ -5,9 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Poison Well Records | Ventura 805 Punk Label</title>
+  <meta name="geo.region" content="US-CA" />
+  <meta name="geo.placename" content="Ventura" />
+  <meta name="geo.position" content="34.2746;-119.2290" />
+  <meta name="ICBM" content="34.2746, -119.2290" />
+
   <meta name="description"
     content="About Poison Well Records, a Ventura punk label archiving and releasing 805 and SoCal punk on vinyl and digital." />
-  <link rel='canonical' href='https://poisonwellrecords.netlify.app/about-poison-well-records' />
   <link rel="preload" href="styles.min.css" as="style" />
   <link rel="stylesheet" href="styles.min.css" />
   <script type="application/ld+json">
@@ -21,13 +25,17 @@
     }
   }
   </script>
+  <link rel='canonical' href='https://poisonwellrecords.netlify.app/about-poison-well-records' />
 </head>
 
 <body>
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="/">Poison Well Records</a>
-      <nav class="nav-links" aria-label="Main navigation">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
         <a href="/">Home</a>
         <div class="nav-dropdown">
           <a class="nav-main" href="/ventura-punk-record-store-online">Vinyl</a>

@@ -130,10 +130,65 @@
   const y = new Date().getFullYear();
   yearNodes.forEach(function (n) { n.textContent = String(y); });
 
+  function initNavToggle() {
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('nav-links');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', function () {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isOpen);
+      nav.classList.toggle('open');
+      document.body.classList.toggle('nav-open');
+    });
+
+    // Close menu when clicking a link (especially relevant for hash links)
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        document.body.classList.remove('nav-open');
+      });
+    });
+  }
+
+  function initBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    });
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Close nav on overlay click
+  document.addEventListener('click', function (e) {
+    const nav = document.getElementById('nav-links');
+    const toggle = document.getElementById('nav-toggle');
+    if (document.body.classList.contains('nav-open') &&
+      !nav.contains(e.target) &&
+      !toggle.contains(e.target)) {
+      toggle.click();
+    }
+  });
+
   markCurrentNavLink();
   ensureAlertBar();
   ensureVinylBackground();
   initVinylScrollBoost();
+  initNavToggle();
+  initBackToTop();
 
   const canonicalNode = document.querySelector('link[rel="canonical"]');
   if (!canonicalNode) {
@@ -421,7 +476,7 @@
       return Math.max(min, Math.min(max, value));
     };
     const resetIntroView = function () {
-      splashVideo.style.setProperty('--intro-scale', '0.86');
+      splashVideo.style.setProperty('--intro-scale', '1');
       splashVideo.style.setProperty('--intro-shift-y', '0%');
       splashVideo.style.setProperty('--intro-origin-y', '50%');
     };
@@ -436,10 +491,14 @@
       const progress = duration && Number.isFinite(duration) ? clamp(splashVideo.currentTime / duration, 0, 1) : 0;
       const diveStart = 0.55;
       const diveProgress = clamp((progress - diveStart) / (1 - diveStart), 0, 1);
-      const eased = diveProgress * diveProgress * (3 - 2 * diveProgress);
-      const scale = 0.86 + (0.42 * eased);
-      const shiftY = -8 * eased;
-      const originY = 50 + (24 * eased);
+      // Exponential ease for "falling down the hole"
+      const eased = Math.pow(diveProgress, 3);
+
+      // Massive scale at the end to "go down the hole"
+      const scale = 1 + (8.0 * eased);
+      // Shift slightly down if the bird goes down, but keeping it simple prevents jitter
+      const shiftY = 0;
+      const originY = 50 + (10 * eased); // slightly shift origin to follow the bird down
       splashVideo.style.setProperty('--intro-scale', scale.toFixed(3));
       splashVideo.style.setProperty('--intro-shift-y', shiftY.toFixed(2) + '%');
       splashVideo.style.setProperty('--intro-origin-y', originY.toFixed(1) + '%');
