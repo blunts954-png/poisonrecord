@@ -830,13 +830,15 @@ textarea {
 
 .splash-video-wrap {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background: #000;
   z-index: 1;
   pointer-events: auto;
+  display: block;
 }
 
 .splash-video {
