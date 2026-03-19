@@ -174,7 +174,43 @@ a:hover {
   top: 0;
 }
 
+/* Mobile-First / Accessibility Improvements */
 @media (max-width: 800px) {
+  .nav-toggle {
+    min-width: 48px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .footer-social-icons {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn, .social-icon, .nav-links a {
+    touch-action: manipulation;
+  }
+  
+  .grid {
+    gap: 2rem;
+  }
+
+  /* Ensure dropdown is easy to hit on mobile */
+  .dropdown-content a {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -402,6 +438,126 @@ h3 {
   cursor: pointer;
 }
 
+/* Store Controls & Search */
+.store-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(0,0,0,0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  border-radius: 4px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.search-wrap input:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+/* Badges & Stock Status */
+.product-card {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 2px;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.badge.urgency { background: #ff0000; color: #fff; animation: pulseRed 2s infinite; }
+.badge.top-seller { background: var(--accent); color: #000; }
+
+@keyframes pulseRed {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,0,0,0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.stock-status {
+  font-size: 0.85rem;
+  color: #00ff00;
+}
+
+.stock-status.low {
+  color: #ff9900;
+  font-weight: bold;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 3rem;
+}
+
+.trust-item h4 {
+  margin: 1rem 0 0.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+.trust-item p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.trust-item .trust-icon {
+  color: var(--accent);
+  margin: 0 auto;
+}
+
 /* Lightbox styles for cover preview */
 .lightbox-backdrop {
   position: fixed;
@@ -612,10 +768,14 @@ textarea {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: grid;
-  place-items: center;
-  /* Removed heavy gradients to reduce lag, pure black background for video */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: #000;
+  /* Support for mobile browser dynamic bars */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .splash-inner {
@@ -624,39 +784,47 @@ textarea {
   position: relative;
   z-index: 10;
   pointer-events: none;
-  /* Let clicks pass through to the video CTA underneath if needed */
+  padding: 2rem 0;
 }
 
 .splash-title {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.2rem;
   font-family: 'Bebas Neue', Impact, sans-serif;
-  letter-spacing: 0.06em;
-  font-size: clamp(2.3rem, 7vw, 4.5rem);
+  letter-spacing: 0.04em;
+  font-size: clamp(1.8rem, 8vw, 4.5rem);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
 
 .splash-sub {
-  margin: 0 0 1.2rem;
-  color: #d9dae0;
+  margin: 0 0 1rem;
+  color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .splash-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+  .splash-video-cta {
+    bottom: 25% !important; /* Move CTA higher for thumb reach and to avoid UI */
+    padding: 0.8rem 1.5rem !important; /* Larger touch target */
+    font-size: 0.85rem !important;
+  }
 }
 
 .splash-video-wrap {
   position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  border: none;
-  border-radius: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: #000;
-  box-shadow: none;
   z-index: 1;
-  /* Below text but inside gate */
   pointer-events: auto;
-  /* Re-enable clicks for the video */
 }
 
 .splash-video {
@@ -668,7 +836,6 @@ textarea {
   --intro-origin-y: 50%;
   transform: translate3d(0, var(--intro-shift-y), 0) scale(var(--intro-scale));
   transform-origin: 50% var(--intro-origin-y);
-  /* Use 'will-change' to optimize animation and eliminate lag/skipping */
   will-change: transform, transform-origin;
   transition: transform 120ms linear, transform-origin 120ms linear;
   display: block;
@@ -677,42 +844,49 @@ textarea {
 .splash-video-cta {
   position: absolute;
   left: 50%;
-  bottom: 1rem;
+  bottom: 2rem;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(8, 8, 10, 0.8);
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
-  padding: 0.55rem 0.95rem;
-  border-radius: 4px;
-  font: inherit;
-  letter-spacing: 0.06em;
+  padding: 0.7rem 1.2rem;
+  border-radius: 50px; /* Pill shape for premium feel */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.73rem;
+  font-size: 0.9rem;
   cursor: pointer;
   display: none;
+  z-index: 20;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 .splash-gate.video-awaiting-input .splash-video-cta {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .splash-gate.open .splash-inner {
-  transform: translateY(12px) scale(0.985);
+  transform: translateY(20px);
   opacity: 0;
-  transition: transform 520ms ease, opacity 520ms ease;
+  transition: transform 600ms ease, opacity 600ms ease;
 }
 
 .enter-hint {
-  color: var(--muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-align: center;
+  z-index: 10;
 }
 
 .splash-gate.hide {
-  animation: splashFadeOut 520ms ease forwards;
+  animation: splashFadeOut 300ms ease forwards;
 }
 
 @keyframes splashFadeOut {

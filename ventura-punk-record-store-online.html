@@ -4,14 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ventura Punk Record Store Online | Poison Well Records Shop</title>
-  <meta name="geo.region" content="US-CA" />
-  <meta name="geo.placename" content="Ventura" />
-  <meta name="geo.position" content="34.2746;-119.2290" />
-  <meta name="ICBM" content="34.2746, -119.2290" />
-
-  <meta name="description"
-    content="Shop Ventura punk vinyl merch bundles and SoCal punk releases online from Poison Well Records." />
+  <title>Vinyl Store | Poison Well Records Ventura</title>
+  <meta name="description" content="Shop limited edition punk vinyl, test pressings, and rarities from Ventura's premier punk label. Worldwide shipping available." />
+  <link rel="canonical" href="https://poisonwellrecords.netlify.app/ventura-punk-record-store-online" />
+  <!-- SEO/GEO and Schema handled dynamically by site.min.js -->
   <link rel="preload" href="styles.min.css" as="style" />
   <link rel="stylesheet" href="styles.min.css" />
   <script type="application/ld+json">
@@ -114,31 +110,50 @@
     <!-- Store Tabs Navigation -->
     <section class="section store-tabs-section">
       <div class="container">
-        <nav class="store-tabs" aria-label="Store categories">
-          <button class="store-tab active" data-tab="vinyl" type="button">Vinyl</button>
-          <button class="store-tab" data-tab="test-pressings" type="button">Test Pressings</button>
-          <button class="store-tab" data-tab="digital-releases" type="button">Digital Releases</button>
-          <button class="store-tab" data-tab="rarities" type="button">Rarities</button>
-        </nav>
-        <p class="tab-footnote" id="tab-footnote">Browse all vinyl releases from the Poison Well Records catalog.</p>
-      </div>
-    </section>
+        <div class="store-controls">
+          <div class="search-wrap">
+            <input type="text" id="store-search" placeholder="Search bands or titles..." aria-label="Search records">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <div class="tabs">
+            <button class="store-tab active" data-tab="vinyl">Vinyl</button>
+            <button class="store-tab" data-tab="test-pressings">Test Pressings</button>
+            <button class="store-tab" data-tab="digital-releases">Digital</button>
+            <button class="store-tab" data-tab="rarities">Rarities</button>
+          </div>
+        </div>
 
-    <!-- Tab: Vinyl (default) -->
-    <section class="section tab-content active" id="tab-vinyl">
-      <div class="container">
-        <h2>All Vinyl In Store</h2>
-        <div class="grid grid-3">
-          <article class="card vinyl-card">
-            <img class="product-image" src="dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg"
-              alt="Dr. Know Live CBGB 1989 vinyl record Ventura hardcore punk" />
-            <h3 class="album-title">Live CBGB 1989</h3>
-            <p class="band-name">Dr. Know</p>
-            <p>Ventura hardcore live set, limited pressing urgency title.</p>
-            <span class="price">$49.00</span>
-            <p><button class="btn primary" type="button" onclick="goToCheckout('drKnowLiveCbgb1989')">Buy With
-                Stripe</button></p>
-          </article>
+        <div id="tab-vinyl" class="tab-content active">
+          <div class="grid grid-3">
+
+            <!-- Dr. Know -->
+            <article class="card product-card" data-tags="dr know live cbgb vinyl hardcore">
+              <div class="badge urgency">LIMITED PRESSING</div>
+              <img class="product-image" src="dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg"
+                alt="Dr. Know Live CBGB 1989 vinyl record Ventura hardcore punk" loading="lazy" />
+              <h3>Live CBGB 1989 - Dr. Know</h3>
+              <p>Legendary Ventura hardcore captured live at the peak of their power. Essential 12" archive.</p>
+              <div class="price-row">
+                <span class="price">$49.00</span>
+                <span class="stock-status low">Only 4 left!</span>
+              </div>
+              <p><button class="btn primary buy-btn" type="button"
+                  onclick="goToCheckout('drKnowLiveCbgb1989')">Buy Now with Stripe</button></p>
+            </article>
+
+            <!-- RAW -->
+            <article class="card product-card" data-tags="raw sick love vinyl 805">
+              <div class="badge top-seller">TOP SELLER</div>
+              <img class="product-image" src="raw-sick-love-805-punk-record.jpg"
+                alt="RAW Sick Love 805 punk vinyl record Poison Well Records" loading="lazy" />
+              <h3>Sick Love - RAW</h3>
+              <p>The definitive 805 punk sound. Raw, heavy, and unapologetic. 12" black vinyl.</p>
+              <div class="price-row">
+                <span class="price">$28.00</span>
+                <span class="stock-status">In Stock</span>
+              </div>
+              <p><button class="btn primary buy-btn" type="button" onclick="goToCheckout('rawSickLove')">Buy Now with Stripe</button></p>
+            </article>
           <article class="card vinyl-card">
             <img class="product-image" src="front-street-knuckle-draggers-805-punk-record.jpg"
               alt="Front Street Knuckle Draggers 805 punk vinyl record artwork" />
