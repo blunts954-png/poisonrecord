@@ -1,15 +1,15 @@
 (function () {
   const baseUrl = 'https://poisonwellrecords.netlify.app';
   const pathMap = {
-    'index.html': '/',
-    'ventura-punk-vinyl.html': '/ventura-punk-vinyl',
-    'apparel.html': '/apparel',
-    'ventura-punk-record-store-online.html': '/ventura-punk-record-store-online',
-    '805-punk-bands.html': '/805-punk-bands',
-    'about-poison-well-records.html': '/about-poison-well-records',
-    'contact-wholesale.html': '/contact-wholesale',
-    'faq.html': '/faq',
-    'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore'
+    'index.html': 'index.html',
+    'ventura-punk-vinyl.html': 'ventura-punk-vinyl.html',
+    'apparel.html': 'apparel.html',
+    'ventura-punk-record-store-online.html': 'ventura-punk-record-store-online.html',
+    '805-punk-bands.html': '805-punk-bands.html',
+    'about-poison-well-records.html': 'about-poison-well-records.html',
+    'contact-wholesale.html': 'contact-wholesale.html',
+    'faq.html': 'faq.html',
+    'dr-know-live-cbgb-1989-ventura-hardcore.html': 'dr-know-live-cbgb-1989-ventura-hardcore.html'
   };
 
   function currentFile() {
@@ -68,7 +68,7 @@
     if (!document.querySelector('link[rel*="icon"]')) {
       const link = document.createElement('link');
       link.rel = 'icon';
-      link.href = '/logo.jpg';
+      link.href = 'logo.jpg';
       document.head.appendChild(link);
     }
   }
@@ -79,7 +79,7 @@
     const releaseAnnouncement = document.body.getAttribute('data-release-announcement') || 'Dr. Know - Live CBGB 1989';
     const alertMarkup =
       '<div class="alert-marquee">' +
-      '<span>NEW RELEASE ANNOUNCEMENT: <strong>' + releaseAnnouncement + '</strong> is live now. <a href="/dr-know-live-cbgb-1989-ventura-hardcore">VIEW &amp; BUY -></a></span>' +
+      '<span>NEW RELEASE ANNOUNCEMENT: <strong>' + releaseAnnouncement + '</strong> is live now. <a href="dr-know-live-cbgb-1989-ventura-hardcore.html">VIEW &amp; BUY -></a></span>' +
       '</div>';
     const existing = document.querySelector('.alert-bar');
     if (existing) {
@@ -110,14 +110,14 @@
       document.body.appendChild(labelEl);
     }
     const bandLabels = {
-      '/': { band: 'Dr. Know', color: '#e85c0d', label: 'CBGB 1989' },
-      '/ventura-punk-record-store-online': { band: 'RAW', color: '#f5a623', label: 'Sick Love' },
-      '/apparel': { band: 'Poison Well', color: '#cc2200', label: '805 Merch' },
-      '/805-punk-bands': { band: 'I Decline', color: '#b5651d', label: 'SoCal HC' },
-      '/about-poison-well-records': { band: 'Narthex', color: '#8b4513', label: '1984' },
-      '/contact-wholesale': { band: 'Front Street', color: '#d2691e', label: 'Knuckle Draggers' },
-      '/faq': { band: 'Los Bonedrivers', color: '#cd853f', label: 'Distro' },
-      '/dr-know-live-cbgb-1989-ventura-hardcore': { band: 'Dr. Know', color: '#ff4500', label: 'Live CBGB' }
+      'index.html': { band: 'Dr. Know', color: '#e85c0d', label: 'CBGB 1989' },
+      'ventura-punk-record-store-online.html': { band: 'RAW', color: '#f5a623', label: 'Sick Love' },
+      'apparel.html': { band: 'Poison Well', color: '#cc2200', label: '805 Merch' },
+      '805-punk-bands.html': { band: 'I Decline', color: '#b5651d', label: 'SoCal HC' },
+      'about-poison-well-records.html': { band: 'Narthex', color: '#8b4513', label: '1984' },
+      'contact-wholesale.html': { band: 'Front Street', color: '#d2691e', label: 'Knuckle Draggers' },
+      'faq.html': { band: 'Los Bonedrivers', color: '#cd853f', label: 'Distro' },
+      'dr-know-live-cbgb-1989-ventura-hardcore.html': { band: 'Dr. Know', color: '#ff4500', label: 'Live CBGB' }
     };
     const currentPath = normalizePath(window.location.pathname);
     const data = bandLabels[currentPath] || bandLabels['/'];

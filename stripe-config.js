@@ -27,3 +27,15 @@ window.POISON_WELL_STRIPE_LINKS = {
 
 // Note: These demo links are placeholders. Replace each value with the real Stripe
 // Payment Link (or Checkout session URL) when ready. Leave test links for demo mode.
+
+window.goToCheckout = function(sku) {
+  const links = window.POISON_WELL_STRIPE_LINKS || {};
+  const url = links[sku];
+  if (url) {
+    window.location.href = url;
+  } else {
+    // Fallback if SKU is missing
+    console.error('Stripe link not found for SKU:', sku);
+    window.location.href = 'ventura-punk-record-store-online.html';
+  }
+};
