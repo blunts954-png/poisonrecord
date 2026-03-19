@@ -766,33 +766,45 @@ textarea {
 
 .splash-gate {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: #000;
-  /* Support for mobile browser dynamic bars */
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .splash-inner {
-  width: min(760px, 92vw);
+  width: 100%;
+  max-width: 760px;
+  padding: 0 4vw;
   text-align: center;
   position: relative;
   z-index: 10;
   pointer-events: none;
-  padding: 2rem 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .splash-title {
+  display: block;
+  width: 100%;
   margin: 0 0 0.2rem;
   font-family: 'Bebas Neue', Impact, sans-serif;
   letter-spacing: 0.04em;
-  font-size: clamp(1.8rem, 8vw, 4.5rem);
-  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+  font-size: clamp(1.8rem, 8vw, 4.2rem);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.9);
 }
 
 .splash-sub {
