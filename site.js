@@ -471,16 +471,13 @@
     const runIntroFollow = function () {
       const duration = splashVideo.duration;
       const progress = duration && Number.isFinite(duration) ? clamp(splashVideo.currentTime / duration, 0, 1) : 0;
-      const diveStart = 0.55;
+      const diveStart = 0.78;
       const diveProgress = clamp((progress - diveStart) / (1 - diveStart), 0, 1);
-      // Exponential ease for "falling down the hole"
-      const eased = Math.pow(diveProgress, 3);
-
-      // Massive scale at the end to "go down the hole"
-      const scale = 1 + (8.0 * eased);
-      // Shift slightly down if the bird goes down, but keeping it simple prevents jitter
+      const eased = Math.pow(diveProgress, 2.4);
+      const maxScale = window.matchMedia('(max-width: 700px)').matches ? 1.24 : 1.14;
+      const scale = 1 + ((maxScale - 1) * eased);
       const shiftY = 0;
-      const originY = 50 + (10 * eased); // slightly shift origin to follow the bird down
+      const originY = 50 + (4 * eased);
       splashVideo.style.setProperty('--intro-scale', scale.toFixed(3));
       splashVideo.style.setProperty('--intro-shift-y', shiftY.toFixed(2) + '%');
       splashVideo.style.setProperty('--intro-origin-y', originY.toFixed(1) + '%');
