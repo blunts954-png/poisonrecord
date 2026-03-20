@@ -2160,6 +2160,10 @@ main>section:first-of-type {
   color: #fa243c;
 }
 
+.digital-band-card .stream-icon.youtube {
+  color: #ff3535;
+}
+
 .digital-band-card .stream-icon.amazon {
   color: #00a8e1;
 }
