@@ -153,6 +153,18 @@
     btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
+  function ensureFooterCredit() {
+    const footerContainers = document.querySelectorAll('footer .container');
+    if (!footerContainers.length) return;
+    footerContainers.forEach(function (container) {
+      if (container.querySelector('.footer-powered')) return;
+      const credit = document.createElement('p');
+      credit.className = 'footer-powered';
+      credit.innerHTML = 'Powered by <a href="https://chaoticallyorganizedai.com" target="_blank" rel="noopener">chaoticallyorganizedAi.com</a>';
+      container.appendChild(credit);
+    });
+  }
+
   function ensureDigitalReleaseLinks() {
     const cards = document.querySelectorAll('.digital-band-card');
     if (!cards.length) return;
@@ -326,6 +338,7 @@
   ensureVinylBackground();
   initNavToggle();
   initBackToTop();
+  ensureFooterCredit();
   ensureDigitalReleaseLinks();
 
   const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
@@ -538,13 +551,13 @@
     const runIntroFollow = function () {
       const duration = splashVideo.duration;
       const progress = duration && Number.isFinite(duration) ? clamp(splashVideo.currentTime / duration, 0, 1) : 0;
-      const diveStart = 0.78;
+      const diveStart = 0.64;
       const diveProgress = clamp((progress - diveStart) / (1 - diveStart), 0, 1);
-      const eased = Math.pow(diveProgress, 2.4);
-      const maxScale = window.matchMedia('(max-width: 700px)').matches ? 1.24 : 1.14;
+      const eased = Math.pow(diveProgress, 2.2);
+      const maxScale = window.matchMedia('(max-width: 700px)').matches ? 1.72 : 1.52;
       const scale = 1 + ((maxScale - 1) * eased);
-      const shiftY = 0;
-      const originY = 50 + (4 * eased);
+      const shiftY = (-1.4 * eased);
+      const originY = 50 + (9 * eased);
       splashVideo.style.setProperty('--intro-scale', scale.toFixed(3));
       splashVideo.style.setProperty('--intro-shift-y', shiftY.toFixed(2) + '%');
       splashVideo.style.setProperty('--intro-origin-y', originY.toFixed(1) + '%');
