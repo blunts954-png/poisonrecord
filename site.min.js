@@ -807,8 +807,21 @@
   if (gate && splashVideo) {
     document.body.classList.add('gate-active');
     let introFollowRaf = null;
+    let hideGateTimer = null;
+    let forcedOpenTimer = null;
+    let gateReleased = false;
     const clamp = function (value, min, max) {
       return Math.max(min, Math.min(max, value));
+    };
+    const clearGateTimers = function () {
+      if (hideGateTimer) {
+        window.clearTimeout(hideGateTimer);
+        hideGateTimer = null;
+      }
+      if (forcedOpenTimer) {
+        window.clearTimeout(forcedOpenTimer);
+        forcedOpenTimer = null;
+      }
     };
     const resetIntroView = function () {
       splashVideo.style.setProperty('--intro-scale', '1');
@@ -845,24 +858,51 @@
       resetIntroView();
       introFollowRaf = window.requestAnimationFrame(runIntroFollow);
     };
+    const scheduleGateFallback = function () {
+      if (gateReleased || gate.classList.contains('video-awaiting-input')) {
+        return;
+      }
+      if (forcedOpenTimer) {
+        window.clearTimeout(forcedOpenTimer);
+      }
+      const durationMs = Number.isFinite(splashVideo.duration) && splashVideo.duration > 0
+        ? Math.ceil(Math.max(2, splashVideo.duration - splashVideo.currentTime + 0.35) * 1000)
+        : 12000;
+      forcedOpenTimer = window.setTimeout(function () {
+        openGate();
+      }, durationMs);
+    };
     const openGate = function () {
-      if (gate.classList.contains('open')) return;
+      if (gateReleased || gate.classList.contains('open')) return;
+      gateReleased = true;
+      clearGateTimers();
       stopIntroFollow();
       gate.classList.remove('video-awaiting-input');
       gate.classList.remove('video-playing');
       gate.classList.add('open');
-      window.setTimeout(function () {
+      gate.style.pointerEvents = 'none';
+      gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-active');
+      hideGateTimer = window.setTimeout(function () {
         gate.classList.add('hide');
-        document.body.classList.remove('gate-active');
+        gate.style.display = 'none';
       }, 620);
     };
 
     const showTapToPlay = function () {
+      clearGateTimers();
       stopIntroFollow();
       resetIntroView();
       gate.classList.remove('video-playing');
       gate.classList.add('video-awaiting-input');
-      if (enterHint) enterHint.textContent = 'Tap video to start intro';
+      if (enterHint) enterHint.textContent = 'Tap video to start intro or wait to enter site';
+      forcedOpenTimer = window.setTimeout(function () {
+        if (gateReleased || !gate.classList.contains('video-awaiting-input')) {
+          return;
+        }
+        if (enterHint) enterHint.textContent = 'Opening site...';
+        openGate();
+      }, 4000);
     };
 
     const markPlaying = function () {
@@ -870,10 +910,20 @@
       gate.classList.remove('video-awaiting-input');
       if (enterHint) enterHint.textContent = 'Playing intro...';
       startIntroFollow();
+      scheduleGateFallback();
     };
 
     const playIntro = function () {
+      if (gateReleased) {
+        return;
+      }
       splashVideo.muted = true;
+      if (
+        splashVideo.ended ||
+        (Number.isFinite(splashVideo.duration) && splashVideo.duration > 0 && splashVideo.currentTime >= splashVideo.duration - 0.2)
+      ) {
+        splashVideo.currentTime = 0;
+      }
       const playPromise = splashVideo.play();
       if (playPromise && typeof playPromise.then === 'function') {
         playPromise.then(function () {
@@ -888,6 +938,18 @@
 
     splashVideo.addEventListener('ended', openGate);
     splashVideo.addEventListener('error', openGate);
+    splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
+    splashVideo.addEventListener('canplay', scheduleGateFallback);
+    splashVideo.addEventListener('timeupdate', function () {
+      if (
+        !gateReleased &&
+        Number.isFinite(splashVideo.duration) &&
+        splashVideo.duration > 0 &&
+        splashVideo.currentTime >= splashVideo.duration - 0.15
+      ) {
+        openGate();
+      }
+    });
 
     const startFromUser = function (e) {
       if (e && typeof e.preventDefault === 'function') e.preventDefault();
@@ -917,10 +979,18 @@
     resetIntroView();
     playIntro();
     window.setTimeout(function () {
+      if (gateReleased) {
+        return;
+      }
       if (splashVideo.paused && !gate.classList.contains('open')) {
         showTapToPlay();
       }
     }, 1500); // Give it a bit more time on slow mobile connections
+    window.setTimeout(function () {
+      if (!gateReleased && !gate.classList.contains('video-awaiting-input')) {
+        openGate();
+      }
+    }, 18000);
   }
 
   // Newsletter form handling (Netlify-friendly + AJAX fallback)

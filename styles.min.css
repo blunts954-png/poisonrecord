@@ -909,6 +909,11 @@ textarea {
   transition: transform 600ms ease, opacity 600ms ease;
 }
 
+.splash-gate.open,
+.splash-gate.hide {
+  pointer-events: none;
+}
+
 .enter-hint {
   position: static;
   margin: 0;
