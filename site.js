@@ -595,7 +595,7 @@
     const markPlaying = function () {
       gate.classList.add('video-playing');
       gate.classList.remove('video-awaiting-input');
-      if (enterHint) enterHint.textContent = 'Playing intro...';
+      if (enterHint) enterHint.textContent = 'Playing intro... (Tap to skip)';
       startIntroFollow();
     };
 
@@ -611,6 +611,14 @@
       } else {
         markPlaying();
       }
+
+      // Safety timeout in case video hangs or fails to fire 'ended'
+      window.setTimeout(function() {
+        if (!gate.classList.contains('open')) {
+          console.log("Splash bypass via safety timeout");
+          openGate();
+        }
+      }, 10000);
     };
 
     splashVideo.addEventListener('ended', openGate);
@@ -618,16 +626,29 @@
 
     const startFromUser = function (e) {
       if (e && typeof e.preventDefault === 'function') e.preventDefault();
-      playIntro();
+      if (gate.classList.contains('video-playing')) {
+        openGate(); // Skip if already playing
+      } else {
+        playIntro();
+      }
     };
 
     if (splashVideoWrap) {
       splashVideoWrap.addEventListener('click', function () {
-        if (gate.classList.contains('video-awaiting-input')) startFromUser();
+        if (gate.classList.contains('video-awaiting-input')) {
+          startFromUser();
+        } else if (gate.classList.contains('video-playing')) {
+          openGate(); // Click to skip
+        }
       });
       splashVideoWrap.addEventListener('keydown', function (e) {
-        if (!gate.classList.contains('video-awaiting-input')) return;
-        if (e.key === 'Enter' || e.key === ' ') startFromUser(e);
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (gate.classList.contains('video-awaiting-input')) {
+            startFromUser(e);
+          } else if (gate.classList.contains('video-playing')) {
+            openGate();
+          }
+        }
       });
     }
 
@@ -637,7 +658,11 @@
 
     if (gate) {
       gate.addEventListener('click', function() {
-        if (gate.classList.contains('video-awaiting-input')) startFromUser();
+        if (gate.classList.contains('video-awaiting-input')) {
+          startFromUser();
+        } else if (gate.classList.contains('video-playing')) {
+          openGate();
+        }
       });
     }
 
