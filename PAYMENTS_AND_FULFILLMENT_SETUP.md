@@ -8,7 +8,7 @@
    - `SITE_URL`
    - `STRIPE_SECRET_KEY`
    - `STRIPE_SHIPPING_RATE_STANDARD_ID`
-   - `STRIPE_SHIPPING_RATE_EXPEDITED_ID` (optional)
+   - `STRIPE_SHIPPING_RATE_CJ_ID` (optional second shipping option for CJ-priced shipping)
    - `STRIPE_ALLOWED_COUNTRIES`
    - `STRIPE_AUTOMATIC_TAX`
 4. Redeploy the site.

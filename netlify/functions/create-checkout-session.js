@@ -61,13 +61,13 @@ function parseAllowedCountries() {
 function buildShippingOptions() {
   const shippingOptions = [];
   const standardRate = (process.env.STRIPE_SHIPPING_RATE_STANDARD_ID || "").trim();
-  const expeditedRate = (process.env.STRIPE_SHIPPING_RATE_EXPEDITED_ID || "").trim();
+  const cjRate = (process.env.STRIPE_SHIPPING_RATE_CJ_ID || process.env.STRIPE_SHIPPING_RATE_EXPEDITED_ID || "").trim();
 
   if (standardRate) {
     shippingOptions.push({ shipping_rate: standardRate });
   }
-  if (expeditedRate) {
-    shippingOptions.push({ shipping_rate: expeditedRate });
+  if (cjRate) {
+    shippingOptions.push({ shipping_rate: cjRate });
   }
 
   return shippingOptions;
@@ -161,4 +161,3 @@ exports.handler = async function (event) {
     });
   }
 };
-
