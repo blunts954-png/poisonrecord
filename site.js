@@ -1,15 +1,15 @@
 (function () {
   const baseUrl = 'https://poisonwellrecords.netlify.app';
   const pathMap = {
-    'index.html': 'index.html',
-    'ventura-punk-vinyl.html': 'ventura-punk-vinyl.html',
-    'apparel.html': 'apparel.html',
-    'ventura-punk-record-store-online.html': 'ventura-punk-record-store-online.html',
-    '805-punk-bands.html': '805-punk-bands.html',
-    'about-poison-well-records.html': 'about-poison-well-records.html',
-    'contact-wholesale.html': 'contact-wholesale.html',
-    'faq.html': 'faq.html',
-    'dr-know-live-cbgb-1989-ventura-hardcore.html': 'dr-know-live-cbgb-1989-ventura-hardcore.html'
+    'index.html': '/',
+    'ventura-punk-vinyl.html': '/ventura-punk-vinyl',
+    'apparel.html': '/apparel',
+    'ventura-punk-record-store-online.html': '/ventura-punk-record-store-online',
+    '805-punk-bands.html': '/805-punk-bands',
+    'about-poison-well-records.html': '/about-poison-well-records',
+    'contact-wholesale.html': '/contact-wholesale',
+    'faq.html': '/faq',
+    'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore'
   };
 
   function currentFile() {
@@ -21,7 +21,7 @@
   function currentCanonical() {
     const file = currentFile();
     const path = pathMap[file] || '/';
-    return baseUrl + (path === '/' ? '' : path.replace('.html', ''));
+    return baseUrl + path;
   }
 
   function normalizePath(pathname) {
@@ -154,15 +154,7 @@
   }
 
   function ensureFooterCredit() {
-    const footerContainers = document.querySelectorAll('footer .container');
-    if (!footerContainers.length) return;
-    footerContainers.forEach(function (container) {
-      if (container.querySelector('.footer-powered')) return;
-      const credit = document.createElement('p');
-      credit.className = 'footer-powered';
-      credit.innerHTML = 'Powered by <a href="https://chaoticallyorganizedai.com" target="_blank" rel="noopener">chaoticallyorganizedAi.com</a>';
-      container.appendChild(credit);
-    });
+    return;
   }
 
   function ensureDigitalReleaseLinks() {
@@ -338,7 +330,6 @@
   ensureVinylBackground();
   initNavToggle();
   initBackToTop();
-  ensureFooterCredit();
   ensureDigitalReleaseLinks();
 
   const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
@@ -513,17 +504,299 @@
     });
   }
 
+  function initVinylPreviewPlayer() {
+    const shell = document.getElementById('vinyl-turntable-shell');
+    const dropZone = document.getElementById('vinyl-drop-zone');
+    const playButton = document.getElementById('vinyl-play-toggle');
+    const audio = document.getElementById('vinyl-preview-audio');
+    const recordLabel = document.getElementById('vinyl-record-label');
+    const recordArtist = document.getElementById('vinyl-record-artist');
+    const recordRelease = document.getElementById('vinyl-record-release');
+    const recordTrack = document.getElementById('vinyl-record-track');
+    const releaseTitle = document.getElementById('vinyl-release-title');
+    const trackTitle = document.getElementById('vinyl-track-title');
+    const artistName = document.getElementById('vinyl-artist-name');
+    const catalogNumber = document.getElementById('vinyl-catalog-number');
+    const speed = document.getElementById('vinyl-speed');
+    const note = document.getElementById('vinyl-note');
+    const statusText = document.getElementById('vinyl-status-text');
+    const progressFill = document.getElementById('vinyl-progress-fill');
+    const currentTimeNode = document.getElementById('vinyl-current-time');
+    const totalTimeNode = document.getElementById('vinyl-total-time');
+    const messageNode = document.getElementById('vinyl-turntable-message');
+    const errorNode = document.getElementById('vinyl-error-message');
+    const recordNode = document.getElementById('vinyl-record');
+    const tonearmNode = document.getElementById('vinyl-tonearm');
+    const meterBars = Array.from(document.querySelectorAll('.turntable-meter .meter-bar'));
+    const crateItems = Array.from(document.querySelectorAll('.vinyl-crate-item'));
+
+    if (!shell || !dropZone || !playButton || !audio || crateItems.length === 0) return;
+
+    let selectedButton = crateItems.find(function (button) {
+      return button.classList.contains('is-active');
+    }) || crateItems[0];
+    let queuedAutoplayId = '';
+
+    function formatSeconds(value) {
+      const safeValue = Math.max(0, Math.floor(value));
+      const minutes = Math.floor(safeValue / 60);
+      const seconds = safeValue % 60;
+      return String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+    }
+
+    function readRecord(button) {
+      const duration = parseFloat(button.dataset.previewDuration || '30');
+      const start = parseFloat(button.dataset.previewStart || '0');
+      return {
+        id: button.dataset.recordId,
+        artist: button.dataset.artist || 'Poison Well Records',
+        releaseTitle: button.dataset.releaseTitle || 'Preview',
+        trackTitle: button.dataset.trackTitle || 'Clip',
+        catalogNumber: button.dataset.catalogNumber || '',
+        speed: button.dataset.speed || '',
+        note: button.dataset.note || '',
+        accent: button.dataset.accent || '#c92b17',
+        previewSrc: button.dataset.previewSrc || '',
+        previewDuration: Number.isFinite(duration) ? duration : 30,
+        previewStart: Number.isFinite(start) ? start : 0
+      };
+    }
+
+    function previewWindow(record) {
+      const duration = Number.isFinite(audio.duration) ? audio.duration : record.previewStart + record.previewDuration;
+      const previewEnd = Math.min(record.previewStart + record.previewDuration, duration);
+      return {
+        start: record.previewStart,
+        end: previewEnd,
+        length: Math.max(0, previewEnd - record.previewStart)
+      };
+    }
+
+    function setStatus(text) {
+      if (statusText) statusText.textContent = text;
+    }
+
+    function setMessage(text) {
+      if (messageNode) messageNode.textContent = text;
+    }
+
+    function setError(text) {
+      if (!errorNode) return;
+      if (text) {
+        errorNode.hidden = false;
+        errorNode.textContent = text;
+      } else {
+        errorNode.hidden = true;
+        errorNode.textContent = '';
+      }
+    }
+
+    function setMeterState(isPlaying) {
+      meterBars.forEach(function (bar, index) {
+        bar.classList.remove('is-active', 'is-tall-active');
+        if (!isPlaying) return;
+        if (index % 2 === 0) {
+          bar.classList.add('is-active');
+        } else {
+          bar.classList.add('is-tall-active');
+        }
+      });
+    }
+
+    function setProgress(elapsed, total) {
+      const progress = total > 0 ? Math.min((elapsed / total) * 100, 100) : 0;
+      if (progressFill) progressFill.style.width = progress + '%';
+      if (currentTimeNode) currentTimeNode.textContent = formatSeconds(elapsed);
+      if (totalTimeNode) totalTimeNode.textContent = formatSeconds(total || 30);
+    }
+
+    function syncUiFromRecord(record) {
+      recordArtist.textContent = record.artist;
+      recordRelease.textContent = record.releaseTitle;
+      recordTrack.textContent = record.trackTitle;
+      releaseTitle.textContent = record.releaseTitle;
+      trackTitle.textContent = record.trackTitle;
+      artistName.textContent = record.artist;
+      catalogNumber.textContent = record.catalogNumber;
+      speed.textContent = record.speed;
+      note.textContent = record.note;
+      if (recordLabel) recordLabel.style.setProperty('--player-accent', record.accent);
+      shell.style.setProperty('--player-accent', record.accent);
+      setProgress(0, record.previewDuration);
+      setStatus('Loading Preview');
+      setMessage('Drag a record here or hit play to preview the loaded release.');
+      setError('');
+    }
+
+    function pausePreview() {
+      audio.pause();
+      playButton.textContent = 'Play 30s Preview';
+      recordNode.classList.remove('is-spinning');
+      tonearmNode.classList.remove('is-engaged');
+      setMeterState(false);
+    }
+
+    function playPreview(forceRestart) {
+      const record = readRecord(selectedButton);
+      const windowData = previewWindow(record);
+
+      if (forceRestart || audio.currentTime < windowData.start || audio.currentTime >= windowData.end - 0.15) {
+        audio.currentTime = windowData.start;
+        setProgress(0, windowData.length || record.previewDuration);
+      }
+
+      setError('');
+      const playPromise = audio.play();
+      if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.then(function () {
+          playButton.textContent = 'Pause Preview';
+          recordNode.classList.add('is-spinning');
+          tonearmNode.classList.add('is-engaged');
+          setMeterState(true);
+          setStatus('Preview Playing');
+        }).catch(function () {
+          pausePreview();
+          setStatus('Preview Missing');
+          setError('Preview file missing. Add the MP3 files listed in audio/previews/README.txt.');
+        });
+      } else {
+        playButton.textContent = 'Pause Preview';
+        recordNode.classList.add('is-spinning');
+        tonearmNode.classList.add('is-engaged');
+        setMeterState(true);
+        setStatus('Preview Playing');
+      }
+    }
+
+    function loadRecord(button, options) {
+      const opts = options || {};
+      crateItems.forEach(function (item) {
+        item.classList.toggle('is-active', item === button);
+      });
+      selectedButton = button;
+      queuedAutoplayId = opts.autoplay ? button.dataset.recordId || '' : '';
+      const record = readRecord(button);
+      syncUiFromRecord(record);
+      pausePreview();
+      audio.src = record.previewSrc;
+      audio.load();
+      shell.classList.remove('is-drop-target');
+    }
+
+    crateItems.forEach(function (button) {
+      button.addEventListener('click', function () {
+        loadRecord(button, { autoplay: false });
+      });
+
+      button.addEventListener('dragstart', function (event) {
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', button.dataset.recordId || '');
+        button.classList.add('is-dragging');
+        setMessage('Drop the record on the turntable to load and play the preview.');
+      });
+
+      button.addEventListener('dragend', function () {
+        button.classList.remove('is-dragging');
+        shell.classList.remove('is-drop-target');
+        setMessage('Drag a record here or hit play to preview the loaded release.');
+      });
+    });
+
+    dropZone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      shell.classList.add('is-drop-target');
+      setMessage('Release the vinyl to drop the needle.');
+    });
+
+    dropZone.addEventListener('dragleave', function () {
+      shell.classList.remove('is-drop-target');
+      setMessage('Drag a record here or hit play to preview the loaded release.');
+    });
+
+    dropZone.addEventListener('drop', function (event) {
+      event.preventDefault();
+      const recordId = event.dataTransfer.getData('text/plain');
+      const button = crateItems.find(function (item) {
+        return item.dataset.recordId === recordId;
+      });
+      shell.classList.remove('is-drop-target');
+      if (!button) return;
+      loadRecord(button, { autoplay: true });
+    });
+
+    playButton.addEventListener('click', function () {
+      if (!audio.paused) {
+        pausePreview();
+        setStatus('Preview Paused');
+        return;
+      }
+      playPreview(false);
+    });
+
+    audio.addEventListener('loadedmetadata', function () {
+      const record = readRecord(selectedButton);
+      const windowData = previewWindow(record);
+      audio.currentTime = windowData.start;
+      setProgress(0, windowData.length || record.previewDuration);
+      setStatus('Preview Ready');
+      if (queuedAutoplayId && queuedAutoplayId === record.id) {
+        queuedAutoplayId = '';
+        playPreview(true);
+      }
+    });
+
+    audio.addEventListener('timeupdate', function () {
+      const record = readRecord(selectedButton);
+      const windowData = previewWindow(record);
+      const elapsed = Math.max(0, audio.currentTime - windowData.start);
+      setProgress(Math.min(elapsed, windowData.length), windowData.length || record.previewDuration);
+      if (audio.currentTime >= windowData.end) {
+        audio.pause();
+        audio.currentTime = windowData.start;
+        setProgress(windowData.length, windowData.length || record.previewDuration);
+        pausePreview();
+        setStatus('Preview Complete');
+      }
+    });
+
+    audio.addEventListener('error', function () {
+      pausePreview();
+      setStatus('Preview Missing');
+      setProgress(0, readRecord(selectedButton).previewDuration);
+      setError('Preview file missing. Add the MP3 files listed in audio/previews/README.txt.');
+    });
+
+    audio.addEventListener('pause', function () {
+      if (audio.ended) return;
+      if (audio.currentTime > 0 && audio.currentTime < audio.duration) {
+        playButton.textContent = 'Resume Preview';
+      }
+    });
+
+    audio.addEventListener('play', function () {
+      playButton.textContent = 'Pause Preview';
+      recordNode.classList.add('is-spinning');
+      tonearmNode.classList.add('is-engaged');
+      setMeterState(true);
+      setStatus('Preview Playing');
+    });
+
+    loadRecord(selectedButton, { autoplay: false });
+  }
+
   // Run on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () { 
       initApparelUI(); 
       initLatestRelease(); 
-      initStoreSearch(); 
+      initStoreSearch();
+      initVinylPreviewPlayer();
     });
   } else {
     initApparelUI();
     initLatestRelease();
     initStoreSearch();
+    initVinylPreviewPlayer();
   }
 
   const gate = document.getElementById('splash-gate');
@@ -534,8 +807,21 @@
   if (gate && splashVideo) {
     document.body.classList.add('gate-active');
     let introFollowRaf = null;
+    let hideGateTimer = null;
+    let forcedOpenTimer = null;
+    let gateReleased = false;
     const clamp = function (value, min, max) {
       return Math.max(min, Math.min(max, value));
+    };
+    const clearGateTimers = function () {
+      if (hideGateTimer) {
+        window.clearTimeout(hideGateTimer);
+        hideGateTimer = null;
+      }
+      if (forcedOpenTimer) {
+        window.clearTimeout(forcedOpenTimer);
+        forcedOpenTimer = null;
+      }
     };
     const resetIntroView = function () {
       splashVideo.style.setProperty('--intro-scale', '1');
@@ -572,24 +858,51 @@
       resetIntroView();
       introFollowRaf = window.requestAnimationFrame(runIntroFollow);
     };
+    const scheduleGateFallback = function () {
+      if (gateReleased || gate.classList.contains('video-awaiting-input')) {
+        return;
+      }
+      if (forcedOpenTimer) {
+        window.clearTimeout(forcedOpenTimer);
+      }
+      const durationMs = Number.isFinite(splashVideo.duration) && splashVideo.duration > 0
+        ? Math.ceil(Math.max(2, splashVideo.duration - splashVideo.currentTime + 0.35) * 1000)
+        : 12000;
+      forcedOpenTimer = window.setTimeout(function () {
+        openGate();
+      }, durationMs);
+    };
     const openGate = function () {
-      if (gate.classList.contains('open')) return;
+      if (gateReleased || gate.classList.contains('open')) return;
+      gateReleased = true;
+      clearGateTimers();
       stopIntroFollow();
       gate.classList.remove('video-awaiting-input');
       gate.classList.remove('video-playing');
       gate.classList.add('open');
-      window.setTimeout(function () {
+      gate.style.pointerEvents = 'none';
+      gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-active');
+      hideGateTimer = window.setTimeout(function () {
         gate.classList.add('hide');
-        document.body.classList.remove('gate-active');
+        gate.style.display = 'none';
       }, 620);
     };
 
     const showTapToPlay = function () {
+      clearGateTimers();
       stopIntroFollow();
       resetIntroView();
       gate.classList.remove('video-playing');
       gate.classList.add('video-awaiting-input');
-      if (enterHint) enterHint.textContent = 'Tap video to start intro';
+      if (enterHint) enterHint.textContent = 'Tap video to start intro or wait to enter site';
+      forcedOpenTimer = window.setTimeout(function () {
+        if (gateReleased || !gate.classList.contains('video-awaiting-input')) {
+          return;
+        }
+        if (enterHint) enterHint.textContent = 'Opening site...';
+        openGate();
+      }, 4000);
     };
 
     const markPlaying = function () {
@@ -597,10 +910,43 @@
       gate.classList.remove('video-awaiting-input');
       if (enterHint) enterHint.textContent = 'Playing intro... (Tap to skip)';
       startIntroFollow();
+      scheduleGateFallback();
+      
+      // Anti-freeze logic: If video time doesn't advance for 2 seconds while "playing", bypass
+      let lastCheckTime = splashVideo.currentTime;
+      let stallCounter = 0;
+      const stallInterval = window.setInterval(function() {
+        if (gateReleased) {
+          window.clearInterval(stallInterval);
+          return;
+        }
+        if (splashVideo.paused) return;
+        
+        if (Math.abs(splashVideo.currentTime - lastCheckTime) < 0.01) {
+          stallCounter++;
+          if (stallCounter >= 4) { // 2 seconds (0.5s * 4)
+            console.log("Splash bypass via stall detection");
+            window.clearInterval(stallInterval);
+            openGate();
+          }
+        } else {
+          stallCounter = 0;
+          lastCheckTime = splashVideo.currentTime;
+        }
+      }, 500);
     };
 
     const playIntro = function () {
+      if (gateReleased) {
+        return;
+      }
       splashVideo.muted = true;
+      if (
+        splashVideo.ended ||
+        (Number.isFinite(splashVideo.duration) && splashVideo.duration > 0 && splashVideo.currentTime >= splashVideo.duration - 0.2)
+      ) {
+        splashVideo.currentTime = 0;
+      }
       const playPromise = splashVideo.play();
       if (playPromise && typeof playPromise.then === 'function') {
         playPromise.then(function () {
@@ -615,14 +961,26 @@
       // Safety timeout in case video hangs or fails to fire 'ended'
       window.setTimeout(function() {
         if (!gate.classList.contains('open')) {
-          console.log("Splash bypass via safety timeout");
+          console.log("Splash bypass via safety timeout after 12s");
           openGate();
         }
-      }, 10000);
+      }, 12000); // 12s total for 10s video is safer than 10s exact
     };
 
     splashVideo.addEventListener('ended', openGate);
     splashVideo.addEventListener('error', openGate);
+    splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
+    splashVideo.addEventListener('canplay', scheduleGateFallback);
+    splashVideo.addEventListener('timeupdate', function () {
+      if (
+        !gateReleased &&
+        Number.isFinite(splashVideo.duration) &&
+        splashVideo.duration > 0 &&
+        splashVideo.currentTime >= splashVideo.duration - 0.15
+      ) {
+        openGate();
+      }
+    });
 
     const startFromUser = function (e) {
       if (e && typeof e.preventDefault === 'function') e.preventDefault();
@@ -669,10 +1027,18 @@
     resetIntroView();
     playIntro();
     window.setTimeout(function () {
+      if (gateReleased) {
+        return;
+      }
       if (splashVideo.paused && !gate.classList.contains('open')) {
         showTapToPlay();
       }
     }, 1500); // Give it a bit more time on slow mobile connections
+    window.setTimeout(function () {
+      if (!gateReleased && !gate.classList.contains('video-awaiting-input')) {
+        openGate();
+      }
+    }, 18000);
   }
 
   // Newsletter form handling (Netlify-friendly + AJAX fallback)

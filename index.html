@@ -82,7 +82,7 @@
   </script>
 </head>
 
-<body>
+<body class="gate-active">
 
   <!-- SPINNING VINYL BACKGROUND ELEMENTS -->
   <div class="vinyl-bg-spinner" aria-hidden="true"></div>
@@ -423,6 +423,205 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="needle-drop" id="needle-drop">
+      <div class="container">
+        <div class="needle-drop-header">
+          <span class="kicker">Preview Station</span>
+          <h2>Drop The Needle</h2>
+          <p>
+            Drag a record into the player or tap a sleeve from the crate. Each selection is wired for a 30-second
+            preview clip so visitors can hear the release without leaving the site.
+          </p>
+        </div>
+
+        <div class="needle-drop-console">
+          <div class="turntable-shell" id="vinyl-turntable-shell" aria-label="Vintage record player preview deck">
+            <div class="turntable-topbar">
+              <div class="turntable-plate">Poison Well Stereo Console</div>
+              <div class="turntable-lights" aria-hidden="true">
+                <span class="turntable-light turntable-light-live"></span>
+                <span class="turntable-light"></span>
+                <span class="turntable-light"></span>
+              </div>
+            </div>
+
+            <div class="turntable-body">
+              <div class="turntable-deck" id="vinyl-drop-zone">
+                <div class="platter-shadow" aria-hidden="true"></div>
+                <div class="turntable-platter">
+                  <div class="turntable-record" id="vinyl-record">
+                    <div class="turntable-record-grooves" aria-hidden="true"></div>
+                    <div class="turntable-record-label" id="vinyl-record-label">
+                      <span id="vinyl-record-artist">Poison Well Records</span>
+                      <strong id="vinyl-record-release">Live CBGB 1989</strong>
+                      <small id="vinyl-record-track">Preview Clip</small>
+                    </div>
+                  </div>
+
+                  <div class="turntable-tonearm" id="vinyl-tonearm" aria-hidden="true">
+                    <span class="turntable-tonearm-base"></span>
+                    <span class="turntable-tonearm-bar"></span>
+                    <span class="turntable-tonearm-needle"></span>
+                  </div>
+                </div>
+
+                <p class="turntable-message" id="vinyl-turntable-message">
+                  Drag a record here or hit play to preview the loaded release.
+                </p>
+              </div>
+
+              <div class="turntable-sidebar">
+                <div class="turntable-now-playing">
+                  <div class="turntable-panel-kicker">Now Loaded</div>
+                  <h3 id="vinyl-release-title">Live CBGB 1989</h3>
+                  <p class="turntable-track-title" id="vinyl-track-title">Dr. Know</p>
+                  <div class="turntable-meta" id="vinyl-meta-row">
+                    <span id="vinyl-artist-name">Poison Well Records</span>
+                    <span id="vinyl-catalog-number">PWR-001</span>
+                    <span id="vinyl-speed">33 RPM</span>
+                  </div>
+                  <p class="turntable-note" id="vinyl-note">
+                    Raw Ventura hardcore captured at CBGB and lined up for a fast preview spin.
+                  </p>
+                </div>
+
+                <div class="turntable-controls">
+                  <button type="button" class="turntable-play-button" id="vinyl-play-toggle">
+                    Play 30s Preview
+                  </button>
+
+                  <div class="turntable-progress-wrap">
+                    <div class="turntable-progress-meta">
+                      <span>Needle Position</span>
+                      <span id="vinyl-status-text">Preview Ready</span>
+                    </div>
+                    <div class="turntable-progress-track">
+                      <span class="turntable-progress-fill" id="vinyl-progress-fill"></span>
+                    </div>
+                    <div class="turntable-progress-time">
+                      <span id="vinyl-current-time">00:00</span>
+                      <span id="vinyl-total-time">00:30</span>
+                    </div>
+                  </div>
+
+                  <div class="turntable-meter" aria-hidden="true">
+                    <div class="turntable-panel-kicker">Tube Meter</div>
+                    <div class="turntable-meter-bars">
+                      <span class="meter-bar"></span>
+                      <span class="meter-bar meter-bar-tall"></span>
+                      <span class="meter-bar"></span>
+                      <span class="meter-bar meter-bar-tall"></span>
+                      <span class="meter-bar"></span>
+                    </div>
+                  </div>
+
+                  <p class="turntable-error" id="vinyl-error-message" hidden></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vinyl-crate">
+            <div class="vinyl-crate-header">
+              <div>
+                <span class="kicker">Vinyl Crate</span>
+                <h3>Choose A Release</h3>
+              </div>
+              <p>Tap on mobile. Drag onto the deck on desktop.</p>
+            </div>
+
+            <div class="vinyl-crate-list" id="vinyl-crate-list">
+              <button
+                type="button"
+                class="vinyl-crate-item is-active"
+                draggable="true"
+                data-record-id="dr-know"
+                data-release-title="Live CBGB 1989"
+                data-track-title="CBGB Set Excerpt"
+                data-artist="Dr. Know"
+                data-year="1989"
+                data-catalog-number="PWR-001"
+                data-speed="33 RPM"
+                data-note="Raw Ventura hardcore captured at CBGB and lined up for a fast preview spin."
+                data-preview-src="audio/previews/dr-know-live-cbgb-1989-preview.mp3"
+                data-preview-start="0"
+                data-preview-duration="30"
+                data-accent="#c92b17"
+              >
+                <span class="vinyl-crate-handle">Drag or tap</span>
+                <span class="vinyl-sleeve">
+                  <img src="dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg" alt="Dr. Know Live CBGB 1989 vinyl sleeve" loading="lazy" />
+                </span>
+                <span class="vinyl-crate-copy">
+                  <strong>Live CBGB 1989</strong>
+                  <span>Dr. Know</span>
+                  <small>PWR-001 / 1989</small>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="vinyl-crate-item"
+                draggable="true"
+                data-record-id="raw"
+                data-release-title="Sick Love / Quarantine"
+                data-track-title="A-side / B-side Preview"
+                data-artist="RAW"
+                data-year="1984"
+                data-catalog-number="PWR-002"
+                data-speed="45 RPM"
+                data-note="Combined pressing with the rough edges still intact and ready for a quick preview."
+                data-preview-src="audio/previews/raw-sick-love-quarantine-preview.mp3"
+                data-preview-start="0"
+                data-preview-duration="30"
+                data-accent="#f06822"
+              >
+                <span class="vinyl-crate-handle">Drag or tap</span>
+                <span class="vinyl-sleeve">
+                  <img src="raw-sick-love-805-punk-record.jpg" alt="RAW Sick Love Quarantine combined vinyl sleeve" loading="lazy" />
+                </span>
+                <span class="vinyl-crate-copy">
+                  <strong>Sick Love / Quarantine</strong>
+                  <span>RAW</span>
+                  <small>PWR-002 / 1984</small>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="vinyl-crate-item"
+                draggable="true"
+                data-record-id="narthex"
+                data-release-title="1984"
+                data-track-title="Archive Preview"
+                data-artist="Narthex Structure"
+                data-year="1984"
+                data-catalog-number="PWR-003"
+                data-speed="33 RPM"
+                data-note="Early 805 archive material reintroduced through a short preview window on the front page."
+                data-preview-src="audio/previews/narthex-structure-1984-preview.mp3"
+                data-preview-start="0"
+                data-preview-duration="30"
+                data-accent="#a43d26"
+              >
+                <span class="vinyl-crate-handle">Drag or tap</span>
+                <span class="vinyl-sleeve">
+                  <img src="narthex-structure-1984-ventura-805-punk-vinyl.jpg" alt="Narthex Structure 1984 vinyl sleeve" loading="lazy" />
+                </span>
+                <span class="vinyl-crate-copy">
+                  <strong>1984</strong>
+                  <span>Narthex Structure</span>
+                  <small>PWR-003 / 1984</small>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <audio id="vinyl-preview-audio" preload="metadata"></audio>
       </div>
     </section>
 
