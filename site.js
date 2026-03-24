@@ -350,47 +350,122 @@
   ensureDigitalReleaseLinks();
 
   const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
-  window.goToCheckout = function (productKey) {
-    const checkoutUrl = stripeLinks[productKey];
-    if (!checkoutUrl) {
-      alert('Stripe checkout link is not set yet for this record. Add it in stripe-config.js');
-      return;
+  const cjLinks = window.POISON_WELL_CJ_LINKS || {};
+
+  function clampCheckoutQuantity(value, max) {
+    const parsed = parseInt(value, 10);
+    if (!Number.isFinite(parsed)) return 1;
+    return Math.max(1, Math.min(max || 10, parsed));
+  }
+
+  function setCheckoutBusy(triggerEl, isBusy, busyLabel) {
+    if (!triggerEl) return;
+    if (!triggerEl.dataset.originalLabel) {
+      triggerEl.dataset.originalLabel = triggerEl.textContent.trim();
     }
-    window.location.href = checkoutUrl;
+    triggerEl.disabled = !!isBusy;
+    triggerEl.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+    triggerEl.textContent = isBusy ? (busyLabel || 'Loading...') : triggerEl.dataset.originalLabel;
+  }
+
+  function fallbackToStripePaymentLink(productKey, quantity) {
+    const checkoutUrl = stripeLinks[productKey];
+    if (!checkoutUrl) return false;
+    const url = quantity > 1 ? (checkoutUrl + '?qty=' + quantity) : checkoutUrl;
+    window.location.href = url;
+    return true;
+  }
+
+  async function createStripeCheckoutSession(productKey, options) {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        productKey: productKey,
+        quantity: options.quantity || 1,
+        cancelPath: options.cancelPath || (window.location.pathname + window.location.search + window.location.hash)
+      })
+    });
+
+    const payload = await response.json().catch(function () { return {}; });
+    if (!response.ok || !payload.url) {
+      throw new Error(payload.error || 'Unable to start Stripe checkout.');
+    }
+    return payload;
+  }
+
+  window.goToCheckout = async function (productKey, triggerEl) {
+    setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
+    try {
+      const payload = await createStripeCheckoutSession(productKey, {
+        quantity: 1
+      });
+      window.location.href = payload.url;
+    } catch (error) {
+      setCheckoutBusy(triggerEl, false);
+      if (fallbackToStripePaymentLink(productKey, 1)) {
+        return;
+      }
+      alert(error && error.message ? error.message : 'Stripe checkout is unavailable right now.');
+    }
   };
 
   // Variant-aware checkout helper: accepts a base product key and the card element
-  window.goToCheckoutVariant = function (baseKey, cardEl) {
+  window.goToCheckoutVariant = async function (baseKey, cardEl, triggerEl) {
     if (!cardEl) cardEl = document.querySelector('.card');
     const size = (cardEl.dataset.size) || (cardEl.querySelector('select') ? cardEl.querySelector('select').value : '');
-    const qty = parseInt((cardEl.querySelector('.qty-input') && cardEl.querySelector('.qty-input').value) || 1, 10) || 1;
+    const qty = clampCheckoutQuantity((cardEl.querySelector('.qty-input') && cardEl.querySelector('.qty-input').value) || 1, 10);
     const variantKey = size ? (baseKey + '_' + size) : baseKey;
-    const checkoutUrl = stripeLinks[variantKey] || stripeLinks[baseKey];
+    setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
+    try {
+      const payload = await createStripeCheckoutSession(variantKey, {
+        quantity: qty
+      });
+      window.location.href = payload.url;
+      return;
+    } catch (error) {
+      setCheckoutBusy(triggerEl, false);
+      if (fallbackToStripePaymentLink(variantKey, qty) || fallbackToStripePaymentLink(baseKey, qty)) {
+        return;
+      }
+      alert(error && error.message ? error.message : ('No checkout path configured for ' + variantKey + '.'));
+    }
+  };
+
+  window.goToCJProductVariant = function (baseKey, cardEl) {
+    if (!cardEl) cardEl = document.querySelector('.card');
+    const size = (cardEl.dataset.size) || (cardEl.querySelector('select') ? cardEl.querySelector('select').value : '');
+    const variantKey = size ? (baseKey + '_' + size) : baseKey;
+    const checkoutUrl = cjLinks[variantKey] || cjLinks[baseKey];
     if (!checkoutUrl) {
-      alert('No checkout link configured for ' + variantKey + '. Check stripe-config.js');
+      alert('CJ product link is not set yet for ' + variantKey + '. Add it in cj-config.js');
       return;
     }
-    // append qty query for demo purposes (real Stripe Payment Links may not accept qty via query)
-    const url = qty > 1 ? (checkoutUrl + '?qty=' + qty) : checkoutUrl;
-    window.location.href = url;
+    window.location.href = checkoutUrl;
   };
 
   // Update buy button labels to reflect selected size and quantity
   window.updateBuyButton = function (cardEl) {
     if (!cardEl) return;
     const size = cardEl.dataset.size || (cardEl.querySelector('select') ? cardEl.querySelector('select').value : '');
-    const qty = cardEl.querySelector('.qty-input') ? parseInt(cardEl.querySelector('.qty-input').value || 1, 10) : 1;
+    const qty = cardEl.querySelector('.qty-input') ? clampCheckoutQuantity(cardEl.querySelector('.qty-input').value || 1, 10) : 1;
     const priceNode = cardEl.querySelector('.price');
     const basePriceText = priceNode ? priceNode.textContent.trim() : '';
     const btn = cardEl.querySelector('.buy-btn');
     if (!btn) return;
+    const labelPrefix = cardEl.dataset.provider === 'cj' ? 'Order on CJ ' : 'Buy ';
     const sizePart = size ? (size + ' ') : '';
-    btn.textContent = 'Buy ' + sizePart + '×' + qty + (basePriceText ? ' — ' + basePriceText : '');
+    btn.textContent = labelPrefix + sizePart + '×' + qty + (basePriceText ? ' — ' + basePriceText : '');
+    btn.dataset.originalLabel = btn.textContent;
   };
 
   // Initialize buy button labels on pages with apparel cards
   function initApparelUI() {
-    const apparelCards = document.querySelectorAll('main .card');
+    const apparelCards = Array.from(document.querySelectorAll('main .card')).filter(function (card) {
+      return !!(card.querySelector('select') || card.querySelector('.qty-input'));
+    });
     apparelCards.forEach(function (card) {
       // set initial dataset.size from select if present
       const sel = card.querySelector('select');

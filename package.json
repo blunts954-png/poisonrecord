@@ -1,0 +1,12 @@
+{
+  "name": "poison-well-records",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Poison Well Records storefront with Netlify checkout functions",
+  "scripts": {
+    "check:js": "node --check site.js && node --check site.min.js && node --check netlify/functions/_stripe-products.js && node --check netlify/functions/create-checkout-session.js"
+  },
+  "dependencies": {
+    "stripe": "^20.4.1"
+  }
+}

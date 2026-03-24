@@ -74,12 +74,13 @@
     <section class="section">
       <div class="container">
         <h1>Apparel</h1>
-        <p class="lead">The merch line is moving to print-on-demand so new pieces can ship without front-loading
-          inventory. Tees, hoodies, and patch packs are live first, with bandanas, booty shorts, and more on deck.</p>
+        <p class="lead">The merch line is moving to CJ Dropshipping print-on-demand so new pieces can ship without
+          front-loading inventory. Tees, hoodies, and patch packs are live first, with bandanas, booty shorts, and
+          more on deck.</p>
         <div class="grid grid-3">
 
           <!-- Hoodie -->
-          <article class="card">
+          <article class="card" data-provider="cj">
             <img class="product-image" src="assets/apparel/pwr-hoodie.jpg"
               alt="Poison Well Records hoodie - Ventura 805 punk apparel" loading="lazy" />
             <h3>PWR Hoodie</h3>
@@ -103,11 +104,11 @@
               <span class="price">$55.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCheckoutVariant('pwrHoodie', this.closest('.card'))">Buy With Stripe</button></p>
+                onclick="goToCJProductVariant('pwrHoodie', this.closest('.card'))">Order on CJ</button></p>
           </article>
 
           <!-- Tee -->
-          <article class="card">
+          <article class="card" data-provider="cj">
             <img class="product-image" src="assets/apparel/pwr-tee-black.jpg"
               alt="Poison Well Records black t-shirt - 805 punk scene clothing" loading="lazy" />
             <h3>PWR Tee</h3>
@@ -131,11 +132,11 @@
               <span class="price">$28.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCheckoutVariant('pwrTeeBlack', this.closest('.card'))">Buy With Stripe</button></p>
+                onclick="goToCJProductVariant('pwrTeeBlack', this.closest('.card'))">Order on CJ</button></p>
           </article>
 
           <!-- Patch & Sticker Set -->
-          <article class="card">
+          <article class="card" data-provider="cj">
             <img class="product-image" src="assets/apparel/pwr-patch-pack.jpg"
               alt="Poison Well Records patch pack - Ventura local punk merch" loading="lazy" />
             <h3>PWR Patch Pack</h3>
@@ -148,10 +149,13 @@
               <span class="price">$15.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCheckoutVariant('pwrPatchPack', this.closest('.card'))">Buy With Stripe</button></p>
+                onclick="goToCJProductVariant('pwrPatchPack', this.closest('.card'))">Order on CJ</button></p>
           </article>
 
         </div>
+        <p class="buy-note">Apparel now routes to CJ Dropshipping product pages. Add the public CJ URLs in
+          <code>cj-config.js</code>.
+        </p>
       </div>
     </section>
   </main>
@@ -211,7 +215,7 @@
       <p>Ships worldwide from Ventura, California. <span data-current-year></span></p>
     </div>
   </footer>
-  <script src="stripe-config.js" defer></script>
+  <script src="cj-config.js" defer></script>
   <script src="site.min.js" defer></script>
 </body>
 

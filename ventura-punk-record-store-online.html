@@ -138,7 +138,7 @@
                 <span class="stock-status low">Only 4 left!</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('drKnowLiveCbgb1989')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- Los Bonedrivers -->
@@ -153,7 +153,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('losBonedrivers')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('losBonedrivers', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- Shim Come Quick -->
@@ -168,7 +168,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('shimComeQuickDenimLeatherAndChains')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('shimComeQuickDenimLeatherAndChains', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- Narthex Structure -->
@@ -183,7 +183,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('narthexStructure1984')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('narthexStructure1984', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- RAW combined -->
@@ -199,7 +199,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('rawSickLove')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('rawSickLove', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- The Missing 23rd -->
@@ -214,7 +214,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('theMissing23rdEndOfAnError')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- I Decline - Failure By Design -->
@@ -229,7 +229,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('iDeclineFailureByDesign')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('iDeclineFailureByDesign', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- I Decline - Self Titled -->
@@ -244,7 +244,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('iDecline')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('iDecline', this)">Buy Now with Stripe</button></p>
             </article>
 
             <!-- Front Street Knuckle Draggers -->
@@ -260,11 +260,11 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('frontStreetKnuckleDraggers')">Buy Now with Stripe</button></p>
+                  onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Buy Now with Stripe</button></p>
             </article>
           </div>
-        <p class="buy-note">Checkout buttons are active and waiting for your Stripe links in
-          <code>stripe-config.js</code>.
+        <p class="buy-note">Stripe record checkout now runs through the Netlify backend. Configure the Stripe
+          environment variables before going live.
         </p>
       </div>
     </section>
