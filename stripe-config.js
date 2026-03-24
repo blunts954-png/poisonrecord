@@ -1,5 +1,6 @@
 window.POISON_WELL_STRIPE_LINKS = {
   // Demo / test-mode Stripe Payment Links (replace with real payment links when ready)
+  // This file is shipped to the browser. Do not store Stripe secret keys here.
   // Format: https://buy.stripe.com/test_... (these are placeholders for demo/testing)
   drKnowLiveCbgb1989: "https://buy.stripe.com/test_14k4gK6zA0mH5bC6op",
   frontStreetKnuckleDraggers: "https://buy.stripe.com/test_5kA6rYbGd0mJ4a0dQR",
