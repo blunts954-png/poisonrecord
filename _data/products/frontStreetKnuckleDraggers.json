@@ -1,0 +1,9 @@
+{
+  "name": "Front Street Knuckle Draggers - FSKD",
+  "description": "Hard-driving regional underground punk pressing.",
+  "unitAmount": 2500,
+  "imagePath": "/front-street-knuckle-draggers-805-punk-record.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6,
+  "id": "frontStreetKnuckleDraggers"
+}

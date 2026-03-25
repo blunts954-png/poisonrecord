@@ -1,0 +1,9 @@
+{
+  "name": "Whores - Los Bonedrivers",
+  "description": "Melodic punk release distributed by Poison Well Records.",
+  "unitAmount": 2500,
+  "imagePath": "/los-bonedrivers-socal-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6,
+  "id": "losBonedrivers"
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poison Well Records | Admin Control Panel</title>
+  <!-- Identity widget for Netlify login -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    #login-gate {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: #111; color: white; display: flex; align-items: center; justify-content: center;
+      z-index: 10000; font-family: sans-serif;
+    }
+    .gate-card { background: #222; padding: 2rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 300px; }
+    .gate-card h2 { margin-top: 0; color: #f06822; }
+    .gate-card input { width: 100%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 4px; box-sizing: border-box; }
+    .gate-card button { width: 100%; padding: 10px; background: #f06822; border: none; color: white; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .gate-card .error { color: #ff4444; font-size: 0.8rem; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div id="login-gate">
+    <div class="gate-card">
+      <h2>Admin Entry</h2>
+      <input type="text" id="admin-user" placeholder="Username" />
+      <input type="password" id="admin-pass" placeholder="Password" />
+      <button onclick="checkAdminGate()">Enter Dashboard</button>
+      <div id="gate-error" class="error" style="display:none">Invalid credentials.</div>
+    </div>
+  </div>
+
+  <script>
+    function checkAdminGate() {
+      const u = document.getElementById('admin-user').value;
+      const p = document.getElementById('admin-pass').value;
+      const err = document.getElementById('gate-error');
+      
+      // Jason / blunts954
+      // Others / Matthew2026
+      if ((u.toLowerCase() === 'jason' && p === 'blunts954') || 
+          (u.toLowerCase() !== 'jason' && u.length > 0 && p === 'Matthew2026')) {
+        document.getElementById('login-gate').style.display = 'none';
+        localStorage.setItem('admin_access', 'true');
+      } else {
+        err.style.display = 'block';
+      }
+    }
+    // Persistence
+    if (localStorage.getItem('admin_access') === 'true') {
+      document.getElementById('login-gate').style.display = 'none';
+    }
+  </script>
+  <!-- Decap CMS scripts -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>

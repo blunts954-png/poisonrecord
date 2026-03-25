@@ -1,0 +1,9 @@
+{
+  "name": "Sick Love / Quarantine - RAW",
+  "description": "Combined A-side/B-side pressing with updated 'Radio Active Waste' cover art.",
+  "unitAmount": 2500,
+  "imagePath": "/raw-radioactive-waste-805-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6,
+  "id": "rawSickLove"
+}

@@ -619,7 +619,7 @@
     });
   }
 
-  function initVinylPreviewPlayer() {
+  function initVinylPreviewPlayer() { return; // disabled
     const shell = document.getElementById('vinyl-turntable-shell');
     const dropZone = document.getElementById('vinyl-drop-zone');
     const playButton = document.getElementById('vinyl-play-toggle');
