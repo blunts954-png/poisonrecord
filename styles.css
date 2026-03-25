@@ -1296,6 +1296,12 @@ textarea {
 
 .store-info {
   padding-top: 1.2rem;
+}/* Rarity image scaling */
+#tab-rarities .product-image {
+  max-width: 260px;
+  max-height: 260px;
+  margin: 0 auto 1.5rem;
+  display: block;
 }
 
 .newsletter-form {

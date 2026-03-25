@@ -57,7 +57,7 @@
           <a class="nav-main" href="ventura-punk-record-store-online.html">Vinyl</a>
           <div class="dropdown-content" aria-label="Vinyl subnavigation">
             <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
-            <a href="ventura-punk-record-store-online.html#tab-test-pressings">Test Pressings</a>
+            <a href="music-videos.html">Music Videos</a>
             <a href="ventura-punk-record-store-online.html#tab-digital-releases">Digital Releases</a>
             <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
           </div>
@@ -74,8 +74,8 @@
     <section class="section">
       <div class="container">
         <h1>Apparel</h1>
-        <p class="lead">The merch line is moving to CJ Dropshipping print-on-demand so new pieces can ship without
-          front-loading inventory. Tees, hoodies, and patch packs are live first, with bandanas, booty shorts, and
+        <p class="lead">The merch line is moving to AutoDS print-on-demand so new pieces can ship without
+          front-loading inventory. Tees, hoodies, and patch packs are live first, with bandamas, booty shorts, and
           more on deck.</p>
         <div class="grid grid-3">
 
@@ -84,7 +84,7 @@
             <img class="product-image" src="assets/apparel/pwr-hoodie.jpg"
               alt="Poison Well Records hoodie - Ventura 805 punk apparel" loading="lazy" />
             <h3>PWR Hoodie</h3>
-            <p>Heavyweight black hoodie from the print-on-demand line. Clean front hit, built for regular wear.</p>
+            <p>Heavyweight black hoodie from the AutoDS line. Clean front hit, built for regular wear.</p>
             <div class="btn-row">
               <label class="tag">Size:
                 <select
@@ -104,7 +104,7 @@
               <span class="price">$55.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCJProductVariant('pwrHoodie', this.closest('.card'))">Order on CJ</button></p>
+                onclick="goToAutoDSProductVariant('pwrHoodie', this.closest('.card'))">Buy on AutoDS</button></p>
           </article>
 
           <!-- Tee -->
@@ -132,7 +132,7 @@
               <span class="price">$28.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCJProductVariant('pwrTeeBlack', this.closest('.card'))">Order on CJ</button></p>
+                onclick="goToAutoDSProductVariant('pwrTeeBlack', this.closest('.card'))">Buy on AutoDS</button></p>
           </article>
 
           <!-- Patch & Sticker Set -->
@@ -149,12 +149,12 @@
               <span class="price">$15.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToCJProductVariant('pwrPatchPack', this.closest('.card'))">Order on CJ</button></p>
+                onclick="goToAutoDSProductVariant('pwrPatchPack', this.closest('.card'))">Buy on AutoDS</button></p>
           </article>
 
         </div>
-        <p class="buy-note">Apparel now routes to CJ Dropshipping product pages. Add the public CJ URLs in
-          <code>cj-config.js</code>.
+        <p class="buy-note">Apparel now routes to AutoDS product pages. Add the public CJ URLs in
+          <code>autods-config.js</code>.
         </p>
       </div>
     </section>
@@ -215,7 +215,7 @@
       <p>Ships worldwide from Ventura, California. <span data-current-year></span></p>
     </div>
   </footer>
-  <script src="cj-config.js" defer></script>
+  <script src="autods-config.js" defer></script>
   <script src="site.min.js" defer></script>
 </body>
 
