@@ -432,8 +432,8 @@
           <span class="kicker">Preview Station</span>
           <h2>Drop The Needle</h2>
           <p>
-            Drag a record into the player or tap a sleeve from the crate. Each selection is wired for a 30-second
-            preview clip so visitors can hear the release without leaving the site.
+            Drag a record into the player on desktop or tap a sleeve and the platter on mobile. Each selection is
+            wired for a 30-second preview clip so visitors can hear the release without leaving the site.
           </p>
         </div>
 
@@ -449,7 +449,8 @@
             </div>
 
             <div class="turntable-body">
-              <div class="turntable-deck" id="vinyl-drop-zone">
+              <div class="turntable-deck" id="vinyl-drop-zone" role="button" tabindex="0"
+                aria-label="Tap the platter or press play to hear the loaded preview">
                 <div class="platter-shadow" aria-hidden="true"></div>
                 <div class="turntable-platter">
                   <div class="turntable-record" id="vinyl-record">
@@ -469,7 +470,7 @@
                 </div>
 
                 <p class="turntable-message" id="vinyl-turntable-message">
-                  Drag a record here or hit play to preview the loaded release.
+                  Drag a record here on desktop, or tap the platter on mobile to preview the loaded release.
                 </p>
               </div>
 
