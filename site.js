@@ -9,7 +9,8 @@
     'about-poison-well-records.html': '/about-poison-well-records',
     'contact-wholesale.html': '/contact-wholesale',
     'faq.html': '/faq',
-    'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore'
+    'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore',
+    'music-videos.html': '/music-videos'
   };
   let pageGateFailSafeTimer = null;
 
