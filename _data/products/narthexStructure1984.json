@@ -2,7 +2,7 @@
   "name": "1984 - Narthex Structure",
   "description": "Historic 805 archive pressing recovered for vinyl.",
   "unitAmount": 2500,
-  "imagePath": "/narthex-structure-1984-ventura-805-punk-vinyl.jpg",
+  "imagePath": "/assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg",
   "inventoryType": "vinyl",
   "maxQuantity": 6,
   "id": "narthexStructure1984"

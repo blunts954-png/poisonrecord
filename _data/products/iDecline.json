@@ -2,7 +2,7 @@
   "name": "Self-Titled - I Decline",
   "description": "Raw punk delivery from a scene-rooted project.",
   "unitAmount": 2500,
-  "imagePath": "/i-decline-socal-punk-vinyl.jpg",
+  "imagePath": "/assets/i-decline-socal-punk-vinyl.jpg",
   "inventoryType": "vinyl",
   "maxQuantity": 6,
   "id": "iDecline"

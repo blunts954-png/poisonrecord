@@ -1,0 +1,9 @@
+{
+  "id": "splatterIDecline",
+  "name": "Splatter Vinyl I Decline",
+  "description": "Limited edition splatter vinyl pressing. A rare collector's gem from the Ventura hardcore archives.",
+  "unitAmount": 8000,
+  "imagePath": "/assets/i-decline-splatter-vinyl.jpg",
+  "inventoryType": "rarity",
+  "maxQuantity": 1
+}

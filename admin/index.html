@@ -1,46 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poison Well Records | Admin Control Panel</title>
+  <title>Admin Dashboard | Poison Well Records</title>
   <!-- Identity widget for Netlify login -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
-    #login-gate {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: #111; color: white; display: flex; align-items: center; justify-content: center;
-      z-index: 10000; font-family: sans-serif;
+    :root {
+      --bg: #0a0a0a;
+      --card: #151515;
+      --accent: #f06822;
+      --text: #ffffff;
+      --line: #222;
     }
-    .gate-card { background: #222; padding: 2rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 300px; }
-    .gate-card h2 { margin-top: 0; color: #f06822; }
-    .gate-card input { width: 100%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 4px; box-sizing: border-box; }
-    .gate-card button { width: 100%; padding: 10px; background: #f06822; border: none; color: white; border-radius: 4px; cursor: pointer; font-weight: bold; }
-    .gate-card .error { color: #ff4444; font-size: 0.8rem; margin-top: 5px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    #login-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+    .gate-card {
+      background: var(--card);
+      padding: 2.5rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+    .logo-font {
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      display: block;
+      font-size: 1.5rem;
+    }
+    input {
+      background: #000;
+      border: 1px solid var(--line);
+      color: white;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    input:focus { border-color: var(--accent); }
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    button:hover { filter: brightness(1.1); }
+    .error { color: #ff4444; font-size: 0.85rem; margin-top: 1rem; display: none; }
   </style>
 </head>
 <body>
   <div id="login-gate">
     <div class="gate-card">
-      <h2>Admin Entry</h2>
-      <input type="text" id="admin-user" placeholder="Username" />
+      <span class="logo-font">POISON WELL ADM</span>
+      <input type="text" id="admin-user" placeholder="Username" spellcheck="false" />
       <input type="password" id="admin-pass" placeholder="Password" />
-      <button onclick="checkAdminGate()">Enter Dashboard</button>
-      <div id="gate-error" class="error" style="display:none">Invalid credentials.</div>
+      <button onclick="checkAdminGate()">Authorize Access</button>
+      <div id="gate-error" class="error">Access Denied. Check credentials.</div>
     </div>
+  </div>
+
+  <!-- This container will only show once authorized -->
+  <div id="cms-container" style="display:none">
+    <!-- Decap CMS scripts -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </div>
 
   <script>
     function checkAdminGate() {
-      const u = document.getElementById('admin-user').value;
+      const u = document.getElementById('admin-user').value.trim();
       const p = document.getElementById('admin-pass').value;
       const err = document.getElementById('gate-error');
       
-      // Jason / blunts954
-      // Others / Matthew2026
-      if ((u.toLowerCase() === 'jason' && p === 'blunts954') || 
-          (u.toLowerCase() !== 'jason' && u.length > 0 && p === 'Matthew2026')) {
-        document.getElementById('login-gate').style.display = 'none';
+      const isJason = (u.toLowerCase() === 'jason' && p === 'blunts954');
+      const isStaff = (u.toLowerCase() === 'management' && p === 'Matthew2026');
+
+      if (isJason || isStaff) {
+        document.getElementById('login-gate').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('login-gate').style.display = 'none';
+          document.getElementById('cms-container').style.display = 'block';
+        }, 400);
         localStorage.setItem('admin_access', 'true');
       } else {
         err.style.display = 'block';
@@ -49,9 +119,8 @@
     // Persistence
     if (localStorage.getItem('admin_access') === 'true') {
       document.getElementById('login-gate').style.display = 'none';
+      document.getElementById('cms-container').style.display = 'block';
     }
   </script>
-  <!-- Decap CMS scripts -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

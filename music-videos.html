@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.min.css" />
 </head>
 <body>
-  <header class="topbar">
+  <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/">Poison Well Records</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -18,36 +18,47 @@
         <a href="index.html">Home</a>
         <a href="ventura-punk-record-store-online.html">Vinyl</a>
         <a href="apparel.html">Apparel</a>
-        <a href="music-videos.html">Music Videos</a>
+        <a href="music-videos.html" class="active">Music Videos</a>
       </nav>
     </div>
   </header>
+  
   <main>
     <section class="section">
       <div class="container">
-        <h1>Music Videos</h1>
-        <div class="grid grid-2">
+        <h1 style="font-size: 3.5rem; text-transform: uppercase; font-weight: 900; letter-spacing: -2px; color: var(--accent); margin-bottom: 0;">Music Videos</h1>
+        <p style="margin-bottom: 4rem; opacity: 0.7; font-size: 1.1rem;">Official visuals, archive footage, and live noise from the 805 vault.</p>
+        
+        <div class="grid grid-2" style="gap: 4rem;">
           
-          <div class="video-container" style="margin-bottom:2rem;">
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; border:1px solid var(--line);">
+          <article class="video-card">
+            <div class="video-wrapper" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:1px solid var(--line); box-shadow: 0 20px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
               <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/VfvTBcR_3qk" title="I Decline - Failure By Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <h3 style="margin-top:1rem;">I Decline - Failure By Design</h3>
-          </div>
+            <div style="margin-top:2rem;">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">I Decline - Failure By Design</h3>
+              <p style="opacity: 0.6; font-size: 0.9rem;">Official music video. Ventura/805 Punk.</p>
+            </div>
+          </article>
 
-          <div class="video-container" style="margin-bottom:2rem;">
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; border:1px solid var(--line);">
+          <article class="video-card">
+            <div class="video-wrapper" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:1px solid var(--line); box-shadow: 0 20px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
               <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/-X8QGZ2dYqI" title="The Missing 23rd" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <h3 style="margin-top:1rem;">The Missing 23rd - The End of an Error</h3>
-          </div>
+            <div style="margin-top:2rem;">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">The Missing 23rd - The End of an Error</h3>
+              <p style="opacity: 0.6; font-size: 0.9rem;">Classic Ventura Hardcore track from the archive.</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
   </main>
+
   <footer class="footer">
     <div class="container">
-      <p>Poison Well Records — Ventura, CA 93001</p>
+      <p>Poison Well Records &copy; 2026 | Ventura CA | 805 Still Alive.</p>
     </div>
   </footer>
   <script src="site.min.js" defer></script>

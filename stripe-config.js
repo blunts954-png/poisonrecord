@@ -15,18 +15,33 @@ window.POISON_WELL_STRIPE_LINKS = {
   losBonedrivers: "https://buy.stripe.com/test_0QrStUvWxY1zAbCdEf"
 };
 
-// Note: These demo links are placeholders. Replace each value with the real Stripe
-// Payment Link only if you want a browser-side fallback while the server checkout
-// function is being configured.
+window.goToCheckout = async function(productKey, buttonEl) {
+  const originalContent = buttonEl ? buttonEl.innerHTML : 'Buy Now';
+  if (buttonEl) {
+    buttonEl.disabled = true;
+    buttonEl.innerHTML = '<span class="loading-spinner"></span> Processing...';
+  }
 
-window.goToCheckout = function(sku) {
-  const links = window.POISON_WELL_STRIPE_LINKS || {};
-  const url = links[sku];
-  if (url) {
-    window.location.href = url;
-  } else {
-    // Fallback if SKU is missing
-    console.error('Stripe link not found for SKU:', sku);
-    window.location.href = 'ventura-punk-record-store-online.html';
+  try {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productKey: productKey })
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Checkout initialization failed.');
+    }
+  } catch (err) {
+    console.error('Stripe Checkout Error:', err);
+    alert('Checkout Unavailable: ' + err.message + '\n\nPlease ensure STRIPE_SECRET_KEY is set in Netlify.');
+    if (buttonEl) {
+      buttonEl.disabled = false;
+      buttonEl.innerHTML = originalContent;
+    }
   }
 };
