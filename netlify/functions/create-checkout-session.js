@@ -11,121 +11,51 @@ function json(statusCode, body) {
   };
 }
 
-function parseBody(rawBody) {
-  if (!rawBody) return {};
-  try {
-    return JSON.parse(rawBody);
-  } catch (error) {
-    return null;
-  }
-}
-
-function clampQuantity(value, maxQuantity) {
-  const parsed = Number.parseInt(value, 10);
-  if (!Number.isFinite(parsed)) return 1;
-  return Math.max(1, Math.min(maxQuantity || 1, parsed));
-}
-
-function sanitizePath(inputPath) {
-  if (typeof inputPath !== "string" || !inputPath.startsWith("/")) {
-    return "/";
-  }
-  if (inputPath.startsWith("//")) {
-    return "/";
-  }
-  return inputPath;
-}
-
-function resolveSiteUrl(headers) {
-  const configured = (process.env.SITE_URL || "").trim().replace(/\/$/, "");
-  if (configured) return configured;
-
-  const forwardedProto = headers["x-forwarded-proto"] || "https";
-  const forwardedHost = headers["x-forwarded-host"] || headers.host;
-  if (forwardedHost) {
-    return forwardedProto + "://" + forwardedHost;
-  }
-
-  return "https://poisonwellrecords.netlify.app";
-}
-
-function parseAllowedCountries() {
-  const configured = (process.env.STRIPE_ALLOWED_COUNTRIES || "US")
-    .split(",")
-    .map(function (value) { return value.trim().toUpperCase(); })
-    .filter(Boolean);
-
-  return configured.length ? configured : ["US"];
-}
-
-function buildShippingOptions() {
-  const shippingOptions = [];
-  const standardRate = (process.env.STRIPE_SHIPPING_RATE_STANDARD_ID || "").trim();
-  const cjRate = (process.env.STRIPE_SHIPPING_RATE_CJ_ID || process.env.STRIPE_SHIPPING_RATE_EXPEDITED_ID || "").trim();
-
-  if (standardRate) {
-    shippingOptions.push({ shipping_rate: standardRate });
-  }
-  if (cjRate) {
-    shippingOptions.push({ shipping_rate: cjRate });
-  }
-
-  return shippingOptions;
-}
-
 exports.handler = async function (event) {
   if (event.httpMethod !== "POST") {
-    return json(405, { error: "Method not allowed." });
+    return json(405, { error: "Method not allowed. Use POST." });
   }
 
-  const body = parseBody(event.body);
-  if (!body) {
-    return json(400, { error: "Invalid JSON body." });
+  const rawBody = event.body;
+  let body;
+  try {
+    body = JSON.parse(rawBody);
+  } catch (parseError) {
+    return json(400, { error: "Invalid JSON in request body." });
   }
 
-  const productKey = typeof body.productKey === "string" ? body.productKey.trim() : "";
+  const productKey = body.productKey;
+  if (!productKey) {
+    return json(400, { error: "Missing productKey in request." });
+  }
+
   const product = STRIPE_PRODUCTS[productKey];
   if (!product) {
-    return json(400, { error: "Unknown product key." });
+    return json(400, { error: `Product '${productKey}' not found in catalog. Verify _data/products/ for correct JSON filename.` });
   }
 
-  const stripeSecretKey = (process.env.STRIPE_SECRET_KEY || "").trim();
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey) {
-    return json(500, {
-      error: "Stripe secret key is not configured. Add STRIPE_SECRET_KEY in Netlify environment variables."
-    });
+    return json(500, { error: "STRIPE_SECRET_KEY missing from environment variables." });
   }
 
-  const shippingOptions = buildShippingOptions();
-  if (shippingOptions.length === 0) {
-    return json(500, {
-      error: "Stripe shipping rates are not configured. Add STRIPE_SHIPPING_RATE_STANDARD_ID before going live."
-    });
+  const shippingRate = process.env.STRIPE_SHIPPING_RATE_STANDARD_ID;
+  if (product.inventoryType === 'vinyl' || product.inventoryType === 'rarity') {
+    if (!shippingRate) {
+      return json(500, { error: "STRIPE_SHIPPING_RATE_STANDARD_ID is not configured for physical products." });
+    }
   }
 
-  const quantity = clampQuantity(body.quantity, product.maxQuantity || 1);
-  const cancelPath = sanitizePath(body.cancelPath || "/ventura-punk-record-store-online");
-  const siteUrl = resolveSiteUrl(event.headers || {});
-  const imageUrl = siteUrl + product.imagePath;
   const stripe = new Stripe(stripeSecretKey);
+  const siteUrl = (process.env.SITE_URL || "https://poisonwellrecords.netlify.app").replace(/\/$/, "");
 
   try {
-    const session = await stripe.checkout.sessions.create({
+    const sessionOptions = {
       mode: "payment",
-      success_url: siteUrl + "/order-confirmation?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: siteUrl + cancelPath,
+      success_url: `${siteUrl}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/ventura-punk-record-store-online`,
       allow_promotion_codes: true,
       billing_address_collection: "auto",
-      phone_number_collection: {
-        enabled: true
-      },
-      shipping_address_collection: {
-        allowed_countries: parseAllowedCountries()
-      },
-      shipping_options: shippingOptions,
-      automatic_tax: {
-        enabled: String(process.env.STRIPE_AUTOMATIC_TAX).toLowerCase() === "true"
-      },
       line_items: [
         {
           price_data: {
@@ -134,30 +64,27 @@ exports.handler = async function (event) {
             product_data: {
               name: product.name,
               description: product.description,
-              images: [imageUrl],
-              metadata: {
-                productKey: productKey,
-                inventoryType: product.inventoryType
-              }
+              images: product.imagePath ? [siteUrl + product.imagePath] : [],
             }
           },
-          quantity: quantity
+          quantity: 1,
         }
       ],
-      metadata: {
-        productKey: productKey,
-        inventoryType: product.inventoryType,
-        cancelPath: cancelPath
+      shipping_address_collection: {
+        allowed_countries: (process.env.STRIPE_ALLOWED_COUNTRIES || "US").split(",").map(c => c.trim().toUpperCase())
       }
-    });
+    };
 
-    return json(200, {
-      id: session.id,
-      url: session.url
-    });
+    // Only apply shipping options if a rate exists and it's a physical product
+    if (shippingRate && (product.inventoryType === 'vinyl' || product.inventoryType === 'rarity')) {
+      sessionOptions.shipping_options = [{ shipping_rate: shippingRate }];
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionOptions);
+
+    return json(200, { url: session.url });
   } catch (error) {
-    return json(500, {
-      error: error && error.message ? error.message : "Unable to create Stripe Checkout session."
-    });
+    console.error("Stripe Session Error:", error);
+    return json(500, { error: `Stripe API Error: ${error.message}` });
   }
 };
