@@ -12,22 +12,6 @@
     'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore',
     'music-videos.html': '/music-videos'
   };
-  let pageGateFailSafeTimer = null;
-
-  function forceOpenSplashGate() {
-    const gate = document.getElementById('splash-gate');
-    if (!gate) return;
-    gate.classList.add('open', 'hide');
-    gate.style.pointerEvents = 'none';
-    gate.style.display = 'none';
-    gate.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('gate-active');
-  }
-
-  // Never let the intro gate block access if a later initializer throws.
-  if (document.getElementById('splash-gate')) {
-    pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 8000);
-  }
 
   function currentFile() {
     const p = window.location.pathname;
@@ -127,18 +111,17 @@
       document.body.appendChild(labelEl);
     }
     const bandLabels = {
-      '/': { band: 'Dr. Know', color: '#e85c0d', label: 'CBGB 1989' },
-      '/ventura-punk-record-store-online': { band: 'RAW', color: '#f5a623', label: 'Sick Love' },
-      '/apparel': { band: 'Poison Well', color: '#cc2200', label: '805 Merch' },
-      '/805-punk-bands': { band: 'I Decline', color: '#b5651d', label: 'SoCal HC' },
-      '/about-poison-well-records': { band: 'Narthex', color: '#8b4513', label: '1984' },
-      '/contact-wholesale': { band: 'Front Street', color: '#d2691e', label: 'Knuckle Draggers' },
-      '/faq': { band: 'Los Bonedrivers', color: '#cd853f', label: 'Distro' },
-      '/dr-know-live-cbgb-1989-ventura-hardcore': { band: 'Dr. Know', color: '#ff4500', label: 'Live CBGB' }
+      'index.html': { band: 'Dr. Know', color: '#e85c0d', label: 'CBGB 1989' },
+      'ventura-punk-record-store-online.html': { band: 'RAW', color: '#f5a623', label: 'Sick Love' },
+      'apparel.html': { band: 'Poison Well', color: '#cc2200', label: '805 Merch' },
+      '805-punk-bands.html': { band: 'I Decline', color: '#b5651d', label: 'SoCal HC' },
+      'about-poison-well-records.html': { band: 'Narthex', color: '#8b4513', label: '1984' },
+      'contact-wholesale.html': { band: 'Front Street', color: '#d2691e', label: 'Knuckle Draggers' },
+      'faq.html': { band: 'Los Bonedrivers', color: '#cd853f', label: 'Distro' },
+      'dr-know-live-cbgb-1989-ventura-hardcore.html': { band: 'Dr. Know', color: '#ff4500', label: 'Live CBGB' }
     };
     const currentPath = normalizePath(window.location.pathname);
     const data = bandLabels[currentPath] || bandLabels['/'];
-    if (!data) return;
     spinner.style.setProperty('--label-color', data.color);
     spinner.setAttribute('data-band', data.band);
     labelEl.textContent = data.band.toUpperCase();
@@ -968,10 +951,6 @@
     const openGate = function () {
       if (gateReleased || gate.classList.contains('open')) return;
       gateReleased = true;
-      if (pageGateFailSafeTimer) {
-        window.clearTimeout(pageGateFailSafeTimer);
-        pageGateFailSafeTimer = null;
-      }
       clearGateTimers();
       stopIntroFollow();
       gate.classList.remove('video-awaiting-input');
