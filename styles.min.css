@@ -57,11 +57,6 @@ a:hover {
   text-decoration: underline;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 .container {
   width: min(1150px, 92%);
   margin: 0 auto;
@@ -2084,7 +2079,6 @@ section,
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   position: relative;
   overflow: hidden;
-  isolation: isolate;
 }
 
 .turntable-shell::before {
@@ -2099,19 +2093,6 @@ section,
     );
   opacity: 0.28;
   pointer-events: none;
-}
-
-.turntable-shell::after {
-  content: '';
-  position: absolute;
-  inset: 14px;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 18%);
-  pointer-events: none;
-  opacity: 0.6;
 }
 
 .turntable-shell.is-drop-target {
@@ -2180,23 +2161,6 @@ section,
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.turntable-deck:focus-visible {
-  outline: none;
-  border-color: rgba(255, 146, 90, 0.85);
-  box-shadow:
-    0 0 0 3px rgba(255, 146, 90, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-.turntable-deck.is-record-loaded {
-  border-color: rgba(255, 115, 78, 0.34);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .turntable-deck::before {
@@ -2221,17 +2185,6 @@ section,
   aspect-ratio: 1;
   margin: 24px auto 0;
   position: relative;
-}
-
-.turntable-platter::before {
-  content: '';
-  position: absolute;
-  inset: 5%;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow:
-    inset 0 0 0 18px rgba(255, 255, 255, 0.02),
-    inset 0 0 18px rgba(255, 255, 255, 0.04);
 }
 
 .turntable-record {
@@ -2368,7 +2321,6 @@ section,
   font-size: 0.86rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  line-height: 1.5;
 }
 
 .turntable-sidebar {
@@ -2447,9 +2399,6 @@ section,
     0 0 0 1px rgba(255, 255, 255, 0.04),
     0 14px 26px rgba(127, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  cursor: pointer;
-  touch-action: manipulation;
-  min-height: 56px;
 }
 
 .turntable-play-button:hover {
@@ -2574,9 +2523,6 @@ section,
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: #fff;
   text-align: left;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 .vinyl-crate-item:hover,
@@ -2677,10 +2623,6 @@ section,
     padding: 40px 0;
   }
 
-  .needle-drop-console {
-    gap: 18px;
-  }
-
   .turntable-shell,
   .vinyl-crate,
   .turntable-now-playing,
@@ -2690,199 +2632,42 @@ section,
   }
 
   .turntable-deck {
-    padding: 16px 14px 14px;
-    border-radius: 18px;
+    padding: 18px;
   }
 
   .turntable-platter {
-    width: min(100%, 290px);
-    margin-top: 6px;
+    width: min(100%, 320px);
   }
 
   .turntable-tonearm {
-    right: -2px;
-    top: -4px;
-    width: 118px;
-    height: 192px;
+    right: 8px;
+    top: 6px;
+    width: 128px;
+    height: 210px;
   }
 
   .turntable-tonearm-bar {
-    width: 82px;
+    width: 94px;
   }
 
   .turntable-tonearm-needle {
-    right: 22px;
-    width: 16px;
-    height: 40px;
+    right: 20px;
+    width: 18px;
+    height: 46px;
   }
 
   .turntable-message {
     position: static;
-    margin-top: 18px;
-    font-size: 0.76rem;
-    letter-spacing: 0.08em;
-    padding: 12px 14px;
-  }
-
-  .turntable-topbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .turntable-plate {
-    width: 100%;
-    text-align: center;
-    letter-spacing: 0.12em;
-  }
-
-  .turntable-body {
-    gap: 16px;
-  }
-
-  .turntable-meta,
-  .turntable-progress-meta,
-  .turntable-progress-time {
-    flex-wrap: wrap;
-  }
-
-  .turntable-progress-meta,
-  .turntable-progress-time {
-    font-size: 0.7rem;
-    gap: 8px;
-  }
-
-  .turntable-play-button {
-    margin-bottom: 16px;
-    padding: 14px 16px;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-  }
-
-  .turntable-meter-bars {
-    gap: 8px;
-    min-height: 70px;
-  }
-
-  .vinyl-crate {
-    overflow: hidden;
-  }
-
-  .vinyl-crate-header {
-    gap: 10px;
-  }
-
-  .vinyl-crate-list {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(248px, 84vw);
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 6px;
-    scroll-snap-type: x proximity;
-    scroll-padding-left: 0;
-    overscroll-behavior-x: contain;
+    margin-top: 22px;
   }
 
   .vinyl-crate-item {
-    min-height: 124px;
-    grid-template-columns: 28px 78px minmax(0, 1fr);
-    scroll-snap-align: start;
+    grid-template-columns: 1fr;
   }
 
   .vinyl-crate-handle {
     writing-mode: initial;
     transform: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    padding: 8px 6px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-  }
-
-  .vinyl-sleeve {
-    width: 78px;
-    height: 78px;
-  }
-
-  .vinyl-crate-copy strong {
-    font-size: 0.92rem;
-  }
-
-  .vinyl-crate-copy small {
-    font-size: 0.68rem;
-  }
-}
-
-@media (max-width: 520px) {
-  .turntable-shell,
-  .vinyl-crate,
-  .turntable-now-playing,
-  .turntable-controls {
-    padding: 15px;
-    border-radius: 18px;
-  }
-
-  .turntable-deck {
-    padding: 14px 12px 12px;
-  }
-
-  .platter-shadow {
-    inset: 52px 24px 100px 22px;
-    filter: blur(12px);
-  }
-
-  .turntable-record-label {
-    inset: 29%;
-    padding: 14px;
-  }
-
-  .turntable-record-label span,
-  .turntable-record-label small {
-    font-size: 0.58rem;
-  }
-
-  .turntable-record-label strong {
-    font-size: 0.82rem;
-  }
-
-  .turntable-meta span {
-    font-size: 0.64rem;
-    letter-spacing: 0.08em;
-  }
-
-  .vinyl-crate-list {
-    grid-auto-columns: minmax(228px, 86vw);
-  }
-}
-
-@media (pointer: coarse) {
-  .btn,
-  .nav-links a,
-  .social-icon,
-  .release-links a,
-  .stream-icon,
-  .category-card,
-  .turntable-play-button,
-  .vinyl-crate-item,
-  .turntable-deck,
-  select,
-  input[type="number"] {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .btn,
-  .nav-links a,
-  .release-links a,
-  .stream-icon,
-  .social-icon,
-  select,
-  input[type="number"] {
-    min-height: 44px;
   }
 }
 

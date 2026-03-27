@@ -622,7 +622,6 @@
     const tonearmNode = document.getElementById('vinyl-tonearm');
     const meterBars = Array.from(document.querySelectorAll('.turntable-meter .meter-bar'));
     const crateItems = Array.from(document.querySelectorAll('.vinyl-crate-item'));
-    const prefersTouchInput = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
     if (!shell || !dropZone || !playButton || !audio || crateItems.length === 0) return;
 
@@ -674,18 +673,6 @@
       if (messageNode) messageNode.textContent = text;
     }
 
-    function idleMessage() {
-      return prefersTouchInput
-        ? 'Tap a sleeve to load it, then tap the platter or play button to hear the preview.'
-        : 'Drag a record here or hit play to preview the loaded release.';
-    }
-
-    function dragHintMessage() {
-      return prefersTouchInput
-        ? 'Tap the platter or press play to hear the loaded preview.'
-        : 'Release the vinyl to drop the needle.';
-    }
-
     function setError(text) {
       if (!errorNode) return;
       if (text) {
@@ -728,12 +715,9 @@
       note.textContent = record.note;
       if (recordLabel) recordLabel.style.setProperty('--player-accent', record.accent);
       shell.style.setProperty('--player-accent', record.accent);
-      shell.classList.add('is-record-loaded');
-      dropZone.classList.add('is-record-loaded');
-      dropZone.dataset.inputMode = prefersTouchInput ? 'touch' : 'drag';
       setProgress(0, record.previewDuration);
       setStatus('Loading Preview');
-      setMessage(idleMessage());
+      setMessage('Drag a record here or hit play to preview the loaded release.');
       setError('');
     }
 
@@ -793,47 +777,36 @@
     }
 
     crateItems.forEach(function (button) {
-      const handle = button.querySelector('.vinyl-crate-handle');
-      button.draggable = !prefersTouchInput;
-      if (handle) {
-        handle.textContent = prefersTouchInput ? 'Tap to load' : 'Drag or tap';
-      }
-
       button.addEventListener('click', function () {
         loadRecord(button, { autoplay: false });
       });
 
-      if (!prefersTouchInput) {
-        button.addEventListener('dragstart', function (event) {
-          event.dataTransfer.effectAllowed = 'move';
-          event.dataTransfer.setData('text/plain', button.dataset.recordId || '');
-          button.classList.add('is-dragging');
-          setMessage('Drop the record on the turntable to load and play the preview.');
-        });
+      button.addEventListener('dragstart', function (event) {
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', button.dataset.recordId || '');
+        button.classList.add('is-dragging');
+        setMessage('Drop the record on the turntable to load and play the preview.');
+      });
 
-        button.addEventListener('dragend', function () {
-          button.classList.remove('is-dragging');
-          shell.classList.remove('is-drop-target');
-          setMessage(idleMessage());
-        });
-      }
+      button.addEventListener('dragend', function () {
+        button.classList.remove('is-dragging');
+        shell.classList.remove('is-drop-target');
+        setMessage('Drag a record here or hit play to preview the loaded release.');
+      });
     });
 
     dropZone.addEventListener('dragover', function (event) {
-      if (prefersTouchInput) return;
       event.preventDefault();
       shell.classList.add('is-drop-target');
-      setMessage(dragHintMessage());
+      setMessage('Release the vinyl to drop the needle.');
     });
 
     dropZone.addEventListener('dragleave', function () {
-      if (prefersTouchInput) return;
       shell.classList.remove('is-drop-target');
-      setMessage(idleMessage());
+      setMessage('Drag a record here or hit play to preview the loaded release.');
     });
 
     dropZone.addEventListener('drop', function (event) {
-      if (prefersTouchInput) return;
       event.preventDefault();
       const recordId = event.dataTransfer.getData('text/plain');
       const button = crateItems.find(function (item) {
@@ -842,28 +815,6 @@
       shell.classList.remove('is-drop-target');
       if (!button) return;
       loadRecord(button, { autoplay: true });
-    });
-
-    function togglePreviewFromDeck() {
-      if (!audio.src) return;
-      if (!audio.paused) {
-        pausePreview();
-        setStatus('Preview Paused');
-        setMessage(idleMessage());
-        return;
-      }
-      playPreview(false);
-    }
-
-    dropZone.addEventListener('click', function () {
-      togglePreviewFromDeck();
-    });
-
-    dropZone.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        togglePreviewFromDeck();
-      }
     });
 
     playButton.addEventListener('click', function () {
@@ -898,7 +849,6 @@
         setProgress(windowData.length, windowData.length || record.previewDuration);
         pausePreview();
         setStatus('Preview Complete');
-        setMessage(idleMessage());
       }
     });
 
@@ -922,7 +872,6 @@
       tonearmNode.classList.add('is-engaged');
       setMeterState(true);
       setStatus('Preview Playing');
-      setMessage(prefersTouchInput ? 'Tap the platter or the button again to pause the preview.' : 'Preview spinning. Drag another sleeve in or hit pause anytime.');
     });
 
     loadRecord(selectedButton, { autoplay: false });
