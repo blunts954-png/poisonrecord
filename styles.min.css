@@ -62,12 +62,6 @@ img {
   height: auto;
 }
 
-video,
-iframe {
-  display: block;
-  max-width: 100%;
-}
-
 .container {
   width: min(1150px, 92%);
   margin: 0 auto;
@@ -386,7 +380,6 @@ h3 {
   color: var(--text);
   background: linear-gradient(90deg, #1a1a1f, #121216);
   font-weight: 700;
-  text-align: center;
 }
 
 .btn.primary {
@@ -464,16 +457,6 @@ h3 {
   border: 1px solid rgba(255,255,255,0.05);
 }
 
-.tabs {
-  display: flex;
-  flex: 1 1 340px;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 0;
-}
-
 .search-wrap {
   position: relative;
   flex: 1;
@@ -544,8 +527,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
   margin: 1rem 0;
 }
 
@@ -749,15 +730,6 @@ textarea {
   border: 1px solid var(--line);
 }
 
-.stream-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
 .footer {
   border-top: 1px solid var(--line);
   margin-top: 2rem;
@@ -797,8 +769,6 @@ textarea {
 .buy-note {
   font-size: 0.9rem;
   color: var(--muted);
-  margin-top: 1rem;
-  line-height: 1.6;
 }
 
 .splash-gate {
@@ -1167,10 +1137,6 @@ textarea {
   .store-tab {
     padding: 0.5rem 0.85rem;
     font-size: 0.85rem;
-  }
-
-  .tabs {
-    gap: 0.5rem;
   }
 
   .nav-dropdown .dropdown-content {
@@ -1969,10 +1935,6 @@ body.gate-active .header-alert {
 }
 
 .release-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
   color: #ff4a4a;
   font-weight: 700;
 }
@@ -3216,10 +3178,6 @@ main>section:first-of-type {
 
 /* Bigger social icons at top of Digital Releases */
 .social-icons-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   gap: 25px;
   margin: 30px 0;
 }
@@ -3370,103 +3328,6 @@ main>section:first-of-type {
 }
 
 @media (max-width: 768px) {
-  .container {
-    width: min(1150px, calc(100% - 24px));
-  }
-
-  section {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .store-controls {
-    align-items: stretch;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .search-wrap,
-  .tabs {
-    width: 100%;
-    min-width: 0;
-    flex-basis: 100%;
-  }
-
-  .tabs {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 0.35rem;
-    scrollbar-width: thin;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tabs::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .tabs::-webkit-scrollbar-thumb {
-    background: rgba(255, 99, 71, 0.55);
-    border-radius: 999px;
-  }
-
-  .store-tab {
-    flex: 0 0 auto;
-    min-height: 48px;
-    white-space: nowrap;
-    scroll-snap-align: start;
-  }
-
-  .release-links {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .release-links a,
-  .newsletter-form button,
-  .btn-row .btn {
-    width: 100%;
-  }
-
-  .newsletter-form input,
-  .newsletter-form button {
-    width: 100%;
-  }
-
-  .social-icons-bar,
-  .stream-links,
-  .footer-social-icons {
-    gap: 0.9rem;
-  }
-
-  .social-icons-bar .social-icon,
-  .digital-band-card .stream-icon,
-  .footer-social-icons .social-icon {
-    width: 46px;
-    height: 46px;
-  }
-
-  .digital-band-card {
-    min-height: 0;
-  }
-
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .table-wrap {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .contact-email a,
-  .site-footer a,
-  .footer a {
-    overflow-wrap: anywhere;
-  }
-
   .social-icons-bar .social-icon svg {
     width: 36px !important;
     height: 36px !important;
@@ -3483,38 +3344,6 @@ main>section:first-of-type {
 
   #tab-digital-releases .grid-3 {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .store-controls {
-    padding: 0.85rem;
-  }
-
-  .search-wrap input {
-    padding-left: 2.6rem;
-  }
-
-  .store-tab {
-    padding: 0.72rem 0.95rem;
-    font-size: 0.9rem;
-  }
-
-  .card,
-  .release-card,
-  .category-card,
-  .why-card {
-    padding: 1rem;
-  }
-
-  .category-icon {
-    width: 78px;
-    height: 78px;
-  }
-
-  .category-icon svg {
-    width: 48px;
-    height: 48px;
   }
 }
 
