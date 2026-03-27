@@ -52,8 +52,8 @@ exports.handler = async function (event) {
   try {
     const sessionOptions = {
       mode: "payment",
-      success_url: `${siteUrl}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/ventura-punk-record-store-online`,
+      success_url: `${siteUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/ventura-punk-record-store-online.html`,
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       line_items: [

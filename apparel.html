@@ -57,7 +57,7 @@
           <a class="nav-main" href="ventura-punk-record-store-online.html">Vinyl</a>
           <div class="dropdown-content" aria-label="Vinyl subnavigation">
             <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
-            <a href="music-videos.html">Music Videos</a>
+            <a href="music-videos.html">Music Videos</a><a href="press.html">Press</a>
             <a href="ventura-punk-record-store-online.html#tab-digital-releases">Digital Releases</a>
             <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
           </div>
@@ -149,13 +149,38 @@
               <span class="price">$15.00</span>
             </div>
             <p><button class="btn primary buy-btn" type="button"
-                onclick="goToAutoDSProductVariant('pwrPatchPack', this.closest('.card'))">Buy on AutoDS</button></p>
+          <article class="card">
+             <div class="product-placeholder">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="var(--accent)" opacity="0.5">
+                <path d="M12 2L2 12h3v8h14v-8h3L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="accent">Vault Logo Tee</h3>
+            <p class="muted">100% Cotton. 805 Archive Edition.</p>
+            <p class="price">$25.00</p>
+            <button class="btn primary full-width" onclick="alert('Apparel store is temporarily offline for a restock. Check back soon.')">Buy Now</button>
           </article>
 
+          <!-- Patches -->
+          <article class="card">
+            <div class="product-placeholder">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="var(--accent)" opacity="0.5">
+                <path d="M12 2L2 12h3v8h14v-8h3L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="accent">Patch Pack</h3>
+            <p class="muted">Set of 3 woven archive patches.</p>
+            <p class="price">$15.00</p>
+            <button class="btn primary full-width" onclick="alert('Apparel store is temporarily offline for a restock. Check back soon.')">Buy Now</button>
+          </article>
         </div>
-        <p class="buy-note">Apparel now routes to AutoDS product pages. Add the public CJ URLs in
-          <code>autods-config.js</code>.
-        </p>
+
+        <div class="terms-block shadow-lg" style="margin-top: 5rem; padding: 2.5rem; border: 1px solid var(--line); background: rgba(255,255,255,0.02); border-radius: 12px;">
+            <h2 style="font-size: 1.5rem; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem;">Shipping & Terms</h2>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.8; margin-bottom: 0;">
+                <strong style="color: var(--accent);">Note:</strong> All apparel orders are processed with the same DIY care as our vinyl. Please allow <strong>7-10 business days for shipping</strong> as we ensure every piece meets our standards. Once shipped, you will receive an automated tracking number via email. All sales of limited-run apparel are final unless the product is damaged upon arrival.
+            </p>
+        </div>
       </div>
     </section>
   </main>
@@ -213,7 +238,7 @@
         </a>
       </div>
       <p>Ships worldwide from Ventura, California. <span data-current-year></span></p>
-    </div>
+    <div class="footer-credit">Powered by chaoticallyorganizedai.com</div></div>
   </footer>
   <script src="autods-config.js" defer></script>
   <script src="site.min.js" defer></script>

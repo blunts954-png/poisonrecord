@@ -292,6 +292,201 @@ iframe {
 
 .nav-dropdown .dropdown-content a {
   display: block;
+
+/* Neon header treatment (subtle) */
+.topbar .brand {
+  color: var(--accent);
+}
+
+.nav-links a {
+  color: var(--text);
+  transition: color 0.14s ease, text-shadow 0.14s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--accent);
+}
+
+/* small neon accent on active nav main */
+.nav-main {
+  color: var(--text);
+}
+
+.nav-main:hover,
+.nav-main:focus {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 100;
+  position: relative;
+}
+
+.hamburger {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  left: 0;
+  transition: transform 0.2s ease, top 0.2s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* Hamburger Open State */
+.nav-toggle[aria-expanded="true"] .hamburger {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Mobile-First / Accessibility Improvements */
+@media (max-width: 800px) {
+  .nav-toggle {
+    min-width: 48px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .footer-social-icons {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn, .social-icon, .nav-links a {
+    touch-action: manipulation;
+  }
+  
+  .grid {
+    gap: 2rem;
+  }
+
+  /* Ensure dropdown is easy to hit on mobile */
+  .dropdown-content a {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-alt);
+    flex-direction: column;
+    padding: 80px 2rem 2rem;
+    gap: 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 90;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid var(--line);
+    flex-wrap: nowrap;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .nav-dropdown .dropdown-content {
+    position: static;
+    display: block;
+    background: transparent;
+    border: none;
+    padding-left: 1.5rem;
+    min-width: 0;
+  }
+
+  .nav-dropdown .nav-main::after {
+    display: none;
+  }
+}
+
+/* Header dropdown for Vinyl subcategories */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown .nav-main {
+  display: inline-block;
+}
+
+.nav-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--card);
+  min-width: 180px;
+  border: 1px solid var(--line);
+  padding: 0.25rem 0;
+  z-index: 50;
+  top: calc(100% + 6px);
+  left: 0;
+}
+
+.nav-dropdown .dropdown-content a {
+  display: block;
   padding: 0.45rem 0.9rem;
   color: var(--text);
   font-size: 0.95rem;
@@ -300,6 +495,11 @@ iframe {
 .nav-dropdown:hover .dropdown-content,
 .nav-dropdown:focus-within .dropdown-content {
   display: block;
+}
+
+/* Eliminate the 6px gap to keep dropdown open when moving mouse to content */
+.nav-dropdown .dropdown-content {
+  top: 100%;
 }
 
 .nav-main::after {
@@ -421,7 +621,14 @@ h3 {
 .card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent), var(--card);
   border: 1px solid var(--line);
-  padding: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.buy-btn, button[onclick*="goToCheckout"] {
+  margin-top: auto;
 }
 
 .card h3 {
@@ -749,48 +956,8 @@ textarea {
   border: 1px solid var(--line);
 }
 
-.stream-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.footer {
-  border-top: 1px solid var(--line);
-  margin-top: 2rem;
-  padding: 2rem 0 3rem;
-  color: var(--muted);
-  font-size: 0.93rem;
-}
-
-.kicker {
-  color: var(--accent-2);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-
-.faq-item {
-  border: 1px solid var(--line);
-  background: var(--card);
-  padding: 1rem;
-}
-
-.urgent-cta {
-  padding: 1.15rem;
-  border: 1px solid #5e2011;
-  background:
-    linear-gradient(90deg, rgba(255, 77, 31, 0.2), rgba(255, 77, 31, 0.05)),
-    #1a1010;
-}
-
-.urgent-cta strong {
-  color: #ff8d72;
-  display: block;
+.stream-icon.deezer { color: #fe4d52; }
+.stream-icon.deezer:hover { color: #ea3f44; }
   font-size: 1.1rem;
 }
 
