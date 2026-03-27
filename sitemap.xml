@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/ventura-punk-vinyl</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/ventura-punk-record-store-online</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/805-punk-bands</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/apparel</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/805-punk-shows-events</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/about-poison-well-records</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/contact-wholesale</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/faq</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://poisonwellrecords.netlify.app/dr-know-live-cbgb-1989-ventura-hardcore</loc>
-    <priority>0.7</priority>
-  </url>
+  <!--
+    Prelaunch placeholder.
+    Replace with final-domain URLs when the Netlify launch is ready.
+  -->
 </urlset>

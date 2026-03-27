@@ -1,5 +1,11 @@
 (function () {
-  const baseUrl = 'https://poisonwellrecords.netlify.app';
+  const runtimeOrigin = window.location.origin && window.location.origin !== 'null'
+    ? window.location.origin
+    : '';
+  const baseUrl = runtimeOrigin.replace(/\/$/, '');
+  const logoUrl = baseUrl + '/poison-well-records-logo-ventura-805-punk-label.png';
+  const bandcampUrl = 'https://poisonwellrecords.bandcamp.com';
+  const discordRequestUrl = 'mailto:poisonwellrecords@gmail.com?subject=Discord%20Invite%20Request';
   const pathMap = {
     'index.html': '/',
     'ventura-punk-vinyl.html': '/ventura-punk-vinyl',
@@ -10,7 +16,12 @@
     'contact-wholesale.html': '/contact-wholesale',
     'faq.html': '/faq',
     'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore',
-    'music-videos.html': '/music-videos'
+    'music-videos.html': '/music-videos',
+    'press.html': '/press',
+    '805-punk-shows-events.html': '/805-punk-shows-events',
+    'success.html': '/success',
+    'order-confirmation.html': '/order-confirmation',
+    'checkout-cancelled.html': '/checkout-cancelled'
   };
 
   function currentFile() {
@@ -22,7 +33,7 @@
   function currentCanonical() {
     const file = currentFile();
     const path = pathMap[file] || '/';
-    return baseUrl + path;
+    return baseUrl ? (baseUrl + path) : path;
   }
 
   function normalizePath(pathname) {
@@ -69,7 +80,8 @@
     if (!document.querySelector('link[rel*="icon"]')) {
       const link = document.createElement('link');
       link.rel = 'icon';
-      link.href = 'logo.jpg';
+      link.type = 'image/png';
+      link.href = logoUrl;
       document.head.appendChild(link);
     }
   }
@@ -155,7 +167,99 @@
   }
 
   function ensureFooterCredit() {
-    return;
+    // Inject the credit if it's missing from the footer container
+    const isPresent = !!document.querySelector('.footer-credit');
+    if (!isPresent) {
+      const footerContainer = document.querySelector('footer .container');
+      if (footerContainer) {
+        const div = document.createElement('div');
+        div.className = 'footer-credit';
+        div.style.textAlign = 'center';
+        div.style.marginTop = '1.5rem';
+        div.style.fontSize = '0.85rem';
+        div.style.opacity = '0.7';
+        div.style.letterSpacing = '1px';
+        div.innerHTML = 'Powered by chaoticallyorganizedai.com';
+        footerContainer.appendChild(div);
+      }
+    }
+  }
+
+  function setMetaProperty(property, content) {
+    if (!content) return;
+    let node = document.querySelector('meta[property="' + property + '"]');
+    if (!node) {
+      node = document.createElement('meta');
+      node.setAttribute('property', property);
+      document.head.appendChild(node);
+    }
+    node.setAttribute('content', content);
+  }
+
+  function sanitizeBrandArtifacts() {
+    document.querySelectorAll('a[href="https://poisonwellrecords.bandcamp.com/dashboard"]').forEach(function (link) {
+      link.href = bandcampUrl;
+      if ((link.textContent || '').trim() === 'poisonwellrecords.bandcamp.com') {
+        link.textContent = 'poisonwellrecords.bandcamp.com';
+      }
+    });
+
+    document.querySelectorAll('a[href="https://discord.gg/invitelink"]').forEach(function (link) {
+      link.href = discordRequestUrl;
+      link.title = 'Request Discord Invite';
+      link.removeAttribute('target');
+      link.setAttribute('rel', 'noopener');
+    });
+
+    const canonicalLinks = Array.from(document.querySelectorAll('link[rel="canonical"]'));
+    canonicalLinks.slice(1).forEach(function (link) { link.remove(); });
+
+    const identityScripts = Array.from(document.querySelectorAll('script[src="https://identity.netlify.com/v1/netlify-identity-widget.js"]'));
+    identityScripts.slice(1).forEach(function (script) { script.remove(); });
+
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (node) {
+      const text = node.textContent || '';
+      if (
+        text.indexOf('poisonwellrecords.netlify.app') !== -1 ||
+        text.indexOf('poisonwellrecords.com') !== -1 ||
+        text.indexOf('bandcamp.com/dashboard') !== -1 ||
+        text.indexOf('XXX-XXX-XXXX') !== -1
+      ) {
+        node.remove();
+      }
+    });
+  }
+
+  function ensureCanonicalMeta() {
+    const canonicalUrl = currentCanonical();
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl;
+
+    setMetaProperty('og:url', canonicalUrl);
+    setMetaProperty('og:image', logoUrl);
+    setMetaProperty('og:site_name', 'Poison Well Records');
+    setMetaProperty('og:type', document.body.classList.contains('product-page') ? 'product' : 'website');
+  }
+
+  function ensureLaunchRobots() {
+    if (currentFile() === '805-punk-shows-events.html') return;
+
+    const liveHosts = ['poisonwellrecords.com', 'www.poisonwellrecords.com'];
+    const shouldNoIndex = !liveHosts.includes(window.location.hostname);
+    let robots = document.querySelector('meta[name="robots"]');
+
+    if (!robots) {
+      robots = document.createElement('meta');
+      robots.name = 'robots';
+      document.head.appendChild(robots);
+    }
+
+    robots.content = shouldNoIndex ? 'noindex,nofollow' : 'index,follow';
   }
 
   function ensureDigitalReleaseLinks() {
@@ -224,6 +328,10 @@
     });
   }
 
+  sanitizeBrandArtifacts();
+  ensureLaunchRobots();
+  ensureCanonicalMeta();
+
   const images = document.querySelectorAll('img');
   images.forEach(function (img) {
     if (!img.getAttribute('alt')) img.setAttribute('alt', 'Poison Well Records - Ventura Punk Vinyl & Culture');
@@ -247,7 +355,7 @@
       name: 'Poison Well Records',
       description: 'Ventura 805 punk vinyl label and online store archiving SoCal punk rock',
       url: baseUrl,
-      logo: baseUrl + '/logo.jpg',
+      logo: logoUrl,
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Ventura',
@@ -259,7 +367,7 @@
         'https://www.tiktok.com/@poisonwellrecords',
         'https://www.instagram.com/poisonwellrecords',
         'https://www.discogs.com/user/PoisonWellRecords',
-        'https://poisonwellrecords.bandcamp.com/dashboard',
+        bandcampUrl,
         'https://www.facebook.com/poisonwellrecords/',
         'https://www.youtube.com/@poisonwellrecords'
       ]
@@ -274,7 +382,7 @@
       '@context': 'https://schema.org',
       '@type': 'Store',
       'name': 'Poison Well Records Shop',
-      'image': baseUrl + '/logo.jpg',
+      'image': logoUrl,
       'description': '805 and SoCal punk vinyl record store and label shipping worldwide from Ventura, California',
       'address': {
         '@type': 'PostalAddress',
@@ -288,9 +396,8 @@
         'longitude': '-119.2290'
       },
       'url': baseUrl + '/ventura-punk-record-store-online',
-      'telephone': '+1-805-555-0123',
       'priceRange': '$$',
-      'paymentAccepted': 'Stripe, Credit Card',
+      'paymentAccepted': 'Credit Card, Debit Card',
       'currenciesAccepted': 'USD'
     });
     document.head.appendChild(store);
@@ -326,15 +433,19 @@
 
   ensureGeoMeta();
   ensureFavicon();
+  ensureFooterCredit();
   markCurrentNavLink();
   ensureAlertBar();
   ensureVinylBackground();
   initNavToggle();
   initBackToTop();
   ensureDigitalReleaseLinks();
+  initMailtoForms();
 
   const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
   const cjLinks = window.POISON_WELL_CJ_LINKS || {};
+  const contactEmail = 'poisonwellrecords@gmail.com';
+  const rarityProductKeys = new Set(['fluidFilledIDecline', 'splatterIDecline']);
 
   function clampCheckoutQuantity(value, max) {
     const parsed = parseInt(value, 10);
@@ -355,8 +466,81 @@
   function fallbackToStripePaymentLink(productKey, quantity) {
     const checkoutUrl = stripeLinks[productKey];
     if (!checkoutUrl) return false;
+    if (/\/test_/.test(checkoutUrl) && !/^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname)) {
+      return false;
+    }
     const url = quantity > 1 ? (checkoutUrl + '?qty=' + quantity) : checkoutUrl;
     window.location.href = url;
+    return true;
+  }
+
+  function isOnSiteStripeProduct(productKey) {
+    return rarityProductKeys.has(productKey);
+  }
+
+  function getProductScope(triggerEl) {
+    if (triggerEl && typeof triggerEl.closest === 'function') {
+      return triggerEl.closest('article, .card, .urgent-cta, .container');
+    }
+    return null;
+  }
+
+  function getProductTitle(triggerEl) {
+    const scope = getProductScope(triggerEl) || document;
+    const titleNode = scope.querySelector('h1, h2, h3, .album-title');
+    return titleNode ? titleNode.textContent.trim() : 'Poison Well Records release';
+  }
+
+  function getPreferredOffsiteLink(triggerEl) {
+    const scope = getProductScope(triggerEl);
+    if (!scope) return '';
+
+    const links = Array.from(scope.querySelectorAll('a[href]')).filter(function (link) {
+      const href = link.getAttribute('href') || '';
+      if (!href || href === '#' || href.indexOf('mailto:') === 0) return false;
+      if (href.charAt(0) === '/' || href.charAt(0) === '#') return false;
+      return /^https?:\/\//i.test(href);
+    });
+
+    if (!links.length) return '';
+
+    const priorities = ['bandcamp', 'amazon', 'apple', 'spotify', 'discogs', 'youtube'];
+    for (let i = 0; i < priorities.length; i += 1) {
+      const match = links.find(function (link) {
+        const href = (link.getAttribute('href') || '').toLowerCase();
+        const title = (link.getAttribute('title') || '').toLowerCase();
+        const className = (link.className || '').toLowerCase();
+        return href.indexOf(priorities[i]) !== -1 || title.indexOf(priorities[i]) !== -1 || className.indexOf(priorities[i]) !== -1;
+      });
+      if (match) return match.href;
+    }
+
+    return links[0].href;
+  }
+
+  function buildArchiveInquiryUrl(triggerEl) {
+    const title = getProductTitle(triggerEl);
+    const subject = 'Archive inquiry: ' + title;
+    const body = [
+      'Hi Poison Well Records,',
+      '',
+      'I am interested in this release:',
+      title,
+      '',
+      'Please send details when you can.'
+    ].join('\n');
+
+    return 'mailto:' + contactEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  function redirectToProductChannel(triggerEl) {
+    const offsiteUrl = getPreferredOffsiteLink(triggerEl);
+    if (offsiteUrl) {
+      window.open(offsiteUrl, '_blank', 'noopener');
+      return true;
+    }
+
+    window.location.href = buildArchiveInquiryUrl(triggerEl);
     return true;
   }
 
@@ -381,6 +565,11 @@
   }
 
   window.goToCheckout = async function (productKey, triggerEl) {
+    if (!isOnSiteStripeProduct(productKey)) {
+      redirectToProductChannel(triggerEl);
+      return;
+    }
+
     setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
     try {
       const payload = await createStripeCheckoutSession(productKey, {
@@ -439,11 +628,39 @@
     const basePriceText = priceNode ? priceNode.textContent.trim() : '';
     const btn = cardEl.querySelector('.buy-btn');
     if (!btn) return;
-    const labelPrefix = cardEl.dataset.provider === 'cj' ? 'Order on CJ ' : 'Buy ';
+    const provider = (cardEl.dataset.provider || '').toLowerCase();
+    const labelPrefix = provider === 'cj'
+      ? 'Order on CJ '
+      : provider === 'autods'
+        ? 'Order on AutoDS '
+        : 'Buy ';
     const sizePart = size ? (size + ' ') : '';
     btn.textContent = labelPrefix + sizePart + '×' + qty + (basePriceText ? ' — ' + basePriceText : '');
     btn.dataset.originalLabel = btn.textContent;
   };
+
+  function configureSalesChannels() {
+    const checkoutButtons = Array.from(document.querySelectorAll('[onclick*="goToCheckout"]'));
+
+    checkoutButtons.forEach(function (button) {
+      const onclickValue = button.getAttribute('onclick') || '';
+      const match = onclickValue.match(/goToCheckout\('([^']+)'/);
+      if (!match) return;
+
+      const productKey = match[1];
+      if (isOnSiteStripeProduct(productKey)) return;
+
+      const offsiteUrl = getPreferredOffsiteLink(button);
+      button.removeAttribute('onclick');
+      button.type = 'button';
+      button.textContent = offsiteUrl ? 'Open Release Platform' : 'Contact About This Release';
+      button.dataset.originalLabel = button.textContent;
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        redirectToProductChannel(button);
+      });
+    });
+  }
 
   // Initialize buy button labels on pages with apparel cards
   function initApparelUI() {
@@ -865,12 +1082,14 @@
     document.addEventListener('DOMContentLoaded', function () { 
       initApparelUI(); 
       initLatestRelease(); 
+      configureSalesChannels();
       initStoreSearch();
       initVinylPreviewPlayer();
     });
   } else {
     initApparelUI();
     initLatestRelease();
+    configureSalesChannels();
     initStoreSearch();
     initVinylPreviewPlayer();
   }
@@ -879,8 +1098,11 @@
   const splashVideo = document.getElementById('splash-video');
   const splashVideoWrap = document.getElementById('splash-video-wrap');
   const splashVideoCta = document.getElementById('splash-video-cta');
+  const splashEnterBtn = document.getElementById('splash-enter-btn');
   const enterHint = document.getElementById('enter-hint');
   if (gate && splashVideo) {
+    window.__pwrSplashState = window.__pwrSplashState || { booted: false, released: false };
+    window.__pwrSplashState.booted = true;
     document.body.classList.add('gate-active');
     let introFollowRaf = null;
     let hideGateTimer = null;
@@ -951,6 +1173,9 @@
     const openGate = function () {
       if (gateReleased || gate.classList.contains('open')) return;
       gateReleased = true;
+      if (window.__pwrSplashState) {
+        window.__pwrSplashState.released = true;
+      }
       clearGateTimers();
       stopIntroFollow();
       gate.classList.remove('video-awaiting-input');
@@ -971,7 +1196,7 @@
       resetIntroView();
       gate.classList.remove('video-playing');
       gate.classList.add('video-awaiting-input');
-      if (enterHint) enterHint.textContent = 'Tap video to start intro or wait to enter site';
+      if (enterHint) enterHint.textContent = 'Tap video to start intro, or use Enter Site Now';
       forcedOpenTimer = window.setTimeout(function () {
         if (gateReleased || !gate.classList.contains('video-awaiting-input')) {
           return;
@@ -1047,6 +1272,26 @@
     splashVideo.addEventListener('error', openGate);
     splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
     splashVideo.addEventListener('canplay', scheduleGateFallback);
+    ['stalled', 'suspend', 'abort', 'emptied'].forEach(function (eventName) {
+      splashVideo.addEventListener(eventName, function () {
+        if (gateReleased || gate.classList.contains('open')) {
+          return;
+        }
+        if (splashVideo.currentTime > 0.1 && !splashVideo.paused) {
+          scheduleGateFallback();
+          return;
+        }
+        showTapToPlay();
+      });
+    });
+    splashVideo.addEventListener('waiting', function () {
+      if (gateReleased || gate.classList.contains('open')) {
+        return;
+      }
+      if (splashVideo.currentTime < 0.1) {
+        showTapToPlay();
+      }
+    });
     splashVideo.addEventListener('timeupdate', function () {
       if (
         !gateReleased &&
@@ -1090,6 +1335,13 @@
       splashVideoCta.addEventListener('click', startFromUser);
     }
 
+    if (splashEnterBtn) {
+      splashEnterBtn.addEventListener('click', function (e) {
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
+        openGate();
+      });
+    }
+
     if (gate) {
       gate.addEventListener('click', function() {
         if (gate.classList.contains('video-awaiting-input')) {
@@ -1106,60 +1358,68 @@
       if (gateReleased) {
         return;
       }
-      if (splashVideo.paused && !gate.classList.contains('open')) {
+      if (
+        !gate.classList.contains('open') &&
+        (
+          !gate.classList.contains('video-playing') ||
+          splashVideo.paused ||
+          splashVideo.currentTime < 0.05 ||
+          splashVideo.readyState < 2
+        )
+      ) {
         showTapToPlay();
       }
-    }, 1500); // Give it a bit more time on slow mobile connections
+    }, 1500);
     window.setTimeout(function () {
       if (!gateReleased && !gate.classList.contains('video-awaiting-input')) {
         openGate();
       }
-    }, 18000);
+    }, 9000);
   }
 
-  // Newsletter form handling (Netlify-friendly + AJAX fallback)
-  (function () {
-    const forms = document.querySelectorAll('form.newsletter-form');
-    if (!forms || forms.length === 0) return;
+  function initMailtoForms() {
+    const forms = document.querySelectorAll('form[data-mailto-form]');
+    if (!forms.length) return;
+
     forms.forEach(function (form) {
       form.addEventListener('submit', function (ev) {
         ev.preventDefault();
-        const successNode = form.querySelector('.newsletter-success');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) submitBtn.disabled = true;
-        const fd = new FormData(form);
-        if (!fd.get('form-name')) fd.append('form-name', form.getAttribute('name') || 'newsletter');
-        // Convert to URL-encoded body for Netlify compatibility
-        const params = new URLSearchParams();
-        for (const pair of fd.entries()) params.append(pair[0], pair[1]);
 
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString()
-        }).then(function (res) {
-          // On success redirect to a thank-you page (Netlify will also redirect when JS is disabled)
-          if (res.ok || res.status === 200 || res.status === 201) {
-            try { window.location.href = '/thank-you'; return; } catch (e) { /* ignore */ }
-          }
-          // Fallback: show inline success message
-          if (successNode) {
-            successNode.style.display = 'block';
-            successNode.textContent = 'Thanks — you are on the list.';
-          }
-          form.reset();
-        }).catch(function () {
-          if (successNode) {
-            successNode.style.display = 'block';
-            successNode.textContent = 'Thanks — you are on the list.';
-          }
-          form.reset();
-        }).finally(function () {
-          if (submitBtn) submitBtn.disabled = false;
+        const successNode = form.querySelector('.newsletter-success, .form-success');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const recipient = form.getAttribute('data-mailto-recipient') || 'poisonwellrecords@gmail.com';
+        const subject = form.getAttribute('data-mailto-subject') || 'Poison Well Records Website Submission';
+        const fd = new FormData(form);
+        const lines = [];
+
+        if (submitBtn) submitBtn.disabled = true;
+
+        fd.forEach(function (value, key) {
+          if (!value || key === 'bot-field' || key === 'form-name') return;
+          const label = key
+            .replace(/[-_]+/g, ' ')
+            .replace(/\b\w/g, function (letter) { return letter.toUpperCase(); });
+          lines.push(label + ': ' + String(value).trim());
         });
+
+        const body = lines.length
+          ? lines.join('\n')
+          : 'New message from the Poison Well Records website.';
+
+        if (successNode) {
+          successNode.style.display = 'block';
+          successNode.textContent = 'Your email app should open now. If it does not, email poisonwellrecords@gmail.com directly.';
+        }
+
+        window.location.href = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        form.reset();
+
+        window.setTimeout(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        }, 250);
       });
     });
-  })();
+  }
 
   // Store Tabs Navigation
   const tabFootnotes = {

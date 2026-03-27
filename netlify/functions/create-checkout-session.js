@@ -34,13 +34,32 @@ exports.handler = async function (event) {
     return json(400, { error: `Product '${productKey}' not found in catalog. Verify _data/products/ for correct JSON filename.` });
   }
 
+  const isOnSiteStripeProduct = product.inventoryType === "rarity";
+  if (!isOnSiteStripeProduct) {
+    return json(400, {
+      error: "This item is not sold directly on the site. Please use its linked platform or contact Poison Well Records."
+    });
+  }
+
+  const requestedQuantity = Number.parseInt(body.quantity, 10);
+  const maxQuantity = Number.isFinite(product.maxQuantity) ? product.maxQuantity : 10;
+  const quantity = Number.isFinite(requestedQuantity)
+    ? Math.max(1, Math.min(maxQuantity, requestedQuantity))
+    : 1;
+
+  const requestedCancelPath = typeof body.cancelPath === "string" ? body.cancelPath.trim() : "";
+  const cancelPath = requestedCancelPath.startsWith("/") && !requestedCancelPath.startsWith("//")
+    ? requestedCancelPath
+    : "/ventura-punk-record-store-online.html";
+
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey) {
     return json(500, { error: "STRIPE_SECRET_KEY missing from environment variables." });
   }
 
   const shippingRate = process.env.STRIPE_SHIPPING_RATE_STANDARD_ID;
-  if (product.inventoryType === 'vinyl' || product.inventoryType === 'rarity') {
+  const isPhysicalProduct = true;
+  if (isPhysicalProduct) {
     if (!shippingRate) {
       return json(500, { error: "STRIPE_SHIPPING_RATE_STANDARD_ID is not configured for physical products." });
     }
@@ -48,12 +67,13 @@ exports.handler = async function (event) {
 
   const stripe = new Stripe(stripeSecretKey);
   const siteUrl = (process.env.SITE_URL || "https://poisonwellrecords.netlify.app").replace(/\/$/, "");
+  const automaticTaxEnabled = String(process.env.STRIPE_AUTOMATIC_TAX || "").toLowerCase() === "true";
 
   try {
     const sessionOptions = {
       mode: "payment",
       success_url: `${siteUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/ventura-punk-record-store-online.html`,
+      cancel_url: `${siteUrl}${cancelPath}`,
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       line_items: [
@@ -67,16 +87,27 @@ exports.handler = async function (event) {
               images: product.imagePath ? [siteUrl + product.imagePath] : [],
             }
           },
-          quantity: 1,
+          quantity,
         }
       ],
-      shipping_address_collection: {
-        allowed_countries: (process.env.STRIPE_ALLOWED_COUNTRIES || "US").split(",").map(c => c.trim().toUpperCase())
+      metadata: {
+        productKey,
+        inventoryType: product.inventoryType || "unknown",
+        quantity: String(quantity)
       }
     };
 
-    // Only apply shipping options if a rate exists and it's a physical product
-    if (shippingRate && (product.inventoryType === 'vinyl' || product.inventoryType === 'rarity')) {
+    if (automaticTaxEnabled) {
+      sessionOptions.automatic_tax = { enabled: true };
+    }
+
+    if (isPhysicalProduct) {
+      sessionOptions.shipping_address_collection = {
+        allowed_countries: (process.env.STRIPE_ALLOWED_COUNTRIES || "US").split(",").map(c => c.trim().toUpperCase())
+      };
+    }
+
+    if (shippingRate && isPhysicalProduct) {
       sessionOptions.shipping_options = [{ shipping_rate: shippingRate }];
     }
 
