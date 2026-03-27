@@ -179,10 +179,35 @@
         div.style.fontSize = '0.85rem';
         div.style.opacity = '0.7';
         div.style.letterSpacing = '1px';
-        div.innerHTML = 'Powered by chaoticallyorganizedai.com';
+        div.innerHTML = 'Powered by Chaotically Organized AI';
         footerContainer.appendChild(div);
       }
     }
+  }
+
+  function handleDescentSplash() {
+    const splash = document.getElementById('splash-gate');
+    if (!splash) return;
+
+    // Session-based splash logic
+    if (sessionStorage.getItem('pwr_descent_seen')) {
+      splash.style.display = 'none';
+      document.body.classList.remove('gate-active');
+      return;
+    }
+
+    // Activate descent mode
+    splash.classList.add('descent-mode');
+    
+    // Auto-release after animation ends
+    setTimeout(() => {
+      splash.classList.add('hide');
+      setTimeout(() => {
+        splash.style.display = 'none';
+        document.body.classList.remove('gate-active');
+        sessionStorage.setItem('pwr_descent_seen', 'true');
+      }, 600);
+    }, 3500);
   }
 
   function setMetaProperty(property, content) {
@@ -475,7 +500,7 @@
   }
 
   function isOnSiteStripeProduct(productKey) {
-    return rarityProductKeys.has(productKey);
+    return true; // allow all product keys to try the Stripe flow
   }
 
   function getProductScope(triggerEl) {

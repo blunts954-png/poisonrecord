@@ -34,7 +34,7 @@ exports.handler = async function (event) {
     return json(400, { error: `Product '${productKey}' not found in catalog. Verify _data/products/ for correct JSON filename.` });
   }
 
-  const isOnSiteStripeProduct = product.inventoryType === "rarity";
+  const isOnSiteStripeProduct = product.inventoryType === "rarity" || product.inventoryType === "vinyl";
   if (!isOnSiteStripeProduct) {
     return json(400, {
       error: "This item is not sold directly on the site. Please use its linked platform or contact Poison Well Records."

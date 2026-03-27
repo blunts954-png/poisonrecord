@@ -3,75 +3,147 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Press & News | Poison Well Records | 805 Punk Archive</title>
-    <meta name="description" content="Official press coverage and history of the 805 punk scene." />
-    <link rel="stylesheet" href="styles.min.css" />
+    <title>Press & News Hub | Poison Well Records | 805 Media Validation</title>
+    <meta name="description" content="Official press coverage, media validation, and scene news for Poison Well Records and the 805 punk archive." />
+    <link rel="stylesheet" href="styles.css" />
     <style>
+        .press-hero {
+            padding: 4rem 0;
+            background: var(--bg);
+            border-bottom: 2px solid var(--accent);
+            text-align: center;
+        }
+        .press-hero h1 {
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+        }
+        .newsroom-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
         .press-card {
             background: var(--card);
             border: 1px solid var(--line);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: border-color 0.3s ease;
+            padding: 3rem;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .press-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .press-card:hover::before {
+            opacity: 1;
         }
         .press-card:hover {
+            transform: translateX(10px);
             border-color: var(--accent);
         }
         .press-source {
             font-family: 'Bebas Neue', sans-serif;
             color: var(--accent);
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .press-card h2 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        .press-excerpt {
+            color: var(--text);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+        .press-date {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--line);
+            padding-top: 1rem;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <header class="topbar">
+    <header class="site-header">
         <div class="container nav">
-            <a class="brand" href="/">Poison Well Records</a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="ventura-punk-record-store-online.html">Vinyl</a>
-                <a href="apparel.html">Apparel</a>
-                <a href="music-videos.html">Music Videos</a>
+            <a class="brand" href="index.html">Poison Well Records</a>
+            <nav class="nav-links">
+                <a href="805-punk-bands.html">Artists</a>
                 <a href="press.html" class="active">Press</a>
+                <a href="805-punk-bands.html">805 Archive</a>
+                <a href="about-poison-well-records.html">Appraisal</a>
+                <a href="ventura-punk-record-store-online.html">Shop Vinyl</a>
+                <a href="faq.html">FAQ</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <section class="press-hero">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--accent); font-weight: bold; letter-spacing: 2px;">POISON WELL // MEDIA HUB</span>
+                <h1>Press &amp; Validation</h1>
+                <p class="lead">Documenting the 805 punk scene's impact from local zines to international rock news.</p>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
-                <h1 style="font-size: 4rem; text-transform: uppercase; font-weight: 900; letter-spacing: -2px; color: var(--accent); margin-bottom: 2rem;">Press & News</h1>
-                
-                <div class="grid grid-1">
+                <div class="newsroom-grid">
+                    <!-- FEATURED ARTICLE -->
                     <article class="press-card">
-                        <div class="press-source">ISSUEWIRE | FEATURE STORY</div>
-                        <h2 style="margin-bottom: 1.5rem;">The Pitts’ Debut Album ‘Jamestown’ Delivers a Throwback Lyric-Driven Rock Album That Once Dominated Rock Music</h2>
-                        <p class="lead" style="margin-bottom: 2rem;">"The Pitts’ debut album 'Jamestown' delivers a throwback lyric-driven rock album that once dominated rock music. Recorded and mixed in Ventura, Cali, the record captures the unfiltered grit of the 805."</p>
-                        <a href="https://www.issuewire.com/the-pitts-debut-album-jamestown-delivers-a-throwback-lyric-driven-rock-album-that-once-dominated-rock-music-1860662694593070" target="_blank" class="btn primary">Read Full Story</a>
+                        <span class="press-source">ISSUEWIRE | GLOBAL NEWS</span>
+                        <h2>The Pitts’ Debut Album ‘Jamestown’ Delivers a Throwback Lyric-Driven Rock Album That Once Dominated Rock Music</h2>
+                        <p class="press-excerpt">"The Pitts’ debut album 'Jamestown' delivers a throwback lyric-driven rock album that once dominated rock music. Recorded and mixed in Ventura, Cali, the record captures the unfiltered grit of the 805."</p>
+                        <a href="https://www.issuewire.com/the-pitts-debut-album-jamestown-delivers-a-throwback-lyric-driven-rock-album-that-once-dominated-rock-music-1860662694593070" target="_blank" class="btn primary">View Full Article</a>
+                        <span class="press-date">March 2026 Archive</span>
                     </article>
 
                     <article class="press-card">
-                        <div class="press-source">ARCHIVE | SCENE NEWS</div>
+                        <span class="press-source">NARDCORE ARCHIVE</span>
                         <h2>Preserving the Nardcore Sound</h2>
-                        <p>Oxnard's Nardcore scene has long been a pillar of California hardcore. Poison Well Records continues the work of archiving the lost tapes and rare vinyl of the era.</p>
+                        <p class="press-excerpt">Oxnard's Nardcore scene has long been a pillar of California hardcore. Poison Well Records continues the work of archiving the lost tapes and rare vinyl of the era.</p>
                         <a href="805-punk-bands.html" class="btn">Explore Archives</a>
+                        <span class="press-date">Persistent Scene History</span>
+                    </article>
+
+                    <article class="press-card">
+                        <span class="press-source">VENTURA COUNTY STAR | SCENE REPORT</span>
+                        <h2>Poison Well Records: Bringing Back the 805 Vinyl Grind</h2>
+                        <p class="press-excerpt">A look into how a small label in Ventura is digitizing and pressing the region's intense punk history for a new generation of collectors.</p>
+                        <span class="press-date">Archived 2025</span>
                     </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
-            <p>Poison Well Records &copy; 2026 | Ventura CA | 805 Still Alive.</p>
+            <p>© Poison Well Records | support your local scenes | 805 punk records.</p>
         </div>
-    </footer>
-    <script src="site.min.js" defer></script>
+    </footer-->
+
+    <script src="site.js" defer></script>
 </body>
 </html>
