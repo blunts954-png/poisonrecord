@@ -102,11 +102,12 @@
     <div class="splash-video-wrap" id="splash-video-wrap" role="button" tabindex="0"
       aria-label="Play Poison Well Records intro">
       <div class="splash-video-stage">
-        <video id="splash-video" class="splash-video" src="startofsite.mp4"
-          muted playsinline preload="auto" aria-hidden="true"
-          style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"></video>
+        <video id="splash-video" class="splash-video" muted playsinline preload="auto" aria-hidden="true" autoplay
+          style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+          <source src="startofsite.mp4" type="video/mp4">
+        </video>
         <div id="splash-logo-reveal" class="splash-logo-reveal" style="display:flex; align-items:center; justify-content:center; height:100%; position:relative; z-index:2;">
-          <img src="pwr-logo-bird.png" id="splash-logo-fallback" class="splash-logo" alt="Poison Well Records logo" style="width:320px; max-width:70vw; height:auto; object-fit:contain; opacity:0.9; filter: drop-shadow(0 0 40px rgba(200,30,30,0.7));">
+          <img src="pwr-logo-bird.png" id="splash-logo-fallback" class="splash-logo" alt="Poison Well Records logo" style="width:320px; max-width:70vw; height:auto; object-fit:contain; opacity:0.9; transition: opacity 0.8s ease; filter: drop-shadow(0 0 40px rgba(200,30,30,0.7));">
         </div>
       </div>
     </div>

@@ -1153,7 +1153,7 @@
         console.warn("Splash video seems broken or missing. Failsafe bypass.");
         openGate();
       }
-    }, 500);
+    }, 2000);
 
     splashVideo.addEventListener('ended', openGate);
     splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
