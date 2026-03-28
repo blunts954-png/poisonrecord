@@ -1157,6 +1157,10 @@
 
     splashVideo.addEventListener('ended', openGate);
     splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
+    splashVideo.addEventListener('playing', function() {
+      const fallback = document.getElementById('splash-logo-fallback');
+      if(fallback) fallback.style.opacity = '0';
+    });
     splashVideo.addEventListener('canplay', scheduleGateFallback);
     splashVideo.addEventListener('timeupdate', function () {
       if (

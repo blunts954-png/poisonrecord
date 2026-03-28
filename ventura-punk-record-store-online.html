@@ -96,9 +96,9 @@
     <section class="section store-tabs-section">
       <div class="container">
         <div class="store-controls">
-          <div class="search-wrap">
-            <input type="text" id="store-search" placeholder="Search bands or titles..." aria-label="Search records">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <div class="search-wrap" style="max-width: 400px; margin-right: auto; flex: none;">
+            <input type="text" id="store-search" placeholder="Search bands or titles..." aria-label="Search records" style="height: 44px; padding-left: 36px;">
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </div>
           <div class="tabs">
             <button class="store-tab active" data-tab="vinyl">Archive Vinyl</button>
@@ -109,7 +109,7 @@
         </div>
 
         <div id="tab-vinyl" class="tab-content active">
-          <div class="grid grid-3">
+          <div class="grid grid-4">
 
             <!-- Dr. Know -->
             <article class="card product-card" data-tags="dr know live cbgb vinyl hardcore">
@@ -321,7 +321,7 @@
 
         <!-- YouTube Videos (Moved to Music Videos Page) -->
 
-        <div class="grid grid-3">
+        <div class="grid grid-4" style="gap: 1.5rem;">
           <!-- Rubberband -->
           <article class="card digital-band-card">
             <img src="assets/Rubberband - babe magnet.webp" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
@@ -731,7 +731,7 @@
             <p class="band-name" style="opacity: 0.6; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">805 Archive // Rarity Drop</p>
             <p>The definitive splatter variant of the 'I Decline' sessions. Visceral red-and-black mixing that captures the raw intensity of the 805 punk spirit. A true collector's artifact.</p>
             <div class="price-row" style="margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between;">
-              <span class="price" style="font-size: 2.8rem; font-weight: 900; color: #fff;">$150.00</span>
+              <span class="price" style="font-size: 2.8rem; font-weight: 900; color: #fff;">$80.00</span>
               <span class="stock-status low" style="color: var(--accent); font-weight: 800; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;">AUTHENTIC ARCHIVE</span>
             </div>
             <p><button class="btn primary full-width" type="button" onclick="goToCheckout('fluidFilledIDecline', this)" style="font-size: 1.4rem; padding: 1.5rem; font-weight: 900;">SECURE THIS UNIT</button></p>
