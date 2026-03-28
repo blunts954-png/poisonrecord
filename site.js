@@ -1138,8 +1138,24 @@
       }, 12000); // 12s total for 10s video is safer than 10s exact
     };
 
+    // Early bypass for broken files (e.g. 0-byte startofsite.mp4)
+    splashVideo.addEventListener('error', function() {
+      console.warn("Splash video error or 0-byte file detected. Opening gate.");
+      openGate(); 
+    });
+    
+    // Check if video is functionally broken on start
+    window.setTimeout(function() {
+      const isBroken = splashVideo.readyState === 0 || 
+                       (splashVideo.networkState === 3) || 
+                       (splashVideo.error);
+      if (isBroken && !gateReleased) {
+        console.warn("Splash video seems broken or missing. Failsafe bypass.");
+        openGate();
+      }
+    }, 500);
+
     splashVideo.addEventListener('ended', openGate);
-    splashVideo.addEventListener('error', openGate);
     splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
     splashVideo.addEventListener('canplay', scheduleGateFallback);
     splashVideo.addEventListener('timeupdate', function () {
