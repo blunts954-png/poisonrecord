@@ -39,7 +39,7 @@ body::before {
   transform: translate(-50%, -50%);
   width: 60vmin;
   height: 60vmin;
-  background-image: url('poison-well-records-logo-ventura-805-punk-label.png');
+  background-image: url('assets/pwricon.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -615,7 +615,17 @@ h3 {
 }
 
 .grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 1200px) {
+  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 850px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .grid-4 { grid-template-columns: 1fr; }
 }
 
 .card {

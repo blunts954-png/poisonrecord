@@ -11,12 +11,12 @@
     content="ventura punk vinyl, 805 punk records, socal hardcore vinyl, ventura record label, nardcore vinyl" />
   <meta property="og:title" content="Poison Well Records - Ventura 805 Punk Vinyl" />
   <meta property="og:description"
-    content="805 and SoCal punk rock on limited vinyl and digital. Archiving Ventura bands and the forgotten youth." />
+    content="805 and SoCal punk rock on limited vinyl. Archiving Ventura bands and the forgotten youth." />
   <meta property="og:image"
-    content="https://poisonwellrecords.netlify.app/poison-well-records-logo-ventura-805-punk-label.png" />
+    content="assets/pwricon.png" />
   <meta property="og:url" content="https://poisonwellrecords.netlify.app/" />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="styles.min.css" />
+  <link rel="stylesheet" href="styles.css" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     if (window.netlifyIdentity) {
@@ -36,7 +36,7 @@
     "name": "Poison Well Records",
     "description": "Ventura 805 punk vinyl label and online store archiving SoCal punk rock",
     "url": "https://poisonwellrecords.netlify.app",
-    "logo": "https://poisonwellrecords.netlify.app/poison-well-records-logo-ventura-805-punk-label.png",
+    "logo": "https://poisonwellrecords.netlify.app/assets/pwricon.png",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Ventura",
@@ -48,7 +48,6 @@
       "https://www.tiktok.com/@poisonwellrecords",
       "https://www.instagram.com/poisonwellrecords",
       "https://www.discogs.com/user/PoisonWellRecords",
-      "https://poisonwellrecords.bandcamp.com/dashboard",
       "https://www.facebook.com/poisonwellrecords/",
       "https://www.youtube.com/@poisonwellrecords"
     ],
@@ -68,7 +67,7 @@
     "@context": "https://schema.org",
     "@type": "Store",
     "name": "Poison Well Records",
-    "image": "https://poisonwellrecords.netlify.app/poison-well-records-logo-ventura-805-punk-label.png",
+    "image": "https://poisonwellrecords.netlify.app/assets/pwricon.png",
     "description": "805 and SoCal punk vinyl record store and label shipping worldwide from Ventura, California",
     "url": "https://poisonwellrecords.netlify.app",
     "telephone": "+1-XXX-XXX-XXXX",
@@ -103,11 +102,12 @@
     <div class="splash-video-wrap" id="splash-video-wrap" role="button" tabindex="0"
       aria-label="Play Poison Well Records intro">
       <div class="splash-video-stage">
-        <video id="splash-video" class="splash-video" autoplay muted playsinline preload="auto">
-          <source src="startofsite.mp4" type="video/mp4" />
-        </video>
-        <img src="poison-well-records-logo-ventura-805-punk-label.png" class="splash-logo-fallback" id="splash-logo-fallback" alt="Poison Well Records logo bird" style="position:absolute; inset:20%; width:60%; height:60%; object-fit:contain; opacity:1; z-index:0; filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));">
-        <button type="button" class="splash-video-cta" id="splash-video-cta">Tap to play intro</button>
+        <video id="splash-video" class="splash-video" src="startofsite.mp4"
+          muted playsinline preload="auto" aria-hidden="true"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"></video>
+        <div id="splash-logo-reveal" class="splash-logo-reveal" style="display:flex; align-items:center; justify-content:center; height:100%; position:relative; z-index:2;">
+          <img src="pwr-logo-bird.png" id="splash-logo-fallback" class="splash-logo" alt="Poison Well Records logo" style="width:320px; max-width:70vw; height:auto; object-fit:contain; opacity:0.9; filter: drop-shadow(0 0 40px rgba(200,30,30,0.7));">
+        </div>
       </div>
     </div>
     <div class="splash-inner">
@@ -129,18 +129,17 @@
           <a class="nav-main" href="ventura-punk-record-store-online.html">Vinyl</a>
           <div class="dropdown-content" aria-label="Vinyl subnavigation">
             <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
-            <a href="ventura-punk-record-store-online.html#tab-digital-releases">Digital Releases</a>
             <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
             <a href="music-videos.html">Music Videos</a>
           </div>
         </div>
 
         <a href="apparel.html">Apparel</a>
-        <a href="805-punk-bands.html">Artists &amp; 805 Archive</a>
+        <a href="805-punk-bands.html">805 Archive</a>
+        <a href="press.html">Press</a>
         <a href="about-poison-well-records.html">About</a>
         <a href="contact-wholesale.html">Contact / Wholesale</a>
         <a href="faq.html">FAQ</a>
-        <a href="press.html">Press</a>
       </nav>
     </div>
   </header>
@@ -174,17 +173,7 @@
             <h3>Music Videos</h3>
             <p>Rare test pressings for the serious collector and archivist</p>
           </a>
-          <a href="ventura-punk-record-store-online.html#tab-digital-releases" class="category-card">
-            <div class="category-icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="32" r="22" />
-                <circle cx="32" cy="32" r="12" />
-                <path d="M28 24l12 8-12 8z" fill="currentColor" stroke="none" />
-              </svg>
-            </div>
-            <h3>Digital Releases</h3>
-            <p>Downloadable punk and hardcore for your digital library</p>
-          </a>
+
           <a href="ventura-punk-record-store-online.html#tab-rarities" class="category-card">
             <div class="category-icon" aria-hidden="true">
               <svg viewBox="0 0 64 64">
@@ -337,7 +326,6 @@
               vinyl press.</p>
             <p class="release-formats">12" Vinyl · $25 · Combined A-side / B-side Pressing</p>
               <a href="ventura-punk-record-store-online.html#tab-vinyl" class="btn primary">Buy Vinyl</a>
-              <a href="ventura-punk-record-store-online.html#tab-digital-releases" class="btn alt">Buy Digital</a>
           </article>
 
           <!-- RELEASE CARD 5: The Missing 23rd -->
@@ -471,13 +459,7 @@
                 d="M21.582 6.186a2.67 2.67 0 0 0-1.884-1.884C18.033 3.868 12 3.868 12 3.868s-6.033 0-7.698.434A2.67 2.67 0 0 0 2.418 6.186C2 7.85 2 12 2 12s0 4.15.418 5.814a2.67 2.67 0 0 0 1.884 1.884C6.033 20.132 12 20.132 12 20.132s6.033 0 7.698-.434a2.67 2.67 0 0 0 1.884-1.884C22 16.15 22 12 22 12s0-4.15-.418-5.814zM9.996 15.348V8.652L15.603 12l-5.607 3.348z" />
             </svg>
           </a>
-          <a href="https://open.spotify.com/search/poison%20well%20records" target="_blank"
-            class="social-icon icon-spotify" title="Spotify">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.423c-.183.295-.568.39-.86.208-2.355-1.44-5.316-1.765-8.804-.967-.328.075-.653-.13-.728-.458-.075-.328.13-.653.458-.728 3.818-.87 7.078-.505 9.726 1.114.292.183.387.567.208.86zm1.196-3.21c-.227.368-.7.487-1.07.26-2.695-1.657-6.815-2.15-9.76-.178-.415.28-.97.17-1.25-.246-.28-.416-.17-.97.246-1.25 3.39-2.268 8.16-1.7 11.23.187.37.228.49.702.264 1.072zm.106-3.374c-3.197-1.897-8.48-2.072-11.53-.114-.492.29-.982.16-1.274-.24-.29-.402-.128-.914.288-1.188 3.52-2.227 9.387-2.028 13.065.155.443.264.58.847.316 1.29-.264.444-.847.58-1.29.316z" />
-            </svg>
-          </a>
+
           <a href="mailto:poisonwellrecords@gmail.com?subject=Discord%20Invite%20Request" class="social-icon icon-discord" title="Request Discord Invite">
             <svg viewBox="0 0 127.14 96.36" fill="currentColor">
               <path
@@ -525,7 +507,7 @@
         <p>If something shows up trashed from the mail or not as described, email us with photos within 7 days —
           we'll
           replace it if we can, or refund you if we can't.</p>
-        <p>All online checkout is handled through Bandcamp and/or Discogs for secure payment and buyer protection.
+        <p>All online checkout is handled through Discogs for secure payment and buyer protection.
         </p>
       </div>
     </section>
@@ -558,9 +540,7 @@
     <div class="container">
       <p>Booking, distro, press, or weird ideas: <a
           href="mailto:poisonwellrecords@gmail.com">poisonwellrecords@gmail.com</a></p>
-      <p><a class="btn primary" href="mailto:poisonwellrecords@gmail.com?subject=Buying%20Records%20Inquiry">Buy
-          Records
-          / Inquiries</a></p>
+      <p><a class="btn primary" href="mailto:poisonwellrecords@gmail.com?subject=Buying%20Records%20Inquiry">Buy Records / Inquiries</a></p>
       <p>© Poison Well Records | Ventura, CA 93001 | Support your local scenes before they're gone.</p>
       <div class="footer-social-icons">
         <a href="ventura-punk-record-store-online.html" class="social-icon icon-store" title="Shop Vinyl">
@@ -576,13 +556,7 @@
               d="M21.582 6.186a2.67 2.67 0 0 0-1.884-1.884C18.033 3.868 12 3.868 12 3.868s-6.033 0-7.698.434A2.67 2.67 0 0 0 2.418 6.186C2 7.85 2 12 2 12s0 4.15.418 5.814a2.67 2.67 0 0 0 1.884 1.884C6.033 20.132 12 20.132 12 20.132s6.033 0 7.698-.434a2.67 2.67 0 0 0 1.884-1.884C22 16.15 22 12 22 12s0-4.15-.418-5.814zM9.996 15.348V8.652L15.603 12l-5.607 3.348z" />
           </svg>
         </a>
-        <a href="https://open.spotify.com/search/poison%20well%20records" target="_blank"
-          class="social-icon icon-spotify" title="Spotify">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.423c-.183.295-.568.39-.86.208-2.355-1.44-5.316-1.765-8.804-.967-.328.075-.653-.13-.728-.458-.075-.328.13-.653.458-.728 3.818-.87 7.078-.505 9.726 1.114.292.183.387.567.208.86zm1.196-3.21c-.227.368-.7.487-1.07.26-2.695-1.657-6.815-2.15-9.76-.178-.415.28-.97.17-1.25-.246-.28-.416-.17-.97.246-1.25 3.39-2.268 8.16-1.7 11.23.187.37.228.49.702.264 1.072zm.106-3.374c-3.197-1.897-8.48-2.072-11.53-.114-.492.29-.982.16-1.274-.24-.29-.402-.128-.914.288-1.188 3.52-2.227 9.387-2.028 13.065.155.443.264.58.847.316 1.29-.264.444-.847.58-1.29.316z" />
-          </svg>
-        </a>
+
         <a href="mailto:poisonwellrecords@gmail.com?subject=Discord%20Invite%20Request" class="social-icon icon-discord" title="Request Discord Invite">
           <svg viewBox="0 0 127.14 96.36" fill="currentColor">
             <path
@@ -615,7 +589,7 @@
   </footer>
 
   <script src="stripe-config.js" defer></script>
-  <script src="site.min.js" defer></script>
+  <script src="site.js" defer></script>
 
 </body>
 

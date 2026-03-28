@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://poisonwellrecords.netlify.app/ventura-punk-record-store-online" />
   <!-- SEO/GEO and Schema handled dynamically by site.js -->
   <link rel="preload" as="style" href="styles.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="image" href="hero-background.jpg" type="image/jpeg">
   <script type="application/ld+json">
   {
@@ -50,33 +50,31 @@
         }
       }
     ]
-        }
-      }
-    ]
   }
   </script>
-  <link rel='canonical' href='https://poisonwellrecords.netlify.app/ventura-punk-record-store-online' />
+  <script src="site.js" defer></script>
 </head>
 
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="index.html">Poison Well Records</a>
+      <div class="logo-mark">
+        <img src="assets/pwricon.png" class="header-logo" alt="Poison Well Records" style="width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));">
+      </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
-        <a href="805-punk-bands.html">Artists</a>
-        <a href="press.html">Press</a>
+        <a href="index.html">Home</a>
         <a href="805-punk-bands.html">805 Archive</a>
-        <a href="about-poison-well-records.html">Appraisal</a>
+        <a href="press.html">Press</a>
+        <a href="about-poison-well-records.html">About</a>
         <div class="nav-dropdown">
           <a class="nav-main" href="ventura-punk-record-store-online.html">Shop Vinyl</a>
           <div class="dropdown-content" aria-label="Vinyl subnavigation">
-            <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
-            <a href="ventura-punk-record-store-online.html#tab-digital-releases">Digital Releases</a>
-            <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
-            <a href="apparel.html">Apparel</a>
+            <a href="#tab-vinyl">Vinyl Only</a>
+            <a href="#tab-rarities">Rarities</a>
+            <a href="index.html">Home</a>
           </div>
         </div>
         <a href="faq.html">FAQ</a>
@@ -87,8 +85,7 @@
     <section class="hero hero-vinyl">
       <div class="container">
         <h1>Ventura Punk Record Store Online</h1>
-        <p class="lead">Browse the archive here, shop rarity drops on-site, and use each release's platform links for
-          digital listening. Apparel is fulfilled separately through AutoDS.</p>
+        <p class="lead">Ventura and Southern California's finest underground punk, hardcore, and post-punk on limited physical vinyl. Hand-shipped directly from the well.</p>
       </div>
     </section>
 
@@ -96,15 +93,12 @@
     <section class="section store-tabs-section">
       <div class="container">
         <div class="store-controls">
-          <div class="search-wrap" style="max-width: 400px; margin-right: auto; flex: none;">
-            <input type="text" id="store-search" placeholder="Search bands or titles..." aria-label="Search records" style="height: 44px; padding-left: 36px;">
-            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <div class="search-wrap">
+            <input type="text" id="store-search" placeholder="Search our physical catalog...">
           </div>
           <div class="tabs">
-            <button class="store-tab active" data-tab="vinyl">Archive Vinyl</button>
-            <button class="store-tab" data-tab="test-pressings">Test Pressings</button>
-            <button class="store-tab" data-tab="digital-releases">Digital Platforms</button>
-            <button class="store-tab" data-tab="rarities">Rarities</button>
+            <button class="tab-btn active" data-tab="vinyl">Vinyl Catalog</button>
+            <button class="tab-btn" data-tab="rarities">Rarities & Archive</button>
           </div>
         </div>
 
@@ -254,471 +248,7 @@
       </div>
     </section>
 
-
-
-
-
-    <!-- Tab: Digital Releases -->
-    <section class="section tab-content" id="tab-digital-releases">
-      <div class="container">
-        <h2>Digital Releases</h2>
-        <p class="lead">Digital releases live on their own platforms. Use the buttons below to open the appropriate
-          listening or purchase destination off-site.</p>
-
-        <!-- Social Icons -->
-        <div class="social-icons-bar">
-          <a class="social-icon" href="https://www.tiktok.com/@poisonwellrecords" target="_blank" rel="noopener"
-            title="TikTok">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor"
-                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-            </svg>
-          </a>
-          <a class="social-icon" href="https://www.instagram.com/poisonwellrecords" target="_blank" rel="noopener"
-            title="Instagram">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor"
-                d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85 0-3.2.01-3.58.07-4.85.15-3.23 1.67-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.35 2.63 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07 3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.63 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.63-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
-            </svg>
-          </a>
-          <a class="social-icon" href="https://www.discogs.com/user/PoisonWellRecords" target="_blank" rel="noopener"
-            title="Discogs">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13H9v8h2V7zm4 0h-2v8h2V7z" />
-              <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5" />
-            </svg>
-          </a>
-          <a class="social-icon" href="https://poisonwellrecords.bandcamp.com" target="_blank" rel="noopener"
-            title="Bandcamp">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor" d="M0 18.75l7.44-13.5H24l-7.44 13.5H0z" />
-            </svg>
-          </a>
-          <a class="social-icon" href="https://www.facebook.com/poisonwellrecords/" target="_blank" rel="noopener"
-            title="Facebook">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor"
-                d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.12 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z" />
-            </svg>
-          </a>
-          <a class="social-icon" href="https://www.youtube.com/@poisonwellrecords" target="_blank" rel="noopener"
-            title="YouTube">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <path fill="currentColor"
-                d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.81zM9.55 15.5V8.5l6.27 3.5-6.27 3.5z" />
-            </svg>
-          </a>
-          <a class="social-icon vinyl-store-icon" href="/ventura-punk-record-store-online" title="Vinyl Store">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-              <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5" />
-              <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- YouTube Videos (Moved to Music Videos Page) -->
-
-        <div class="grid grid-4" style="gap: 1.5rem;">
-          <!-- Rubberband -->
-          <article class="card digital-band-card">
-            <img src="assets/Rubberband - babe magnet.webp" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Babe Magnet</h3>
-            <p class="band-name">Rubber Band</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/2Hd1tzrdfJ52r7oFZyEQpG" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('rubberBandBabeMagnet', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- Handsome Devils -->
-          <article class="card digital-band-card">
-            <img src="assets/handsome devils - VTK.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">VTK</h3>
-            <p class="band-name">Had Some Devils</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/artist/front-street-knuckle-draggers/1769070808" target="_blank"
-                rel="noopener" class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://open.spotify.com/track/28kxrQsrn7ndtK7Xy6hc78" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('handsomeDevilsVTK', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- Narthex Structure - Expression -->
-          <article class="card digital-band-card">
-            <img src="assets/Narthex Structure - Expression.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Expression</h3>
-            <p class="band-name">Narthex Structure</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/album/expression/1843054213" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://open.spotify.com/album/1WdE4IEKQWQLh7wCF623Fr" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://amazon.com/music/player/albums/B0FS4H4Z2X" target="_blank" rel="noopener"
-                class="stream-icon amazon" title="Amazon Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.582.246-.092.468-.037.66.137.19.175.218.37.08.584-.288.436-.664.79-1.13 1.062-2.93 1.768-6.124 2.654-9.578 2.654-3.27 0-6.406-.817-9.412-2.448-.224-.12-.34-.31-.29-.551zm-.038-2.286c.074-.09.2-.093.373-.013.866.405 1.785.76 2.755 1.066 3.32 1.056 6.738 1.584 10.252 1.584 2.634 0 5.22-.313 7.755-.938.185-.048.314-.02.384.088.07.108.052.224-.053.352-.268.336-.62.612-1.055.83-2.623 1.372-5.46 2.058-8.512 2.058-3.287 0-6.43-.74-9.427-2.22-.384-.19-.698-.424-.94-.7-.103-.117-.13-.234-.08-.35zm7.982-7.984c0-1.116.306-2.058.92-2.824.613-.766 1.4-1.15 2.36-1.15.96 0 1.74.383 2.34 1.15.6.766.9 1.708.9 2.824 0 1.118-.3 2.066-.9 2.843-.6.777-1.38 1.166-2.34 1.166-.96 0-1.747-.389-2.36-1.166-.614-.777-.92-1.725-.92-2.843zm11.28 11.57c-1.286.938-2.676 1.632-4.17 2.08-1.494.45-3.025.675-4.594.675-2.234 0-4.37-.387-6.406-1.16-2.038-.773-3.85-1.852-5.44-3.238-.125-.112-.153-.25-.084-.415.068-.166.203-.25.404-.25.06 0 .167.03.32.086 3.29 1.28 6.64 1.92 10.05 1.92 1.908 0 3.784-.24 5.628-.717.237-.063.402-.048.494.045.092.094.086.244-.02.45-.107.206-.254.373-.44.5-.188.127-.365.255-.534.384-.168.128-.34.255-.514.38-.176.127-.35.254-.523.38z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('narthexStructureExpression', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- Narthex Structure - 1984 Vinyl -->
-          <article class="card digital-band-card">
-            <img src="assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">1984 (Vinyl)</h3>
-            <p class="band-name">Narthex Structure</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/1cfORm7TZViBd32yUHslsJ" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- FSKD - Front Street Knuckle Draggers -->
-          <article class="card digital-band-card">
-            <img src="assets/front-street-knuckle-draggers-805-punk-record.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Front Street Knuckle Draggers (Vinyl)</h3>
-            <p class="band-name">FSKD</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/artist/front-street-knuckle-draggers/1769070808" target="_blank"
-                rel="noopener" class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://open.spotify.com/track/28kxrQsrn7ndtK7Xy6hc78" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- Los Bondrivers -->
-          <article class="card digital-band-card">
-            <img src="assets/los-bonedrivers-socal-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Whores (Vinyl)</h3>
-            <p class="band-name">Los Bonedrivers</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/artist/los-bonedrivers/1625371132" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://open.spotify.com/album/4qe1GtJYuX7W7FDMJYBrPh" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- All A Blur -->
-          <article class="card digital-band-card">
-            <img src="assets/allblur.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Self-Titled</h3>
-            <p class="band-name">All a Blur</p>
-            <div class="stream-links">
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- RAW - Sick Love -->
-          <article class="card digital-band-card">
-            <img src="assets/raw-sick-love.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Sick Love</h3>
-            <p class="band-name">RAW</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/6ysbSRL0LXdlcEz6Q1bXmh" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://music.apple.com/us/album/sick-love/1693906557" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://amazon.com/music/player/albums/B0C91HHYFN" target="_blank" rel="noopener"
-                class="stream-icon amazon" title="Amazon Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.582.246-.092.468-.037.66.137.19.175.218.37.08.584-.288.436-.664.79-1.13 1.062-2.93 1.768-6.124 2.654-9.578 2.654-3.27 0-6.406-.817-9.412-2.448-.224-.12-.34-.31-.29-.551zm-.038-2.286c.074-.09.2-.093.373-.013.866.405 1.785.76 2.755 1.066 3.32 1.056 6.738 1.584 10.252 1.584 2.634 0 5.22-.313 7.755-.938.185-.048.314-.02.384.088.07.108.052.224-.053.352-.268.336-.62.612-1.055.83-2.623 1.372-5.46 2.058-8.512 2.058-3.287 0-6.43-.74-9.427-2.22-.384-.19-.698-.424-.94-.7-.103-.117-.13-.234-.08-.35zm7.982-7.984c0-1.116.306-2.058.92-2.824.613-.766 1.4-1.15 2.36-1.15.96 0 1.74.383 2.34 1.15.6.766.9 1.708.9 2.824 0 1.118-.3 2.066-.9 2.843-.6.777-1.38 1.166-2.34 1.166-.96 0-1.747-.389-2.36-1.166-.614-.777-.92-1.725-.92-2.843zm11.28 11.57c-1.286.938-2.676 1.632-4.17 2.08-1.494.45-3.025.675-4.594.675-2.234 0-4.37-.387-6.406-1.16-2.038-.773-3.85-1.852-5.44-3.238-.125-.112-.153-.25-.084-.415.068-.166.203-.25.404-.25.06 0 .167.03.32.086 3.29 1.28 6.64 1.92 10.05 1.92 1.908 0 3.784-.24 5.628-.717.237-.063.402-.048.494.045.092.094.086.244-.02.45-.107.206-.254.373-.44.5-.188.127-.365.255-.534.384-.168.128-.34.255-.514.38-.176.127-.35.254-.523.38z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- RAW - Quarantine -->
-          <article class="card digital-band-card">
-            <img src="assets/raw-radioactive-waste-805-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Quarantine</h3>
-            <p class="band-name">RAW</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/6ysbSRL0LXdlcEz6Q1bXmh" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://music.apple.com/us/album/sick-love/1693906557" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- Shim Come Quick -->
-          <article class="card digital-band-card">
-            <img src="assets/shim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Denim, Leather &amp; Chains</h3>
-            <p class="band-name">Shim Come Quick</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/7Eq7s3ksHeuzNVV218Ojqr" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://music.apple.com/us/album/denim-leather-chains/1717182415" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://amazon.com/music/player/albums/B0CNKW1MCK" target="_blank" rel="noopener"
-                class="stream-icon amazon" title="Amazon Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.582.246-.092.468-.037.66.137.19.175.218.37.08.584-.288.436-.664.79-1.13 1.062-2.93 1.768-6.124 2.654-9.578 2.654-3.27 0-6.406-.817-9.412-2.448-.224-.12-.34-.31-.29-.551zm-.038-2.286c.074-.09.2-.093.373-.013.866.405 1.785.76 2.755 1.066 3.32 1.056 6.738 1.584 10.252 1.584 2.634 0 5.22-.313 7.755-.938.185-.048.314-.02.384.088.07.108.052.224-.053.352-.268.336-.62.612-1.055.83-2.623 1.372-5.46 2.058-8.512 2.058-3.287 0-6.43-.74-9.427-2.22-.384-.19-.698-.424-.94-.7-.103-.117-.13-.234-.08-.35zm7.982-7.984c0-1.116.306-2.058.92-2.824.613-.766 1.4-1.15 2.36-1.15.96 0 1.74.383 2.34 1.15.6.766.9 1.708.9 2.824 0 1.118-.3 2.066-.9 2.843-.6.777-1.38 1.166-2.34 1.166-.96 0-1.747-.389-2.36-1.166-.614-.777-.92-1.725-.92-2.843zm11.28 11.57c-1.286.938-2.676 1.632-4.17 2.08-1.494.45-3.025.675-4.594.675-2.234 0-4.37-.387-6.406-1.16-2.038-.773-3.85-1.852-5.44-3.238-.125-.112-.153-.25-.084-.415.068-.166.203-.25.404-.25.06 0 .167.03.32.086 3.29 1.28 6.64 1.92 10.05 1.92 1.908 0 3.784-.24 5.628-.717.237-.063.402-.048.494.045.092.094.086.244-.02.45-.107.206-.254.373-.44.5-.188.127-.365.255-.534.384-.168.128-.34.255-.514.38-.176.127-.35.254-.523.38z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- The Missing 23rd -->
-          <article class="card digital-band-card">
-            <img src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">End of An Error (Vinyl)</h3>
-            <p class="band-name">The Missing 23rd</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/2Uz7tn6QvHkXa3xSeeZ7Xf" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://themissing23rd.bandcamp.com/album/the-end-of-an-error" target="_blank" rel="noopener"
-                class="stream-icon bandcamp" title="Bandcamp">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M0 18.75l7.44-13.5H24l-7.44 13.5H0z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- IDecline - Failure By Design -->
-          <article class="card digital-band-card">
-            <img src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Failure By Design (Vinyl)</h3>
-            <p class="band-name">I Decline</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/5wIlxWPdF6mxOrIybrwbeh" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-              <a href="https://music.apple.com/us/album/failure-by-design/1728319934" target="_blank" rel="noopener"
-                class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-              <a href="https://amazon.com/music/player/albums/B0CTKW7FPW" target="_blank" rel="noopener"
-                class="stream-icon amazon" title="Amazon Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.582.246-.092.468-.037.66.137.19.175.218.37.08.584-.288.436-.664.79-1.13 1.062-2.93 1.768-6.124 2.654-9.578 2.654-3.27 0-6.406-.817-9.412-2.448-.224-.12-.34-.31-.29-.551zm-.038-2.286c.074-.09.2-.093.373-.013.866.405 1.785.76 2.755 1.066 3.32 1.056 6.738 1.584 10.252 1.584 2.634 0 5.22-.313 7.755-.938.185-.048.314-.02.384.088.07.108.052.224-.053.352-.268.336-.62.612-1.055.83-2.623 1.372-5.46 2.058-8.512 2.058-3.287 0-6.43-.74-9.427-2.22-.384-.19-.698-.424-.94-.7-.103-.117-.13-.234-.08-.35zm7.982-7.984c0-1.116.306-2.058.92-2.824.613-.766 1.4-1.15 2.36-1.15.96 0 1.74.383 2.34 1.15.6.766.9 1.708.9 2.824 0 1.118-.3 2.066-.9 2.843-.6.777-1.38 1.166-2.34 1.166-.96 0-1.747-.389-2.36-1.166-.614-.777-.92-1.725-.92-2.843zm11.28 11.57c-1.286.938-2.676 1.632-4.17 2.08-1.494.45-3.025.675-4.594.675-2.234 0-4.37-.387-6.406-1.16-2.038-.773-3.85-1.852-5.44-3.238-.125-.112-.153-.25-.084-.415.068-.166.203-.25.404-.25.06 0 .167.03.32.086 3.29 1.28 6.64 1.92 10.05 1.92 1.908 0 3.784-.24 5.628-.717.237-.063.402-.048.494.045.092.094.086.244-.02.45-.107.206-.254.373-.44.5-.188.127-.365.255-.534.384-.168.128-.34.255-.514.38-.176.127-.35.254-.523.38z" />
-                </svg>
-              </a>
-              <a href="/ventura-punk-record-store-online.html#tab-vinyl" class="stream-icon buy-vinyl"
-                title="Buy Vinyl">
-                <img src="assets/pwricon.png" alt="Buy Vinyl" width="36" height="36"
-                  style="object-fit:cover;border-radius:50%;">
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- IDecline - Self Titled -->
-          <article class="card digital-band-card">
-            <img src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Self-Titled</h3>
-            <p class="band-name">I Decline</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/track/1BBP0mFc2ZAW081WeRRWcM" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          </article>
-
-          <!-- Chaotic Evil -->
-          <article class="card digital-band-card">
-            <img src="assets/Chaotic Evil.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Chaotic Evil EP</h3>
-            <p class="band-name">Chaotic Evil</p>
-            <div class="stream-links">
-              <a href="https://open.spotify.com/album/2Hd1tzrdfJ52r7oFZyEQpG" target="_blank" rel="noopener"
-                class="stream-icon spotify" title="Spotify">
-                <svg viewBox="0 0 168 168" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M84 0C37.8 0 0 37.8 0 84s37.8 84 84 84 84-37.8 84-84S130.2 0 84 0zm38.5 121.2c-1.5 2.5-4.7 3.2-7.1 1.7-19.4-11.9-43.9-14.6-72.7-8-2.8.6-5.6-1.1-6.2-3.9-.6-2.8 1.1-5.6 3.9-6.2 31.6-7.2 58.7-4.1 80.8 9.4 2.4 1.5 3.2 4.6 1.7 7zm10.3-22.9c-1.9 3-5.9 4-8.9 2.1-22.2-13.6-56-17.6-82.3-9.6-3.4 1-7-1-8-4.4s1-7 4.4-8c29.9-9.1 67-4.7 92.6 11.1 3 1.8 4 5.8 2.2 8.8zm.9-23.8c-26.7-15.9-70.7-17.3-96.2-9.6-4.1 1.2-8.4-1.1-9.6-5.2-1.2-4.1 1.1-8.4 5.2-9.6 29.2-8.8 77.8-7.1 108.8 11.2 3.7 2.2 4.9 7 2.7 10.7-2.2 3.6-7 4.9-10.7 2.7z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('chaoticEvilEP', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- The Pits -->
-          <article class="card digital-band-card">
-            <img src="assets/the-pitts-jamestown.png" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Jamestown</h3>
-            <p class="band-name">The Pits</p>
-            <div class="stream-links"><a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('thePitsJamestown', this)">Open Release Platform</button></p>
-          </article>
-
-          <!-- Locals Only -->
-          <article class="card digital-band-card">
-            <img src="assets/Split at the Scenes.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Ventura/Oxnard Soundtrack</h3>
-            <p class="band-name">Locals Only</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/album/locals-only-ventura-oxnard-original-soundtrack/1688055611"
-                target="_blank" rel="noopener" class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-          </article>
-
-          <!-- Locals Only -->
-          <article class="card digital-band-card">
-            <img src="assets/Split at the Scenes.jpg" class="digital-cover" loading="lazy" style="width:100%; aspect-ratio:1/1; object-fit:cover; margin-bottom:1rem; border:1px solid var(--line);">
-            <h3 class="album-title">Ventura/Oxnard Soundtrack</h3>
-            <p class="band-name">Locals Only</p>
-            <div class="stream-links">
-              <a href="https://music.apple.com/us/album/locals-only-ventura-oxnard-original-soundtrack/1688055611"
-                target="_blank" rel="noopener" class="stream-icon apple" title="Apple Music">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor"
-                    d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.205.303-1.273.34-2.32.903-3.066 1.82-.585.723-.95 1.547-1.106 2.447-.074.45-.122.905-.148 1.36-.01.13-.015.262-.02.393L.002 11.99c.003.655.033 1.31.098 1.962.07.73.214 1.437.456 2.115.428 1.154 1.132 2.1 2.134 2.764.69.46 1.44.76 2.254.93.67.136 1.35.2 2.036.228.15.007.3.015.45.015h12.05c.152-.01.303-.017.454-.026.76-.043 1.514-.124 2.23-.31 1.23-.335 2.254-.88 3.01-1.772.608-.71.99-1.516 1.17-2.424.077-.42.126-.844.155-1.27.01-.13.015-.26.02-.39l.004-5.87c-.003-.655-.033-1.31-.098-1.962-.052-.424-.122-.843-.226-1.253zM8.85 16.44c-.04.64-.24 1.21-.58 1.73-.62.94-1.54 1.48-2.6 1.56-.17.01-.35 0-.52-.03-.36-.07-.64-.26-.82-.58-.17-.3-.2-.64-.1-1 .15-.56.48-1.01.93-1.36.46-.35.98-.57 1.55-.65.26-.04.52-.04.78-.02.42.03.75.19.96.56.13.23.18.48.15.76zm6.56-5.22c-.24.37-.61.62-1.03.7-.46.09-.9 0-1.31-.22-.82-.45-1.47-1.09-1.97-1.89-.56-.89-.88-1.87-.96-2.92-.05-.61.05-1.19.32-1.74.34-.68.87-1.11 1.61-1.28.71-.16 1.38-.05 2.01.32.79.46 1.39 1.12 1.83 1.93.43.78.66 1.63.7 2.52.02.47-.08.92-.28 1.35-.17.37-.41.68-.71.94-.26.22-.54.36-.87.42-.24.05-.48.04-.71-.03-.27-.08-.48-.26-.62-.5z" />
-                </svg>
-              </a>
-            <a href="#" target="_blank" rel="noopener" class="stream-icon deezer" title="Deezer"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21 16.5h2.5V19H21zM21 12h2.5v2.5H21zM21 7.5h2.5V10H21zM21 3h2.5v2.5H21zM17.5 16.5H20V19h-2.5zM17.5 12H20v2.5h-2.5zM17.5 7.5H20V10h-2.5zM14 16.5h2.5V19H14zM14 12h2.5v2.5H14zM10.5 16.5H13V19h-2.5zM7 16.5h2.5V19H7zM3.5 16.5H6V19H3.5zM0 16.5h2.5V19H0z"/></svg></a></div>
-          
-            <p style="margin-top:auto;"><button class="btn primary buy-btn" type="button" onclick="goToCheckout('localsOnlyVenturaOxnard', this)">Open Release Platform</button></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tab: Rarities -->
+        <!-- Tab: Rarities -->
     <section class="section tab-content" id="tab-rarities">
       <div class="container">
         <h2 style="font-size: 3.5rem; text-transform: uppercase; font-weight: 900; color: var(--accent); letter-spacing: -2px;">THE RARITY VAULT</h2>

@@ -26,7 +26,7 @@
 
   // Never let the intro gate block access if a later initializer throws.
   if (document.getElementById('splash-gate')) {
-    pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 8000);
+    pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 14000);
   }
 
   function currentFile() {
