@@ -58,25 +58,28 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <div class="logo-mark">
-        <img src="assets/pwricon.png" class="header-logo" alt="Poison Well Records" style="width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));">
-      </div>
+      <a class="brand" href="index.html">
+        <img src="assets/pwr-logo-bird.png" style="width:32px; height:32px; object-fit:contain; vertical-align:middle; margin-right:8px; filter: drop-shadow(0 0 10px rgba(232,92,13,0.5));" alt="">
+        Poison Well Records
+      </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a class="nav-main" href="ventura-punk-record-store-online.html">Vinyl</a>
+          <div class="dropdown-content" aria-label="Vinyl subnavigation">
+            <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
+            <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
+            <a href="music-videos.html">Music Videos</a>
+          </div>
+        </div>
+        <a href="apparel.html">Apparel</a>
         <a href="805-punk-bands.html">805 Archive</a>
         <a href="press.html">Press</a>
         <a href="about-poison-well-records.html">About</a>
-        <div class="nav-dropdown">
-          <a class="nav-main" href="ventura-punk-record-store-online.html">Shop Vinyl</a>
-          <div class="dropdown-content" aria-label="Vinyl subnavigation">
-            <a href="#tab-vinyl">Vinyl Only</a>
-            <a href="#tab-rarities">Rarities</a>
-            <a href="index.html">Home</a>
-          </div>
-        </div>
+        <a href="contact-wholesale.html">Contact / Wholesale</a>
         <a href="faq.html">FAQ</a>
       </nav>
     </div>
@@ -117,7 +120,7 @@
                 <span class="stock-status low">Only 4 left!</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('drKnowLiveCbgb1989', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('drKnowLiveCbgb1989', this)">Add to Crate</button></p>
             </article>
 
             <!-- Los Bonedrivers -->
@@ -132,7 +135,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('losBonedrivers', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('losBonedrivers', this)">Add to Crate</button></p>
             </article>
 
             <!-- Shim Come Quick -->
@@ -147,7 +150,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('shimComeQuickDenimLeatherAndChains', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('shimComeQuickDenimLeatherAndChains', this)">Add to Crate</button></p>
             </article>
 
             <!-- Narthex Structure -->
@@ -162,7 +165,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('narthexStructure1984', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('narthexStructure1984', this)">Add to Crate</button></p>
             </article>
 
             <!-- RAW combined -->
@@ -178,7 +181,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('rawSickLove', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('rawSickLove', this)">Add to Crate</button></p>
             </article>
 
             <!-- The Missing 23rd -->
@@ -193,7 +196,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Add to Crate</button></p>
             </article>
 
             <!-- I Decline - Failure By Design -->
@@ -208,7 +211,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('iDeclineFailureByDesign', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('iDeclineFailureByDesign', this)">Add to Crate</button></p>
             </article>
 
             <!-- I Decline - Self Titled -->
@@ -223,7 +226,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('iDecline', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('iDecline', this)">Add to Crate</button></p>
             </article>
 
             <!-- Front Street Knuckle Draggers -->
@@ -239,7 +242,7 @@
                 <span class="stock-status">In Stock</span>
               </div>
               <p><button class="btn primary buy-btn" type="button"
-                  onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Contact About This Release</button></p>
+                  onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Add to Crate</button></p>
             </article>
           </div>
         <p class="buy-note">Standard vinyl is listed here as part of the archive. Use the contact button for release

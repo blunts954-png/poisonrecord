@@ -80,9 +80,12 @@
 </head>
 
 <body>
-  <header class="topbar">
+  <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/">Poison Well Records</a>
+      <a class="brand" href="index.html">
+        <img src="assets/pwr-logo-bird.png" style="width:32px; height:32px; object-fit:contain; vertical-align:middle; margin-right:8px; filter: drop-shadow(0 0 10px rgba(232,92,13,0.5));" alt="">
+        Poison Well Records
+      </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
@@ -92,13 +95,13 @@
           <a class="nav-main" href="ventura-punk-record-store-online.html">Vinyl</a>
           <div class="dropdown-content" aria-label="Vinyl subnavigation">
             <a href="ventura-punk-record-store-online.html#tab-vinyl">All Vinyl</a>
-            <a href="music-videos.html">Music Videos</a><a href="press.html">Press</a>
-            <a href="ventura-punk-record-store-online.html#tab-digital-releases">Digital Releases</a>
+            <a href="music-videos.html">Music Videos</a>
             <a href="ventura-punk-record-store-online.html#tab-rarities">Rarities</a>
           </div>
         </div>
         <a href="apparel.html">Apparel</a>
-        <a href="805-punk-bands.html">Artists &amp; 805 Archive</a>
+        <a href="805-punk-bands.html" aria-current="page">805 Archive</a>
+        <a href="press.html">Press</a>
         <a href="about-poison-well-records.html">About</a>
         <a href="contact-wholesale.html">Contact / Wholesale</a>
         <a href="faq.html">FAQ</a>
@@ -160,7 +163,7 @@
               <td>All a Blur</td>
               <td>Ventura, California</td>
               <td>Self-Titled</td>
-              <td><button class="btn primary small" onclick="goToCheckout('allBlur', this)">Contact</button></td>
+              <td><button class="btn primary small" onclick="goToCheckout('allBlur', this)">Buy Vinyl</button></td>
             </tr>
             <tr>
               <td>RAW</td>
@@ -190,25 +193,25 @@
               <td>Dr. Know</td>
               <td>Ventura, California</td>
               <td>Live CBGB 1989</td>
-              <td><button class="btn primary small" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Contact</button></td>
+              <td><button class="btn primary small" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Vinyl</button></td>
             </tr>
             <tr>
               <td>Chaotic Evil</td>
               <td>Bakersfield, California</td>
               <td>Chaotic Evil EP</td>
-              <td><button class="btn primary small" onclick="goToCheckout('chaoticEvilEP', this)">Contact</button></td>
+              <td><button class="btn primary small" onclick="goToCheckout('chaoticEvilEP', this)">Buy Vinyl</button></td>
             </tr>
             <tr>
               <td>Split at the Scenes</td>
               <td>Ventura, California</td>
               <td>Scene compilation</td>
-              <td><button class="btn primary small" onclick="goToCheckout('localsOnlyVenturaOxnard', this)">Contact</button></td>
+              <td><button class="btn primary small" onclick="goToCheckout('localsOnlyVenturaOxnard', this)">Buy Vinyl</button></td>
             </tr>
             <tr>
               <td>The Pits</td>
               <td>Ventura, California</td>
               <td>Jamestown</td>
-              <td><button class="btn primary small" onclick="goToCheckout('thePitsJamestown', this)">Contact</button></td>
+              <td><button class="btn primary small" onclick="goToCheckout('thePitsJamestown', this)">Buy Vinyl</button></td>
             </tr>
           </tbody>
         </table>
