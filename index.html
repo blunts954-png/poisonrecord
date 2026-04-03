@@ -143,8 +143,8 @@
         <span class="hamburger"></span>
       </button>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
-        <a href="https://www.redbubble.com/people/poisonwell" target="_blank">Shop Merch</a>
-        <a href="https://www.youtube.com/@poisonwellrecords" target="_blank">YouTube</a>
+        <a href="https://www.redbubble.com/people/poisonwell" target="_blank" class="nav-merch">Shop Merch</a>
+        <a href="https://www.youtube.com/@poisonwellrecords" target="_blank" class="nav-youtube">YouTube</a>
         <a href="index.html" aria-current="page">Home</a>
         <div class="nav-dropdown">
           <a class="nav-main" href="ventura-punk-record-store-online.html">Shop</a>
@@ -303,19 +303,20 @@
     <section class="releases" id="releases">
       <div class="container">
         <h2>Featured Releases</h2>
-
         <div class="release-grid">
-          
           <!-- RELEASE CARD 1: THE PITTS (HIGHLIGHTED) -->
-          <article class="release-card highlight-card" style="border: 2px solid #ffd700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); position: relative;">
-            <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #ffd700; color: #000; padding: 2px 10px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Store Favorite</div>
+          <article class="release-card highlight-card">
+            <div class="card-badge">Store Favorite</div>
             <div class="release-cover">
               <img src="assets/Jamestown the pitts.png" class="release-cover-image" alt="The Pitts - Jamestown vinyl cover" />
             </div>
-            <h3>The Pitts - Jamestown</h3>
-            <p style="font-size: 0.9rem; font-style: italic; color: #ffd700; margin-top: 0.5rem; text-align: center; padding: 0 1rem;">"A definitive masterpiece of the 805 sound. Essential listening."</p>
+            <div class="release-info">
+              <div class="artist">The Pitts</div>
+              <h3>Jamestown</h3>
+            </div>
+            <p style="font-size: 0.9rem; font-style: italic; color: #ffd700; margin-bottom: 1.5rem; text-align: center; padding: 0 1rem; opacity: 0.85;">"A definitive masterpiece of the 805 sound. Essential listening."</p>
             <div class="release-links">
-              <!-- No buy button per user request to remove 'buy vinyl' from PITTS on front page -->
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('thePittsJamestown', this)">Buy Vinyl</button>
             </div>
           </article>
 
@@ -325,106 +326,149 @@
               <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg"
                 alt="Dr. Know - Live CBGB 1989 vinyl cover" />
             </div>
-            <h3>Dr. Know - Live CBGB 1989</h3>
+            <div class="release-info">
+              <div class="artist">Dr. Know</div>
+              <h3>Live CBGB 1989</h3>
+            </div>
             <div class="release-links">
-              <a href="#" class="btn primary" onclick="goToCheckout('drKnowLiveCbgb1989', this); return false;">Buy Vinyl</a>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 2: Narthex Structure -->
+          <!-- RELEASE CARD 3: Narthex Structure -->
           <article class="release-card">
             <div class="release-cover">
               <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg"
                 alt="Narthex Structure - 1984 vinyl cover" />
             </div>
-            <h3>Narthex Structure - 1984</h3>
+            <div class="release-info">
+              <div class="artist">Narthex Structure</div>
+              <h3>1984</h3>
+            </div>
             <div class="release-links">
               <button class="btn primary buy-btn" type="button" onclick="goToCheckout('narthexStructure1984', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 3: RAW - Sick Love / Quarantine -->
+          <!-- RELEASE CARD 4: RAW - Sick Love / Quarantine -->
           <article class="release-card">
             <div class="release-cover">
               <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/raw-radioactive-waste-805-punk-vinyl.jpg"
                 alt="RAW - Sick Love / Quarantine combined vinyl cover" />
             </div>
-            <h3>RAW - Sick Love / Quarantine</h3>
+            <div class="release-info">
+              <div class="artist">R.A.W.</div>
+              <h3>Sick Love / Quarantine</h3>
+            </div>
             <div class="release-links">
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('rawSickLove', this)">Buy Vinyl</button>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('rawSickLoveQuarantine', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 5: The Missing 23rd -->
+          <!-- RELEASE CARD 5: Shim Come Quick - In Between -->
           <article class="release-card">
             <div class="release-cover">
-              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg"
-                alt="The Missing 23rd - The End of an Error vinyl cover" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/shim-come-quick-in-between-vinyl-805-punk.jpg"
+                alt="Shim Come Quick - In Between vinyl cover" />
             </div>
-            <h3>The Missing 23rd - The End of an Error</h3>
+            <div class="release-info">
+              <div class="artist">Shim Come Quick</div>
+              <h3>In Between</h3>
+            </div>
             <div class="release-links">
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Buy Vinyl</button>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('shimComeQuickInBetween', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 6: Front Street Knuckle Draggers -->
+          <!-- RELEASE CARD 6: Stäläg 13 - In Control -->
           <article class="release-card">
             <div class="release-cover">
-              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/front-street-knuckle-draggers-805-punk-record.jpg"
-                alt="Front Street Knuckle Draggers vinyl cover" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/stalag-13-in-control-ventura-punk-vinyl.jpg"
+                alt="Stäläg 13 - In Control vinyl cover" />
             </div>
-            <h3>Front Street Knuckle Draggers</h3>
+            <div class="release-info">
+              <div class="artist">Stäläg 13</div>
+              <h3>In Control</h3>
+            </div>
             <div class="release-links">
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Buy Vinyl</button>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('stalag13InControl', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 7: I Decline - Failure By Design -->
+          <!-- RELEASE CARD 7: Ill Repute - What's Next? -->
           <article class="release-card">
             <div class="release-cover">
-              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg"
-                alt="I Decline - Failure By Design vinyl cover" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/ill-repute-whats-next-805-punk-vinyl.jpg"
+                alt="Ill Repute - What's Next? vinyl cover" />
             </div>
-            <h3>I Decline - Failure By Design</h3>
+            <div class="release-info">
+              <div class="artist">Ill Repute</div>
+              <h3>What's Next?</h3>
+            </div>
             <div class="release-links">
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('iDeclineFailureByDesign', this)">Buy Vinyl</button>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('illReputeWhatsNext', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 8: I Decline -->
+          <!-- RELEASE CARD 8: False Confession - 1984 -->
           <article class="release-card">
             <div class="release-cover">
-              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline vinyl cover" loading="lazy" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/false-confession-1984-ventura-punk-vinyl.jpg"
+                alt="False Confession - 1984 vinyl cover" />
             </div>
-            <h3>I Decline</h3>
+            <div class="release-info">
+              <div class="artist">False Confession</div>
+              <h3>1984</h3>
+            </div>
             <div class="release-links">
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('iDecline', this)">Buy Vinyl</button>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('falseConfession1984', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 9: Los Bonedrivers -->
+          <!-- RELEASE CARD 9: Agression - Full Circle -->
           <article class="release-card">
             <div class="release-cover">
-              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/los-bonedrivers-socal-punk-vinyl.jpg"
-                alt="Los Bonedrivers vinyl cover" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/agression-full-circle-805-punk-vinyl.jpg"
+                alt="Agression - Full Circle vinyl cover" />
             </div>
-            <h3>Los Bonedrivers</h3>
+            <div class="release-info">
+              <div class="artist">Agression</div>
+              <h3>Full Circle</h3>
+            </div>
             <div class="release-links">
-              <a href="#" class="btn primary" onclick="goToCheckout('losBonedrivers', this); return false;">Buy Vinyl</a>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('agressionFullCircle', this)">Buy Vinyl</button>
             </div>
           </article>
 
-          <!-- RELEASE CARD 10: Slim Come Quick -->
+          <!-- RELEASE CARD 10: RKL - Live in Berlin -->
           <article class="release-card">
             <div class="release-cover">
-              <img src="assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" class="release-cover-image"
-                alt="Slim Come Quick - Denim, Leather & Chains vinyl cover" />
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/rkl-live-in-berlin-805-punk-vinyl.jpg"
+                alt="RKL - Live in Berlin vinyl cover" />
             </div>
-            <h3>Slim Come Quick - Denim, Leather & Chains</h3>
+            <div class="release-info">
+              <div class="artist">R.K.L.</div>
+              <h3>Live in Berlin</h3>
+            </div>
             <div class="release-links">
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('rklLiveBerlin', this)">Buy Vinyl</button>
             </div>
           </article>
 
+          <!-- RELEASE CARD 11: Scared Straight - Born to Be Wild -->
+          <article class="release-card">
+            <div class="release-cover">
+              <img class="release-cover-image" loading="lazy" width="400" height="400" src="assets/scared-straight-born-to-be-wild-805-punk-vinyl.jpg"
+                alt="Scared Straight - Born to Be Wild vinyl cover" />
+            </div>
+            <div class="release-info">
+              <div class="artist">Scared Straight</div>
+              <h3>Born to Be Wild</h3>
+            </div>
+            <div class="release-links">
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('scaredStraightBornWild', this)">Buy Vinyl</button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
