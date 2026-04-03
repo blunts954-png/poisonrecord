@@ -374,8 +374,8 @@
       });
       window.location.href = payload.url;
     } catch (error) {
-      setCheckoutBusy(triggerEl, false);
-      if (fallbackToStripePaymentLink(productKey, 1)) {
+      if (buttonElement) toggleLoading(buttonElement, false);
+      if (fallbackToStripePaymentLink(priceKey, 1)) {
         return;
       }
       alert(error && error.message ? error.message : 'Stripe checkout is unavailable right now.');
