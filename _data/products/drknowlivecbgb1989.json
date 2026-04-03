@@ -1,0 +1,9 @@
+{
+  "name": "Live CBGB 1989 - Dr. Know",
+  "description": "Limited 12-inch archival pressing from the Ventura hardcore vault.",
+  "unitAmount": 4900,
+  "imagePath": "/assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 4,
+  "id": "drKnowLiveCbgb1989"
+}

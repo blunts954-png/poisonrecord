@@ -1,0 +1,138 @@
+{
+  "drKnowLiveCbgb1989": {
+    "name": "Live CBGB 1989 - Dr. Know",
+    "description": "Limited 12-inch archival pressing from the Ventura hardcore vault.",
+    "unitAmount": 4900,
+    "imagePath": "/assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 4
+  },
+  "losBonedrivers": {
+    "name": "Whores - Los Bonedrivers",
+    "description": "Melodic punk release distributed by Poison Well Records.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/los-bonedrivers-socal-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "slimComeQuickDenimLeatherAndChains": {
+    "name": "Denim, Leather & Chains - Shim Come Quick",
+    "description": "Street-level punk release with full DIY energy.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "narthexStructure1984": {
+    "name": "1984 - Narthex Structure",
+    "description": "Historic 805 archive pressing recovered for vinyl.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "rawSickLove": {
+    "name": "Sick Love / Quarantine - RAW",
+    "description": "Combined A-side/B-side pressing with updated 'Radio Active Waste' cover art.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/raw-radioactive-waste-805-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "theMissing23rdEndOfAnError": {
+    "name": "The End of an Error - The Missing 23rd",
+    "description": "Classic Ventura hardcore cut for old heads and new kids.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "iDeclineFailureByDesign": {
+    "name": "Failure By Design - I Decline",
+    "description": "SoCal punk and hardcore release with biting pace and edge.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/i-decline-failure-by-design-socal-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "iDecline": {
+    "name": "Self-Titled - I Decline",
+    "description": "Raw punk delivery from a scene-rooted project.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/i-decline-socal-punk-vinyl.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "frontStreetKnuckleDraggers": {
+    "name": "Front Street Knuckle Draggers - FSKD",
+    "description": "Hard-driving regional underground punk pressing.",
+    "unitAmount": 2500,
+    "imagePath": "/assets/front-street-knuckle-draggers-805-punk-record.jpg",
+    "inventoryType": "vinyl",
+    "maxQuantity": 6
+  },
+  "fluidFilledIDecline": {
+    "name": "Fluid-Filled - I Decline",
+    "description": "Ultra-rare custom liquid-filled variant. A high-value collector piece from the SoCal hardcore scene.",
+    "unitAmount": 8000,
+    "imagePath": "/assets/i-decline-socal-punk-vinyl.jpg",
+    "inventoryType": "rarity",
+    "maxQuantity": 1
+  },
+  "splatterIDecline": {
+    "name": "Failure By Design (Splatter Edition) - I Decline",
+    "description": "Limited edition splatter vinyl pressing. The definitive red-and-black splatter variant capturing the raw intensity of the 805 punk spirit. A true collector's artifact.",
+    "unitAmount": 8000,
+    "imagePath": "/assets/i-decline-splatter-vinyl.jpg",
+    "inventoryType": "rarity",
+    "maxQuantity": 1
+  },
+  "chaoticEvilEP": {
+    "name": "Chaotic Evil EP",
+    "description": "Digital release from the Poison Well archives.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/Chaotic Evil.jpg",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  },
+  "handsomeDevilsVTK": {
+    "name": "VTK - Handsome Devils",
+    "description": "Digital release from the 805 scene.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/handsome devils - VTK.jpg",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  },
+  "localsOnlyVenturaOxnard": {
+    "name": "Ventura/Oxnard Soundtrack - Locals Only",
+    "description": "Digital compilation from the Ventura/Oxnard punk scene.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/Split at the Scenes.jpg",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  },
+  "narthexStructureExpression": {
+    "name": "Expression - Narthex Structure",
+    "description": "Digital archive release from Narthex Structure.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/Narthex Structure - Expression.jpg",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  },
+  "rubberBandBabeMagnet": {
+    "name": "Babe Magnet - Rubberband",
+    "description": "Digital release from the Poison Well catalog.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/Rubberband - babe magnet.webp",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  },
+  "thePittsJamestown": {
+    "name": "Jamestown - The Pitts",
+    "description": "Digital release documenting The Pitts from the 805 scene.",
+    "unitAmount": 1000,
+    "imagePath": "/assets/the-pitts-jamestown.png",
+    "inventoryType": "digital",
+    "maxQuantity": 1
+  }
+}

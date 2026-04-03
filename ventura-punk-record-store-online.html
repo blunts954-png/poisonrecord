@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive Store | Poison Well Records Ventura</title>
+  <meta name="description" content="Browse archive vinyl, test pressings, rarity drops, and limited edition inventory from Poison Well Records in Ventura." />
+  <link rel="canonical" href="https://poisonwellrecords.netlify.app/ventura-punk-record-store-online" />
+  <!-- SEO/GEO and Schema handled dynamically by site.js -->
+  <link rel="preload" as="style" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="hero-background.jpg" type="image/jpeg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Poison Well Records Archive Inventory",
+    "description": "Catalog of Ventura and 805 punk archive releases, physical vinyl, and rarity drops.",
+    "url": "https://poisonwellrecords.netlify.app/ventura-punk-record-store-online",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Live CBGB 1989 - Dr. Know",
+          "description": "Ventura hardcore punk live at CBGB, limited vinyl pressing.",
+          "image": "https://poisonwellrecords.netlify.app/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Front Street Knuckle Draggers - FSKD",
+          "description": "805 punk vinyl release from Front Street Knuckle Draggers.",
+          "image": "https://poisonwellrecords.netlify.app/front-street-knuckle-draggers-805-punk-record.jpg"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "1984 - Narthex Structure",
+          "description": "Archival 805 punk recording on 12 inch vinyl.",
+          "image": "https://poisonwellrecords.netlify.app/narthex-structure-1984-ventura-805-punk-vinyl.jpg"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Jamestown - The Pitts",
+          "description": "Debut album by Ventura rock band The Pitts on physical vinyl.",
+          "image": "https://poisonwellrecords.netlify.app/assets/Jamestown the pitts.png"
+        }
+      }
+    ]
+  }
+  </script>
+  <script src="site.js" defer></script>
+</head>
+
+<body>
+  <div class="promo-banner">Free Shipping on every $65 order</div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        Poison Well Records
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a class="nav-main" href="ventura-punk-record-store-online.html">Shop</a>
+          <div class="dropdown-content">
+            <a href="ventura-punk-record-store-online.html">All Shop</a>
+            <a href="ventura-punk-record-store-online.html#tab-vinyl">Buy Vinyl</a>
+            <a href="rarities.html">Rarities</a>
+          </div>
+        </div>
+        <a href="805-punk-bands.html">Archive</a>
+        <a href="digital-music-hub.html">Digital Music Hub</a>
+        <a href="press.html">Press</a>
+        <a href="about-poison-well-records.html">About</a>
+        <a href="contact-wholesale.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="#top" class="nav-back-to-top">Back to Top</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero hero-vinyl">
+      <div class="container">
+        <h1>Ventura Punk Record Store Online</h1>
+        <p class="lead">Ventura and Southern California's finest underground punk, hardcore, and post-punk on limited physical vinyl. Hand-shipped directly from the well.</p>
+      </div>
+    </section>
+
+    <!-- Store Tabs Navigation -->
+    <section class="section store-tabs-section">
+      <div class="container">
+        <div class="store-controls">
+          <div class="search-wrap">
+            <input type="text" id="store-search" placeholder="Search our physical catalog...">
+          </div>
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="vinyl">Vinyl Catalog</button>
+            <button class="tab-btn" data-tab="rarities">Rarities & Archive</button>
+          </div>
+        </div>
+
+        <div id="tab-vinyl" class="tab-content active">
+          <div class="vinyl-container">
+
+            <!-- Dr. Know -->
+            <article class="vinyl-card" data-tags="dr know live cbgb vinyl hardcore">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg" alt="Dr. Know Live CBGB 1989 vinyl cover" />
+              <h3>Live CBGB 1989</h3>
+              <p class="artist">Dr. Know</p>
+              <div class="price-row">
+                <span class="price">$49.00</span>
+              </div>
+              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Captured from the soundboard on high-fidelity reel-to-reel.</p>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- Los Bonedrivers -->
+            <article class="vinyl-card" data-tags="los bonedrivers whores vinyl punk">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/los-bonedrivers-socal-punk-vinyl.jpg" alt="Los Bonedrivers Whores" />
+              <h3>Whores</h3>
+              <p class="artist">Los Bonedrivers</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('losBonedrivers', this)">Buy Vinyl</button>
+            </article>
+
+            <article class="vinyl-card" data-tags="slim come quick denim leather chains vinyl punk">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" alt="Slim Come Quick Denim Leather and Chains" />
+              <h3>Denim, Leather &amp; Chains</h3>
+              <p class="artist">Slim Come Quick</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Mastered from the original 1984 cassette tapes found in a garage in Oxnard.</p>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('slimComeQuickDenimLeatherAndChains', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- The Pitts -->
+            <article class="vinyl-card" data-tags="the pitts jamestown rocky vinyl punk rock">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/Jamestown the pitts.png" alt="The Pitts Jamestown vinyl cover" />
+              <h3>Jamestown</h3>
+              <p class="artist">The Pitts</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('thePittsJamestown', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- Narthex Structure -->
+            <article class="vinyl-card" data-tags="narthex structure 1984 vinyl archive 805">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg" alt="Narthex Structure 1984" />
+              <h3>1984</h3>
+              <p class="artist">Narthex Structure</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Sourced from the original 1/2-inch multi-track tapes discovered in the Narthex vault.</p>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('narthexStructure1984', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- RAW combined -->
+            <article class="vinyl-card" data-tags="raw sick love quarantine combined vinyl 805">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/raw-radioactive-waste-805-punk-vinyl.jpg" alt="RAW Sick Love / Quarantine" />
+              <h3>Sick Love / Quarantine</h3>
+              <p class="artist">RAW</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('rawSickLove', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- The Missing 23rd -->
+            <article class="vinyl-card" data-tags="missing 23rd end of an error vinyl hardcore">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg" alt="The Missing 23rd The End of an Error" />
+              <h3>The End of an Error</h3>
+              <p class="artist">The Missing 23rd</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- I Decline - Failure By Design -->
+            <article class="vinyl-card" data-tags="i decline failure by design vinyl hardcore">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" alt="I Decline Failure By Design" />
+              <h3>Failure By Design</h3>
+              <p class="artist">I Decline</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('iDeclineFailureByDesign', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- I Decline - Self Titled -->
+            <article class="vinyl-card" data-tags="i decline self titled vinyl punk">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline Self-Titled" />
+              <h3>Self-Titled</h3>
+              <p class="artist">I Decline</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('iDecline', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- Front Street Knuckle Draggers -->
+            <article class="vinyl-card" data-tags="front street knuckle draggers vinyl punk">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/front-street-knuckle-draggers-805-punk-record.jpg" alt="Front Street Knuckle Draggers" />
+              <h3>Front Street Knuckle Draggers</h3>
+              <p class="artist">FSKD</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Buy Vinyl</button>
+            </article>
+          </div>
+        <p class="buy-note">Standard vinyl is listed here as part of the archive. Use the contact button for release
+          inquiries. Direct on-site checkout is reserved for rarity drops.
+        </p>
+      </div>
+    </section>
+
+        <!-- Tab: Rarities -->
+    <section class="section tab-content" id="tab-rarities">
+      <div class="container">
+        <h2 style="font-size: 3.5rem; text-transform: uppercase; font-weight: 900; color: var(--accent); letter-spacing: -2px;">THE RARITY VAULT</h2>
+        <p class="lead" style="margin-bottom: 3rem;">Archival documentation of the 805 scene's most extreme pressings. These units are limited to one per customer and represent the peak of Poison Well's physical preservation efforts.</p>
+        <div style="max-width: 600px; margin: 0 auto;">
+          <article class="card product-card" style="border: 2px solid var(--accent); position: relative; padding: 2rem;">
+            <div class="badge rarity" style="background:#ff0000; animation: pulseRed 1s infinite; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); z-index: 10;">ONLY ONE REMAINING</div>
+            <img class="product-image" loading="lazy" width="600" height="600" src="assets/IMG_20260326_223219.jpg" alt="I Decline - Failure By Design Splatter Edition Rarity" style="aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--line);" />
+            <h3 class="accent" style="font-size: 2.2rem; margin-top: 2rem; line-height: 1.1;">Failure By Design (Splatter Edition) – I Decline</h3>
+            <p class="band-name" style="opacity: 0.6; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">805 Archive // Rarity Drop</p>
+            <p>The definitive splatter variant of the 'I Decline' sessions. Visceral red-and-black mixing that captures the raw intensity of the 805 punk spirit. A true collector's artifact.</p>
+            <div class="price-row" style="margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between;">
+              <span class="price" style="font-size: 2.8rem; font-weight: 900; color: #fff;">$80.00</span>
+              <span class="stock-status low" style="color: var(--accent); font-weight: 800; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;">AUTHENTIC ARCHIVE</span>
+            </div>
+            <p><button class="btn primary full-width" type="button" onclick="goToCheckout('splatterIDecline', this)" style="font-size: 1.4rem; padding: 1.5rem; font-weight: 900;">BUY VINYL</button></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Shop By Scene</h2>
+        <p><a href="/ventura-punk-vinyl">Ventura punk vinyl</a> and <a href="/805-punk-bands">805 punk bands</a> are
+          linked across this store to keep browsing fast for fans and search crawlers.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <p>Booking, distro, press, or weird ideas: <a
+          href="mailto:poisonwellrecords@gmail.com">poisonwellrecords@gmail.com</a></p>
+      <p><a class="btn primary" href="mailto:poisonwellrecords@gmail.com?subject=Buying%20Records%20Inquiry">Buy Records / Inquiries</a></p>
+      <p>© Poison Well Records | Ventura, CA 93001 | Support your local scenes before they're gone.</p>
+      <div class="footer-social-icons">
+        <a href="ventura-punk-record-store-online.html" class="social-icon icon-store" title="Shop Vinyl">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-12.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 5.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@poisonwellrecords" target="_blank" class="social-icon icon-youtube"
+          title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M21.582 6.186a2.67 2.67 0 0 0-1.884-1.884C18.033 3.868 12 3.868 12 3.868s-6.033 0-7.698.434A2.67 2.67 0 0 0 2.418 6.186C2 7.85 2 12 2 12s0 4.15.418 5.814a2.67 2.67 0 0 0 1.884 1.884C6.033 20.132 12 20.132 12 20.132s6.033 0 7.698-.434a2.67 2.67 0 0 0 1.884-1.884C22 16.15 22 12 22 12s0-4.15-.418-5.814zM9.996 15.348V8.652L15.603 12l-5.607 3.348z" />
+          </svg>
+        </a>
+
+        <a href="mailto:poisonwellrecords@gmail.com?subject=Discord%20Invite%20Request" class="social-icon icon-discord" title="Request Discord Invite">
+          <svg viewBox="0 0 127.14 96.36" fill="currentColor">
+            <path
+              d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.73 56.58.51 80.17a105.73 105.73 0 0 0 32.17 16.19 77.7 77.7 0 0 0 6.89-11.1 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.68 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.19c2.64-27.38-4.51-51.11-18.89-72.11zM42.79 65.43c-5.15 0-9.36-4.66-9.36-10.37s4.12-10.37 9.36-10.37c5.29 0 9.42 4.7 9.36 10.37 0 5.71-4.12 10.37-9.36 10.37zm41.56 0c-5.15 0-9.36-4.66-9.36-10.37s4.12-10.37 9.36-10.37c5.29 0 9.42 4.7 9.36 10.37 0 5.71-4.12 10.37-9.36 10.37z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/poisonwellrecords/" target="_blank" class="social-icon icon-facebook"
+          title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.99 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.77-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.99 22 12z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/poisonwellrecords" target="_blank" class="social-icon icon-instagram"
+          title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.427.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 1.802c-2.67 0-3.004.01-4.058.058-.975.045-1.504.207-1.854.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.35-.3.88-.344 1.855-.048 1.054-.058 1.387-.058 4.057v.002c0 2.67.01 3.004.058 4.058.045.975.207 1.504.344 1.854.182.466.399.8.748 1.15.35.35.683.566 1.15.748.35.137.88.3 1.855.344 1.054.048 1.387.058 4.057.058 2.67 0 3.004-.01 4.058-.058.975-.045 1.504-.207 1.854-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.35.3-.88.344-1.855.048-1.054.058-1.387.058-4.057 0-2.67-.01-3.004-.058-4.058-.045-.975-.207-1.504-.344-1.854a3.097 3.097 0 0 0-.748-1.15 3.098 3.098 0 0 0-1.15-.748c-.35-.137-.88-.3-1.855-.344-1.054-.048-1.387-.058-4.057-.058zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.802a3.333 3.333 0 1 0 0 6.666 3.333 3.333 0 0 0 0-6.666zm5.338-3.205a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z" />
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@poisonwellrecords" target="_blank" class="social-icon icon-tiktok"
+          title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+          </svg>
+        </a>
+      </div>
+    <div class="footer-credit">Powered by chaoticallyorganizedai.com</div></div>
+  </footer>
+  <script src="stripe-config.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+window.POISON_WELL_STRIPE_LINKS = {
+  // Optional fallback Stripe Payment Links for record inventory.
+  // Primary record checkout now uses the server-side Netlify function.
+  // This file is shipped to the browser. Do not store Stripe secret keys here.
+  // Format: https://buy.stripe.com/test_... (placeholders for demo/testing only)
+  drKnowLiveCbgb1989: "https://buy.stripe.com/test_14k4gK6zA0mH5bC6op",
+  frontStreetKnuckleDraggers: "https://buy.stripe.com/test_5kA6rYbGd0mJ4a0dQR",
+  narthexStructure1984: "https://buy.stripe.com/test_a1B2cD3eF0gH6i7jKL",
+  rawSickLove: "https://buy.stripe.com/test_abC12dEfG0hI9jKlmN",
+  rawQuarantine: "https://buy.stripe.com/test_9LmN0opQrS1tUvWxYZ",
+  theMissing23rdEndOfAnError: "https://buy.stripe.com/test_7GhI8jKlM0nOpQ2rST",
+  iDeclineFailureByDesign: "https://buy.stripe.com/test_3AbC4dEfG0hI5jKlm",
+  iDecline: "https://buy.stripe.com/test_6XyZ7wVbC0sT9uOpQr",
+  slimComeQuickDenimLeatherAndChains: "https://buy.stripe.com/test_8UvWxYzA0bC1dEfGhI",
+  losBonedrivers: "https://buy.stripe.com/test_0QrStUvWxY1zAbCdEf",
+  thePittsJamestown: "https://buy.stripe.com/test_3V7v8ZzG2N9lM1X9S5W8Tz"
+};

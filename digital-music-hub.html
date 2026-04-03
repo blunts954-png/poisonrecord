@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Music Hub | Poison Well Records</title>
+  <meta name="description" content="Stream and download Poison Well Records artists on Spotify, Bandcamp, and Apple Music." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hub-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin-top: 3rem;
+    }
+    .hub-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 2rem;
+      text-align: center;
+    }
+    .platform-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .platform-icon {
+      width: 32px;
+      height: 32px;
+      fill: var(--text);
+      transition: fill 0.2s;
+    }
+    .platform-icon:hover {
+      fill: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-banner">Free Shipping on every $65 order</div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Poison Well Records</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a class="nav-main" href="ventura-punk-record-store-online.html">Shop</a>
+          <div class="dropdown-content">
+            <a href="ventura-punk-record-store-online.html">All Shop</a>
+            <a href="ventura-punk-record-store-online.html#tab-vinyl">Buy Vinyl</a>
+            <a href="rarities.html">Rarities</a>
+          </div>
+        </div>
+        <a href="805-punk-bands.html">Archive</a>
+        <a href="digital-music-hub.html">Digital Music Hub</a>
+        <a href="press.html">Press</a>
+        <a href="about-poison-well-records.html">About</a>
+        <a href="contact-wholesale.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Digital Music Hub</h1>
+        <p class="lead">Stream the 805 sound anywhere.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="hub-grid">
+          <!-- Rubberband -->
+          <article class="hub-card" id="rubberband">
+            <div class="hub-cover">
+              <img src="assets/rubberband-805-punk-record.jpg" alt="Rubberband - I Will Cover" />
+            </div>
+            <div class="hub-content">
+              <h3>Rubberband</h3>
+              <p class="hub-album">I Will Cover</p>
+              <div class="hub-links">
+                <a href="https://open.spotify.com/artist/6S4xG7m3T7C8n7n7n7n7n7" target="_blank" class="hub-link platform-spotify">Spotify</a>
+                <a href="https://music.apple.com/us/artist/rubberband/1529124431" target="_blank" class="hub-link platform-apple">Apple Music</a>
+                <a href="https://rubberbandsound.bandcamp.com" target="_blank" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="https://www.youtube.com/channel/UC-rubberband" target="_blank" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- The Handsome Devils -->
+          <article class="hub-card" id="the-handsome-devils">
+            <div class="hub-cover">
+              <img src="assets/handsomedevils.png" alt="The Handsome Devils - A Handsome Devils" />
+            </div>
+            <div class="hub-content">
+              <h3>The Handsome Devils</h3>
+              <p class="hub-album">A Handsome Devils</p>
+              <div class="hub-links">
+                <a href="https://open.spotify.com/artist/7S4xG7m3T7C8n7n7n7n7n7" target="_blank" class="hub-link platform-spotify">Spotify</a>
+                <a href="https://music.apple.com/us/artist/the-handsome-devils/1529124432" target="_blank" class="hub-link platform-apple">Apple Music</a>
+                <a href="https://www.youtube.com/@handsome-devils-hc" target="_blank" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="https://www.youtube.com/@handsome-devils-hc" target="_blank" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dr. Know -->
+          <article class="hub-card" id="dr-know">
+            <img src="assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg" alt="Dr. Know" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>Dr. Know</h3>
+            <div class="platform-icons">
+              <a href="https://drknow1.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://cleopatrarecords.bandcamp.com/album/f-ck-off-and-die" target="_blank" rel="noopener" title="Bandcamp (Cleopatra)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/dr-know/306209" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://www.amazon.com/Best-Dr-Know-Explicit/dp/B000SFZ9V6" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/499S729227183617301054" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Narthex -->
+          <article class="hub-card" id="narthex">
+            <img src="assets/Narthex Structure - Expression.jpg" alt="Narthex" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>Narthex</h3>
+            <div class="platform-icons">
+              <a href="https://narthexofficial.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://narthex.bandcamp.com/album/narthex-ep" target="_blank" rel="noopener" title="Bandcamp (EP)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/narthex-structure/1585640104" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://www.amazon.com/music/player/artists/B09G74N38Y/narthex-structure" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/6P2XUoYy3GzQZ3u2XwX9uS" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- The Missing 23rd -->
+          <article class="hub-card" id="the-missing-23rd">
+            <img src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg" alt="The Missing 23rd" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>The Missing 23rd</h3>
+            <div class="platform-icons">
+              <a href="https://themissing23rdfoo.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Main)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/the-missing-23rd/6638062" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://music.amazon.com/artists/the-missing-23rd" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/4X9zYpYp9v1zX3q1z9zYpY" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Los Bonedrivers -->
+          <article class="hub-card" id="los-bonedrivers">
+            <div class="hub-cover">
+              <img src="assets/los-bonedrivers-socal-punk-vinyl.jpg" alt="Los Bonedrivers" />
+            </div>
+            <div class="hub-content">
+              <h3>Los Bonedrivers</h3>
+              <p class="hub-album">Archive Sessions</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- The Velveteens -->
+          <article class="hub-card" id="the-velveteens">
+            <div class="hub-cover">
+              <img src="assets/velveteens.png" alt="The Velveteens" />
+            </div>
+            <div class="hub-content">
+              <h3>The Velveteens</h3>
+              <p class="hub-album">Suburban Despair</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- I Decline -->
+          <article class="hub-card" id="i-decline">
+            <div class="hub-cover">
+              <img src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline" />
+            </div>
+            <div class="hub-content">
+              <h3>I Decline</h3>
+              <p class="hub-album">Failure By Design</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Burning Dog -->
+          <article class="hub-card" id="burning-dog">
+            <div class="hub-cover">
+              <img src="assets/burning_dog_artwork.png" alt="Burning Dog" />
+            </div>
+            <div class="hub-content">
+              <h3>Burning Dog</h3>
+              <p class="hub-album">Human Remains</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Nasty Habits -->
+          <article class="hub-card" id="nasty-habits">
+            <div class="hub-cover">
+              <img src="assets/nasty_habits_805.jpg" alt="Nasty Habits" />
+            </div>
+            <div class="hub-content">
+              <h3>Nasty Habits</h3>
+              <p class="hub-album">805 Hardcore</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- False Confession -->
+          <article class="hub-card" id="false-confession">
+            <div class="hub-cover">
+              <img src="assets/false_confession_805.jpg" alt="False Confession" />
+            </div>
+            <div class="hub-content">
+              <h3>False Confession</h3>
+              <p class="hub-album">Out of the Ashes</p>
+              <div class="hub-links">
+                <a href="#" class="hub-link platform-spotify">Spotify</a>
+                <a href="#" class="hub-link platform-apple">Apple Music</a>
+                <a href="#" class="hub-link platform-bandcamp">Bandcamp</a>
+                <a href="#" class="hub-link platform-youtube">YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- The Pitts -->
+          <article class="hub-card" id="the-pitts">
+            <img src="assets/Jamestown the pitts.png" alt="The Pitts" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>The Pitts</h3>
+            <div class="platform-icons">
+              <a href="https://thepittsnd.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/album/jamestown/1737466827" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://music.amazon.com/albums/B0CW1M2K56" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/2I7bM3Vp8iGq1r7q5L8R4" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Los Bonedrivers -->
+          <article class="hub-card" id="los-bonedrivers">
+            <img src="assets/los-bonedrivers-socal-punk-vinyl.jpg" alt="Los Bonedrivers" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>Los Bonedrivers</h3>
+            <div class="platform-icons">
+              <a href="https://losbonedrivers.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/the-bonedrivers/168521373" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://open.spotify.com/artist/4X9Nq8pI7o5P2qZ6m2I8rY" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- RAW -->
+          <article class="hub-card" id="raw">
+            <img src="assets/raw-radioactive-waste-805-punk-vinyl.jpg" alt="RAW" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>RAW</h3>
+            <div class="platform-icons">
+              <a href="https://rawppl.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/raw/1458902804" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://music.amazon.com/artists/B000S243XW/raw" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/5L6Uu6Ie3k6p5Z8n9Z0y8C" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+              <a href="https://www.beatport.com/label/raw/76611" target="_blank" rel="noopener" title="Beatport"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-1.5h1V17h-1zm2-3.5V15h-3v-1.5h3zm0-2.5V11h-3V9.5h3z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- I Decline -->
+          <article class="hub-card" id="i-decline">
+            <img src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" alt="I Decline" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>I Decline</h3>
+            <div class="platform-icons">
+              <a href="https://idecline.bandcamp.com" target="_blank" rel="noopener" title="Bandcamp (Official)"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+              <a href="https://music.apple.com/us/artist/i-decline/251343714" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://www.amazon.com/music/player/artists/B001229R2I/i-decline" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/4X9Nq8pI7o5P2qZ6m2I8rY" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Front Street Knuckle Draggers -->
+          <article class="hub-card" id="fskd">
+            <img src="assets/front-street-knuckle-draggers-805-punk-record.jpg" alt="Front Street Knuckle Draggers" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>Front Street Knuckle Draggers</h3>
+            <div class="platform-icons">
+              <a href="https://music.apple.com/us/artist/front-street-knuckle-draggers/1529124430" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://www.amazon.com/music/player/artists/B08GP8Y7L7/front-street-knuckle-draggers" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/2S7xG7m3T7C8n7n7n7n7n7" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Shim Come Quick -->
+          <article class="hub-card" id="shim-come-quick">
+            <img src="assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" alt="Shim Come Quick" class="release-cover-image" style="width:100%; margin-bottom:1rem;">
+            <h3>Shim Come Quick</h3>
+            <div class="platform-icons">
+              <a href="https://music.apple.com/us/artist/shim-come-quick/1601050853" target="_blank" rel="noopener" title="Apple Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm.8 14.28V7.5a.5.5 0 0 1 .5-.5h.2v.2a.5.5 0 0 1-.5.5h-.4V14l3.1.9a1 1 0 1 1-.4 1.9l-3.2-1.1a1 1 0 0 1-.6-.9V8s0-.5.5-.5h2.5s.5 0 .5.5v8s0 .5-.5.5z"/></svg></a>
+              <a href="https://www.amazon.com/music/player/artists/B09NMZ7Y8Y/shim-come-quick" target="_blank" rel="noopener" title="Amazon Music"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12.514 16.143c-3.136 0-4.66-1.571-4.66-3.834 0-3.562 3.642-4.114 6.742-4.114v.457c0 1.258-.028 2.829-.83 3.829-.399.514-.999.829-1.684.829-.999 0-1.627-.6-1.627-1.571 0-1.285.914-1.857 2.198-1.857.342 0 .714.028 1.057.085v.657c-.228-.028-.485-.057-.742-.057-.571 0-1.028.257-1.028.829 0 .428.257.657.657.657.485 0 .828-.314 1.028-.771.171-.342.171-.857.171-1.371V6.657c-2.8 0-8.228.428-8.228 5.714 0 2.943 2.171 4.743 5.371 4.743 1.343 0 2.4-.428 3.314-1.143l-.714-.8c-.686.629-1.543.971-2.571.971z m9.486 3.429a14.229 14.229 0 0 1 -11.143 4.428 14.114 14.114 0 0 1 -9.514 -3.6l.829 -.771a13.343 13.343 0 0 0 8.714 3.371c4.2 0 8.029 -1.686 10.371 -4.171L22 19.571z"/></svg></a>
+              <a href="https://open.spotify.com/artist/5X4xG7m3T7C8n7n7n7n7n7" target="_blank" rel="noopener" title="Spotify"><svg class="platform-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.215.353-.675.465-1.028.249-2.855-1.745-6.45-2.14-10.684-1.173-.404.093-.812-.162-.905-.566-.093-.404.162-.812.566-.905 4.636-1.06 8.59-.607 11.796 1.353.353.21.465.674.255 1.042zm1.463-3.258c-.27.441-.837.584-1.278.314-3.268-2.008-8.248-2.59-12.112-1.417-.501.152-1.026-.135-1.179-.636-.153-.501.135-1.026.636-1.179 4.417-1.34 9.907-.704 13.635 1.591.441.27.585.837.318 1.287zm.116-3.419C15.19 8.247 8.75 8.034 4.982 9.179c-.614.185-1.264-.158-1.455-.772-.185-.614.158-1.264.772-1.455 4.307-1.306 11.412-1.057 15.892 1.6c.553.328.736 1.037.408 1.589-.328.552-1.037.736-1.589.41z"/></svg></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <p>Booking, distro, press, or weird ideas: <a
+          href="mailto:poisonwellrecords@gmail.com">poisonwellrecords@gmail.com</a></p>
+      <p><a class="btn primary" href="mailto:poisonwellrecords@gmail.com?subject=Buying%20Records%20Inquiry">Buy Records / Inquiries</a></p>
+      <p>© Poison Well Records | Ventura, CA 93001 | Support your local scenes before they're gone.</p>
+      <div class="footer-social-icons">
+        <a href="ventura-punk-record-store-online.html" class="social-icon icon-store" title="Shop Vinyl">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-12.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 5.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@poisonwellrecords" target="_blank" class="social-icon icon-youtube"
+          title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M21.582 6.186a2.67 2.67 0 0 0-1.884-1.884C18.033 3.868 12 3.868 12 3.868s-6.033 0-7.698.434A2.67 2.67 0 0 0 2.418 6.186C2 7.85 2 12 2 12s0 4.15.418 5.814a2.67 2.67 0 0 0 1.884 1.884C6.033 20.132 12 20.132 12 20.132s6.033 0 7.698-.434a2.67 2.67 0 0 0 1.884-1.884C22 16.15 22 12 22 12s0-4.15-.418-5.814zM9.996 15.348V8.652L15.603 12l-5.607 3.348z" />
+          </svg>
+        </a>
+
+        <a href="mailto:poisonwellrecords@gmail.com?subject=Discord%20Invite%20Request" class="social-icon icon-discord" title="Request Discord Invite">
+          <svg viewBox="0 0 127.14 96.36" fill="currentColor">
+            <path
+              d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.73 56.58.51 80.17a105.73 105.73 0 0 0 32.17 16.19 77.7 77.7 0 0 0 6.89-11.1 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.68 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.19c2.64-27.38-4.51-51.11-18.89-72.11zM42.79 65.43c-5.15 0-9.36-4.66-9.36-10.37s4.12-10.37 9.36-10.37c5.29 0 9.42 4.7 9.36 10.37 0 5.71-4.12 10.37-9.36 10.37zm41.56 0c-5.15 0-9.36-4.66-9.36-10.37s4.12-10.37 9.36-10.37c5.29 0 9.42 4.7 9.36 10.37 0 5.71-4.12 10.37-9.36 10.37z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/poisonwellrecords/" target="_blank" class="social-icon icon-facebook"
+          title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.99 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.77-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.99 22 12z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/poisonwellrecords" target="_blank" class="social-icon icon-instagram"
+          title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.427.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 1.802c-2.67 0-3.004.01-4.058.058-.975.045-1.504.207-1.854.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.35-.3.88-.344 1.855-.048 1.054-.058 1.387-.058 4.057v.002c0 2.67.01 3.004.058 4.058.045.975.207 1.504.344 1.854.182.466.399.8.748 1.15.35.35.683.566 1.15.748.35.137.88.3 1.855.344 1.054.048 1.387.058 4.057.058 2.67 0 3.004-.01 4.058-.058.975-.045 1.504-.207 1.854-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.35.3-.88.344-1.855.048-1.054.058-1.387.058-4.057 0-2.67-.01-3.004-.058-4.058-.045-.975-.207-1.504-.344-1.854a3.097 3.097 0 0 0-.748-1.15 3.098 3.098 0 0 0-1.15-.748c-.35-.137-.88-.3-1.855-.344-1.054-.048-1.387-.058-4.057-.058zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.802a3.333 3.333 0 1 0 0 6.666 3.333 3.333 0 0 0 0-6.666zm5.338-3.205a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z" />
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@poisonwellrecords" target="_blank" class="social-icon icon-tiktok"
+          title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+          </svg>
+        </a>
+      </div>
+    <div class="footer-credit">Powered by chaoticallyorganizedai.com</div></div>
+  </footer>
+  <script src="site.js" defer></script>
+</body>
+
+</html>
+

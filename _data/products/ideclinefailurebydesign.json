@@ -1,0 +1,9 @@
+{
+  "name": "Failure By Design - I Decline",
+  "description": "SoCal punk and hardcore release with biting pace and edge.",
+  "unitAmount": 2500,
+  "imagePath": "/assets/i-decline-failure-by-design-socal-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6,
+  "id": "iDeclineFailureByDesign"
+}

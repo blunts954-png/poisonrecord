@@ -1,0 +1,9 @@
+{
+  "name": "Fluid-Filled - I Decline",
+  "description": "Ultra-rare custom liquid-filled variant. A high-value collector piece from the SoCal hardcore scene.",
+  "unitAmount": 8000,
+  "imagePath": "/assets/i-decline-socal-punk-vinyl.jpg",
+  "inventoryType": "rarity",
+  "maxQuantity": 1,
+  "id": "fluidFilledIDecline"
+}

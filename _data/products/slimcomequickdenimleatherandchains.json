@@ -1,0 +1,9 @@
+{
+  "name": "Denim, Leather & Chains - Slim Come Quick",
+  "description": "Street-level punk release with full DIY energy.",
+  "unitAmount": 2500,
+  "imagePath": "/assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6,
+  "id": "slimComeQuickDenimLeatherAndChains"
+}

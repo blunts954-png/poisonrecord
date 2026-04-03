@@ -1,0 +1,8 @@
+twillo-username-
+       password-
+
+Square-username-
+       password-
+
+namecheap-username-
+          password-
