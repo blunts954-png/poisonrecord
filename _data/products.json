@@ -1,7 +1,7 @@
 {
   "drKnowLiveCbgb1989": {
     "name": "Live CBGB 1989 - Dr. Know",
-    "description": "Limited 12-inch archival pressing from the Ventura hardcore vault.",
+    "description": "Limited 12-inch archival pressing.",
     "unitAmount": 4900,
     "imagePath": "/assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg",
     "inventoryType": "vinyl",
@@ -9,7 +9,7 @@
   },
   "losBonedrivers": {
     "name": "Whores - Los Bonedrivers",
-    "description": "Melodic punk release distributed by Poison Well Records.",
+    "description": "Melodic punk release.",
     "unitAmount": 2500,
     "imagePath": "/assets/los-bonedrivers-socal-punk-vinyl.jpg",
     "inventoryType": "vinyl",
@@ -17,7 +17,7 @@
   },
   "slimComeQuickDenimLeatherAndChains": {
     "name": "Denim, Leather & Chains - Shim Come Quick",
-    "description": "Street-level punk release with full DIY energy.",
+    "description": "Street-level punk release.",
     "unitAmount": 2500,
     "imagePath": "/assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg",
     "inventoryType": "vinyl",
@@ -25,7 +25,7 @@
   },
   "narthexStructure1984": {
     "name": "1984 - Narthex Structure",
-    "description": "Historic 805 archive pressing recovered for vinyl.",
+    "description": "Historic 805 archive pressing.",
     "unitAmount": 2500,
     "imagePath": "/assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg",
     "inventoryType": "vinyl",
@@ -50,7 +50,7 @@
   "iDeclineFailureByDesign": {
     "name": "Failure By Design - I Decline",
     "description": "SoCal punk and hardcore release with biting pace and edge.",
-    "unitAmount": 2500,
+    "unitAmount": 8000,
     "imagePath": "/assets/i-decline-failure-by-design-socal-punk-vinyl.jpg",
     "inventoryType": "vinyl",
     "maxQuantity": 6
@@ -99,7 +99,7 @@
     "name": "VTK - Handsome Devils",
     "description": "Digital release from the 805 scene.",
     "unitAmount": 1000,
-    "imagePath": "/assets/handsome devils - VTK.jpg",
+    "imagePath": "/assets/handsome devils - vtk.jpg",
     "inventoryType": "digital",
     "maxQuantity": 1
   },
@@ -107,7 +107,7 @@
     "name": "Ventura/Oxnard Soundtrack - Locals Only",
     "description": "Digital compilation from the Ventura/Oxnard punk scene.",
     "unitAmount": 1000,
-    "imagePath": "/assets/Split at the Scenes.jpg",
+    "imagePath": "/assets/split at the scenes.jpg",
     "inventoryType": "digital",
     "maxQuantity": 1
   },
@@ -115,7 +115,7 @@
     "name": "Expression - Narthex Structure",
     "description": "Digital archive release from Narthex Structure.",
     "unitAmount": 1000,
-    "imagePath": "/assets/Narthex Structure - Expression.jpg",
+    "imagePath": "/assets/narthex structure - expression.jpg",
     "inventoryType": "digital",
     "maxQuantity": 1
   },
@@ -123,7 +123,7 @@
     "name": "Babe Magnet - Rubberband",
     "description": "Digital release from the Poison Well catalog.",
     "unitAmount": 1000,
-    "imagePath": "/assets/Rubberband - babe magnet.webp",
+    "imagePath": "/assets/rubberband - babe magnet.webp",
     "inventoryType": "digital",
     "maxQuantity": 1
   },
@@ -131,7 +131,7 @@
     "name": "Jamestown - The Pitts",
     "description": "Digital release documenting The Pitts from the 805 scene.",
     "unitAmount": 1000,
-    "imagePath": "/assets/the-pitts-jamestown.png",
+    "imagePath": "/assets/jamestown the pitts.png",
     "inventoryType": "digital",
     "maxQuantity": 1
   }

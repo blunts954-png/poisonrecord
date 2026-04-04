@@ -91,7 +91,8 @@
     if (!document.querySelector('link[rel*="icon"]')) {
       const link = document.createElement('link');
       link.rel = 'icon';
-      link.href = 'logo.jpg';
+      // Use existing assets if possible, fallback to a logo-like file
+      link.href = 'assets/Jamestown the pitts.png'; 
       document.head.appendChild(link);
     }
   }
@@ -374,10 +375,7 @@
       });
       window.location.href = payload.url;
     } catch (error) {
-      if (buttonElement) toggleLoading(buttonElement, false);
-      if (fallbackToStripePaymentLink(priceKey, 1)) {
-        return;
-      }
+      setCheckoutBusy(triggerEl, false);
       alert(error && error.message ? error.message : 'Stripe checkout is unavailable right now.');
     }
   };
@@ -529,43 +527,126 @@
     });
   }
 
-  // Store Search & Filtering
-  function initStoreSearch() {
-    const searchInput = document.getElementById('store-search');
-    if (!searchInput) return;
-
-    searchInput.addEventListener('input', function(e) {
-      const q = e.target.value.toLowerCase().trim();
-      const productCards = document.querySelectorAll('.product-card, .vinyl-card, .card');
-      
-      productCards.forEach(card => {
-        // Skip splash gate or unrelated cards if necessary, but keep it broad
-        if (card.closest('#splash-gate') || card.closest('.footer')) return;
-        
-        const text = card.textContent.toLowerCase();
-        const tags = (card.dataset.tags || '').toLowerCase();
-        
-        if (text.includes(q) || tags.includes(q)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  }
-
-  // Run on DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { 
-      initApparelUI(); 
-      initLatestRelease(); 
-      initStoreSearch();
-    });
-  } else {
+/* --- CONSOLIDATED INITIALIZATION --- */
+function initAll() {
+    console.log("Poison Well Records: Initializing Site Engine...");
+    
+    // Core Layout
+    ensureGeoMeta();
+    ensureFavicon();
+    ensureAlertBar();
+    ensureVinylBackground();
+    
+    // Interactive Components
+    initNavToggle();
+    initBackToTop();
     initApparelUI();
     initLatestRelease();
     initStoreSearch();
-  }
+    initStoreTabs(); // Integrated tab controller
+    initContactWholesale();
+    
+    // Visual Polish
+    markCurrentNavLink();
+}
+
+/* --- STORE TABS CONTROLLER --- */
+function initStoreTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (!tabBtns.length || !tabContents.length) return;
+
+    function switchTab(tabId) {
+        tabBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+        
+        tabContents.forEach(content => {
+            content.classList.toggle('active', content.id === tabId);
+        });
+        
+        // Update URL hash without jumping
+        history.replaceState(null, null, `#${tabId}`);
+    }
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    });
+
+    // Handle initial state from URL hash
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash)) {
+        switchTab(hash);
+    } else {
+        // Default to first tab if no valid hash
+        switchTab(tabBtns[0].dataset.tab);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initAll);
+
+// Global Nav & UX
+function initNavToggle() {
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (!toggle || !navLinks) return;
+
+    toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        navLinks.classList.toggle('active');
+    });
+}
+
+function ensureGeoMeta() {
+    const meta = document.createElement('meta');
+    meta.name = "geo.region";
+    meta.content = "US-CA";
+    document.head.appendChild(meta);
+    
+    const geoPos = document.createElement('meta');
+    geoPos.name = "geo.position";
+    geoPos.content = "34.2804;-119.2945";
+    document.head.appendChild(geoPos);
+    
+    const geoPlace = document.createElement('meta');
+    geoPlace.name = "geo.placename";
+    geoPlace.content = "Ventura";
+    document.head.appendChild(geoPlace);
+}
+
+function ensureFavicon() {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+    }
+    // Preferred asset from the Pitts requested by user
+    link.href = '/assets/Jamestown the pitts.png';
+}
+
+// Search utility
+function initStoreSearch() {
+    const searchInput = document.getElementById('storeSearch');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.release-grid .release-card');
+        
+        cards.forEach(card => {
+            const h3 = card.querySelector('h3');
+            const p = card.querySelector('p');
+            const text = (h3 ? h3.textContent : '') + ' ' + (p ? p.textContent : '');
+            card.style.display = text.toLowerCase().includes(term) ? '' : 'none';
+        });
+    });
+}
+
+// Auto-run on load
+window.addEventListener('DOMContentLoaded', initAll);
 
   const gate = document.getElementById('splash-gate');
   const splashVideo = document.getElementById('splash-video');
@@ -1116,23 +1197,8 @@
     window.PW_attachLightbox = attachLightboxHandlers;
   })();
 
-  // Admin Access Strategy
+  // Admin Access — auth is handled by Netlify Identity on the admin page
   window.PW_AdminLogin = function() {
-    const user = prompt("Admin Username:");
-    const pass = prompt("Admin Password:");
-    if ((user === 'jason' || user === 'michelle') && pass === 'COAI2026') {
-      sessionStorage.setItem('pw_admin_auth', 'true');
-      window.location.href = '/admin/index.html';
-    } else {
-      alert("Unauthorized Access Attempt.");
-    }
+    window.location.href = '/admin/index.html';
   };
-
-  // Check auth on admin pages
-  if (window.location.pathname.includes('/admin/')) {
-    if (sessionStorage.getItem('pw_admin_auth') !== 'true') {
-      document.body.innerHTML = '<h1>Unauthorized</h1><p>Access Restricted.</p>';
-      setTimeout(() => window.location.href = '/', 2000);
-    }
-  }
 })();

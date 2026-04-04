@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | Lost in the Static | Poison Well Records</title>
+  <meta name="description" content="The page you are looking for has been lost in the static or moved to a different frequency.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    .notfound-content {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(circle at center, rgba(139, 0, 0, 0.1) 0%, transparent 70%);
+    }
+    .glitch-text {
+      font-size: clamp(6rem, 20vw, 15rem);
+      font-family: 'Bebas Neue', sans-serif;
+      margin: 0;
+      line-height: 0.8;
+      color: var(--accent);
+      text-shadow: 2px 2px #ff0000, -2px -2px #00ff00;
+      animation: glitch 1s infinite;
+      position: relative;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    .notfound-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .notfound-p {
+      max-width: 500px;
+      margin-bottom: 3rem;
+      opacity: 0.7;
+      font-size: 1.2rem;
+    }
+    .static-noise {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/p6.png');
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="static-noise"></div>
+  
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">POISON WELL<span>RECORDS</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="notfound-content">
+      <div class="glitch-text">404</div>
+      <h1 class="notfound-h1">LOST IN THE STATIC</h1>
+      <p class="notfound-p">The frequency you requested ended in dead air. The page may have been deleted, moved, or never existed in this reality.</p>
+      <div class="cta-row">
+        <a href="ventura-punk-record-store-online.html" class="btn primary">SHOP THE VAULT</a>
+        <a href="index.html" class="btn secondary">RETURN TO HUB</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Poison Well Records | Ventura, CA | Documenting the disruption.</p>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

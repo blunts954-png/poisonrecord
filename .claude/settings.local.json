@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /c/Users/blunt/Desktop/Websites/poisonwell/assets/*.jpg /c/Users/blunt/Desktop/Websites/poisonwell/assets/*.png /c/Users/blunt/Desktop/Websites/poisonwell/assets/*.webp)",
+      "Bash(node --check /c/Users/blunt/Desktop/Websites/poisonwell/site.js)",
+      "Bash(find /c/Users/blunt/Desktop/Websites/poisonwell -type f \\\\\\( -name \"*.html\" \\\\\\) -exec wc -l {} \\\\;)",
+      "Read(//c/Users/blunt/Desktop/Websites/poisonwell/**)",
+      "Bash(grep -h 'href=\"[^\"]*\"' /c/Users/blunt/Desktop/Websites/poisonwell/*.html)"
+    ]
+  }
+}

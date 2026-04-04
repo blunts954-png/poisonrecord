@@ -119,10 +119,10 @@
         </div>
 
         <div id="tab-vinyl" class="tab-content active">
-          <div class="vinyl-container">
+          <div class="release-grid">
 
             <!-- Dr. Know -->
-            <article class="vinyl-card" data-tags="dr know live cbgb vinyl hardcore">
+            <article class="release-card" data-tags="dr know live cbgb vinyl hardcore">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg" alt="Dr. Know Live CBGB 1989 vinyl cover" />
               <h3>Live CBGB 1989</h3>
               <p class="artist">Dr. Know</p>
@@ -144,7 +144,7 @@
               <button class="btn primary buy-btn" type="button" onclick="goToCheckout('losBonedrivers', this)">Buy Vinyl</button>
             </article>
 
-            <article class="vinyl-card" data-tags="slim come quick denim leather chains vinyl punk">
+            <article class="release-card" data-tags="slim come quick denim leather chains vinyl punk">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" alt="Slim Come Quick Denim Leather and Chains" />
               <h3>Denim, Leather &amp; Chains</h3>
               <p class="artist">Slim Come Quick</p>
@@ -156,30 +156,31 @@
             </article>
 
             <!-- The Pitts -->
-            <article class="vinyl-card" data-tags="the pitts jamestown rocky vinyl punk rock">
+            <article class="release-card" data-tags="the pitts jamestown rocky vinyl punk rock">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/Jamestown the pitts.png" alt="The Pitts Jamestown vinyl cover" />
               <h3>Jamestown</h3>
               <p class="artist">The Pitts</p>
               <div class="price-row">
                 <span class="price">$25.00</span>
               </div>
-              <button class="btn primary buy-btn" type="button" onclick="goToCheckout('thePittsJamestown', this)">Buy Vinyl</button>
+              <div class="card-links">
+              <!-- Buy Vinyl removed per user request -->
+            </div>
             </article>
 
             <!-- Narthex Structure -->
-            <article class="vinyl-card" data-tags="narthex structure 1984 vinyl archive 805">
+            <article class="release-card" data-tags="narthex structure 1984 vinyl 805 punk archived">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg" alt="Narthex Structure 1984" />
               <h3>1984</h3>
               <p class="artist">Narthex Structure</p>
               <div class="price-row">
                 <span class="price">$25.00</span>
               </div>
-              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Sourced from the original 1/2-inch multi-track tapes discovered in the Narthex vault.</p>
               <button class="btn primary buy-btn" type="button" onclick="goToCheckout('narthexStructure1984', this)">Buy Vinyl</button>
             </article>
 
             <!-- RAW combined -->
-            <article class="vinyl-card" data-tags="raw sick love quarantine combined vinyl 805">
+            <article class="release-card" data-tags="raw sick love quarantine radio active waste punk vinyl">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/raw-radioactive-waste-805-punk-vinyl.jpg" alt="RAW Sick Love / Quarantine" />
               <h3>Sick Love / Quarantine</h3>
               <p class="artist">RAW</p>
@@ -190,7 +191,7 @@
             </article>
 
             <!-- The Missing 23rd -->
-            <article class="vinyl-card" data-tags="missing 23rd end of an error vinyl hardcore">
+            <article class="release-card" data-tags="missing 23rd end error hardcore punk vinyl">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg" alt="The Missing 23rd The End of an Error" />
               <h3>The End of an Error</h3>
               <p class="artist">The Missing 23rd</p>
@@ -201,7 +202,7 @@
             </article>
 
             <!-- I Decline - Failure By Design -->
-            <article class="vinyl-card" data-tags="i decline failure by design vinyl hardcore">
+            <article class="release-card" data-tags="i decline failure design socal punk vinyl">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" alt="I Decline Failure By Design" />
               <h3>Failure By Design</h3>
               <p class="artist">I Decline</p>
@@ -212,7 +213,7 @@
             </article>
 
             <!-- I Decline - Self Titled -->
-            <article class="vinyl-card" data-tags="i decline self titled vinyl punk">
+            <article class="release-card" data-tags="i decline self titled socal punk vinyl">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline Self-Titled" />
               <h3>Self-Titled</h3>
               <p class="artist">I Decline</p>
@@ -223,7 +224,7 @@
             </article>
 
             <!-- Front Street Knuckle Draggers -->
-            <article class="vinyl-card" data-tags="front street knuckle draggers vinyl punk">
+            <article class="release-card" data-tags="fskd front street knuckle draggers 805 punk">
               <img class="product-image" loading="lazy" width="400" height="400" src="assets/front-street-knuckle-draggers-805-punk-record.jpg" alt="Front Street Knuckle Draggers" />
               <h3>Front Street Knuckle Draggers</h3>
               <p class="artist">FSKD</p>
@@ -246,17 +247,25 @@
         <p class="lead" style="margin-bottom: 3rem;">Archival documentation of the 805 scene's most extreme pressings. These units are limited to one per customer and represent the peak of Poison Well's physical preservation efforts.</p>
         <div style="max-width: 600px; margin: 0 auto;">
           <article class="card product-card" style="border: 2px solid var(--accent); position: relative; padding: 2rem;">
-            <div class="badge rarity" style="background:#ff0000; animation: pulseRed 1s infinite; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); z-index: 10;">ONLY ONE REMAINING</div>
-            <img class="product-image" loading="lazy" width="600" height="600" src="assets/IMG_20260326_223219.jpg" alt="I Decline - Failure By Design Splatter Edition Rarity" style="aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--line);" />
-            <h3 class="accent" style="font-size: 2.2rem; margin-top: 2rem; line-height: 1.1;">Failure By Design (Splatter Edition) – I Decline</h3>
-            <p class="band-name" style="opacity: 0.6; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">805 Archive // Rarity Drop</p>
-            <p>The definitive splatter variant of the 'I Decline' sessions. Visceral red-and-black mixing that captures the raw intensity of the 805 punk spirit. A true collector's artifact.</p>
-            <div class="price-row" style="margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between;">
-              <span class="price" style="font-size: 2.8rem; font-weight: 900; color: #fff;">$80.00</span>
-              <span class="stock-status low" style="color: var(--accent); font-weight: 800; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;">AUTHENTIC ARCHIVE</span>
+          <div class="rarity-image-wrap">
+            <div class="rarity-badge" style="background:var(--accent); color:var(--bg); padding:0.5rem 1rem; position:absolute; top:1rem; left:1rem; z-index:2; font-weight:bold;">ONLY ONE REMAINING</div>
+            <img src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline - Fluid-Filled Rarity" style="box-shadow: 0 0 50px rgba(255,215,0,0.15);" />
+          </div>
+
+          <div class="rarity-details" style="padding: 2rem; border: 1px solid var(--line); background: rgba(0,0,0,0.5);">
+            <span class="rarity-subtitle" style="display:block; margin-bottom:1rem; opacity:0.5; letter-spacing:2px; font-weight:bold;">805 Archive // PREMIUM DROP</span>
+            <h2 style="font-size:3rem; margin-bottom:1.5rem;">Fluid-Filled - I Decline</h2>
+            <p class="rarity-description" style="margin-bottom: 2rem; opacity:0.8; line-height:1.7;">
+              Ultra-rare custom liquid-filled variant. A high-value collector piece from the SoCal hardcore scene. This is the definitive archive edition of the I Decline legacy.
+            </p>
+
+            <div class="rarity-price-row" style="background: rgba(255, 215, 0, 0.05); padding: 1.5rem; border: 1px solid #ffd700; margin-bottom: 2rem;">
+              <span class="price-value" style="color: #ffd700; font-weight: 900; font-size: 2.2rem;">$80.00</span>
+              <span class="rarity-stock" style="margin-left: 2rem; font-size: 0.9rem; opacity: 0.7;">AUTHENTIC ARCHIVE UNIT [01/01]</span>
             </div>
-            <p><button class="btn primary full-width" type="button" onclick="goToCheckout('splatterIDecline', this)" style="font-size: 1.4rem; padding: 1.5rem; font-weight: 900;">BUY VINYL</button></p>
-          </article>
+
+            <button class="btn primary full-width" type="button" onclick="goToCheckout('fluidFilledIDecline', this)" style="font-size: 1.4rem; padding: 1.5rem; font-weight: 900; width:100%;">SECURE THIS UNIT</button>
+          </div></article>
         </div>
       </div>
     </section>
