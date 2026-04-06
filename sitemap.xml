@@ -36,4 +36,28 @@
     <loc>https://poisonwellrecords.netlify.app/dr-know-live-cbgb-1989-ventura-hardcore</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/ventura-punk-vinyl</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/press</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/rarities</loc>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/digital-music-hub</loc>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/805-punk-shows-events</loc>
+    <priority>0.45</priority>
+  </url>
+  <url>
+    <loc>https://poisonwellrecords.netlify.app/privacy-policy</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>

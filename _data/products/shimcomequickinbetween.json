@@ -1,0 +1,9 @@
+{
+  "id": "shimComeQuickInBetween",
+  "name": "In Between - Shim Come Quick",
+  "description": "805 punk vinyl release — limited pressing from the Poison Well archive.",
+  "unitAmount": 2500,
+  "imagePath": "/assets/shim-come-quick-in-between-vinyl-805-punk.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6
+}

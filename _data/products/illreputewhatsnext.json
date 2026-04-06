@@ -1,0 +1,9 @@
+{
+  "id": "illReputeWhatsNext",
+  "name": "What's Next? - Ill Repute",
+  "description": "Classic 805 punk — limited vinyl from Poison Well Records.",
+  "unitAmount": 2500,
+  "imagePath": "/assets/ill-repute-whats-next-805-punk-vinyl.jpg",
+  "inventoryType": "vinyl",
+  "maxQuantity": 6
+}

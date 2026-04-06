@@ -12,7 +12,11 @@
     'press.html': '/press',
     'rarities.html': '/rarities',
     'dr-know-live-cbgb-1989-ventura-hardcore.html': '/dr-know-live-cbgb-1989-ventura-hardcore',
-    'music-videos.html': '/music-videos'
+    'music-videos.html': '/music-videos',
+    'digital-music-hub.html': '/digital-music-hub',
+    'privacy-policy.html': '/privacy-policy',
+    '805-punk-shows-events.html': '/805-punk-shows-events',
+    'thank-you.html': '/thank-you'
   };
   let pageGateFailSafeTimer = null;
 
@@ -29,7 +33,7 @@
   // Never let the intro gate block access if a later initializer throws.
   const gateCheck = document.getElementById('splash-gate');
   if (gateCheck) {
-    pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 5000);
+    pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 14000);
   } else if (document.body.classList.contains('gate-active')) {
     // Immediate cleanup if class is present but gate is missing (ghosting fix)
     document.body.classList.remove('gate-active');
@@ -54,6 +58,10 @@
     if (path.endsWith('.html')) path = path.slice(0, -5);
     return path || '/';
   }
+
+  const pagePath = normalizePath(window.location.pathname);
+  const pageSlug = pagePath === '/' ? 'home' : pagePath.replace(/^\//, '').replace(/[^a-z0-9-]/gi, '-');
+  document.body.classList.add('page-' + pageSlug);
 
   function markCurrentNavLink() {
     const currentPath = normalizePath(window.location.pathname);
@@ -101,9 +109,12 @@
     const header = document.querySelector('.site-header, .topbar, header');
     if (!header) return;
     const releaseAnnouncement = document.body.getAttribute('data-release-announcement') || 'Dr. Know - Live CBGB 1989';
+    const line =
+      'NEW RELEASE ANNOUNCEMENT: <strong>' + releaseAnnouncement + '</strong> is live now. <a href="dr-know-live-cbgb-1989-ventura-hardcore.html">VIEW &amp; BUY -></a>';
     const alertMarkup =
       '<div class="alert-marquee">' +
-      '<span>NEW RELEASE ANNOUNCEMENT: <strong>' + releaseAnnouncement + '</strong> is live now. <a href="dr-know-live-cbgb-1989-ventura-hardcore.html">VIEW &amp; BUY -></a></span>' +
+      '<span>' + line + '</span>' +
+      '<span aria-hidden="true">' + line + '</span>' +
       '</div>';
     const existing = document.querySelector('.alert-bar');
     if (existing) {
@@ -206,7 +217,24 @@
 
 
   const images = document.querySelectorAll('img');
+  const imagePathFixes = {
+    '/assets/Jamestown the pitts.png': '/assets/jamestown the pitts.png',
+    '/assets/handsome devils - VTK.jpg': '/assets/handsome devils - vtk.jpg',
+    '/assets/Narthex Structure - Expression.jpg': '/assets/narthex structure - expression.jpg',
+    '/assets/Rubberband - babe magnet.webp': '/assets/rubberband - babe magnet.webp'
+  };
+  const fallbackCover = '/assets/idecline-skull-headed.jpg';
   images.forEach(function (img) {
+    const currentSrc = img.getAttribute('src');
+    if (currentSrc && imagePathFixes[currentSrc]) {
+      img.setAttribute('src', imagePathFixes[currentSrc]);
+    }
+    img.addEventListener('error', function () {
+      // Prevent broken placeholders from surviving in production on case-sensitive hosts.
+      if (img.dataset.fallbackApplied === 'true') return;
+      img.dataset.fallbackApplied = 'true';
+      img.setAttribute('src', fallbackCover);
+    });
     if (!img.getAttribute('alt')) img.setAttribute('alt', 'Poison Well Records - Ventura Punk Vinyl & Culture');
     if (!img.getAttribute('loading')) img.setAttribute('loading', 'lazy');
   });
@@ -214,6 +242,14 @@
   const yearNodes = document.querySelectorAll('[data-current-year]');
   const y = new Date().getFullYear();
   yearNodes.forEach(function (n) { n.textContent = String(y); });
+
+  const footerCreditLinks = document.querySelectorAll('.footer-credit');
+  footerCreditLinks.forEach(function (node) {
+    if (!node || node.querySelector('a')) return;
+    const text = (node.textContent || '').trim();
+    if (!/chaoticallyorganizedai\.com/i.test(text)) return;
+    node.innerHTML = 'Powered by <a href="https://chaoticallyorganizedai.com" target="_blank" rel="noopener noreferrer">Chaotically Organized AI.com</a>';
+  });
 
   const jsonLdNodes = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
   const hasOrgSchema = jsonLdNodes.some(function (n) { return n.textContent.includes('"@type": "Organization"'); });
@@ -228,7 +264,7 @@
       name: 'Poison Well Records',
       description: 'Ventura 805 punk vinyl label and online store archiving SoCal punk rock',
       url: baseUrl,
-      logo: baseUrl + '/logo.jpg',
+      logo: baseUrl + '/assets/pwricon.png',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Ventura',
@@ -240,7 +276,7 @@
         'https://www.tiktok.com/@poisonwellrecords',
         'https://www.instagram.com/poisonwellrecords',
         'https://www.discogs.com/user/PoisonWellRecords',
-        'https://poisonwellrecords.bandcamp.com/dashboard',
+        'https://poisonwellrecords.bandcamp.com',
         'https://www.facebook.com/poisonwellrecords/',
         'https://www.youtube.com/@poisonwellrecords'
       ]
@@ -255,7 +291,7 @@
       '@context': 'https://schema.org',
       '@type': 'Store',
       'name': 'Poison Well Records Shop',
-      'image': baseUrl + '/logo.jpg',
+      'image': baseUrl + '/assets/pwricon.png',
       'description': '805 and SoCal punk vinyl record store and label shipping worldwide from Ventura, California',
       'address': {
         '@type': 'PostalAddress',
@@ -269,7 +305,6 @@
         'longitude': '-119.2290'
       },
       'url': baseUrl + '/ventura-punk-record-store-online',
-      'telephone': '+1-805-555-0123',
       'priceRange': '$$',
       'paymentAccepted': 'Stripe, Credit Card',
       'currenciesAccepted': 'USD'
@@ -287,7 +322,13 @@
       '/about-poison-well-records': 'About',
       '/contact-wholesale': 'Contact / Wholesale',
       '/faq': 'FAQ',
-      '/dr-know-live-cbgb-1989-ventura-hardcore': 'Dr. Know Live CBGB 1989'
+      '/dr-know-live-cbgb-1989-ventura-hardcore': 'Dr. Know Live CBGB 1989',
+      '/digital-music-hub': 'Digital Music Hub',
+      '/privacy-policy': 'Privacy Policy',
+      '/805-punk-shows-events': '805 Shows & Events',
+      '/ventura-punk-vinyl': 'Ventura Punk Vinyl',
+      '/press': 'Press',
+      '/rarities': 'Rarities'
     };
     const canon = currentCanonical();
     const suffix = canon.replace(baseUrl, '') || '/';
@@ -305,16 +346,14 @@
     document.head.appendChild(crumbNode);
   }
 
-  ensureGeoMeta();
-  ensureFavicon();
-  markCurrentNavLink();
-  ensureAlertBar();
-  ensureVinylBackground();
-  initNavToggle();
-  initBackToTop();
-
-
   const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
+
+  /** Netlify Forms expects POST to the current page path (not always `/`). */
+  function netlifyFormPostPath() {
+    var p = window.location.pathname || '/';
+    if (p.length > 1 && p.endsWith('/')) return p.slice(0, -1);
+    return p;
+  }
 
   function clampCheckoutQuantity(value, max) {
     const parsed = parseInt(value, 10);
@@ -361,21 +400,18 @@
   }
 
   window.goToCheckout = async function (productKey, triggerEl) {
-    // Global Routing: If not on the shop page, redirect to the shop's vinyl tab
-    const isShopPage = window.location.pathname.includes('ventura-punk-record-store-online');
-    if (!isShopPage) {
-      window.location.href = 'ventura-punk-record-store-online.html#tab-vinyl';
-      return;
-    }
-
     setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
     try {
       const payload = await createStripeCheckoutSession(productKey, {
-        quantity: 1
+        quantity: 1,
+        cancelPath: window.location.pathname + window.location.search + window.location.hash
       });
       window.location.href = payload.url;
     } catch (error) {
       setCheckoutBusy(triggerEl, false);
+      if (fallbackToStripePaymentLink(productKey, 1)) {
+        return;
+      }
       alert(error && error.message ? error.message : 'Stripe checkout is unavailable right now.');
     }
   };
@@ -501,10 +537,12 @@
 
   // Add 'Contact to Buy' CTA to all existing release cards on the page
   function initReleaseCTAs() {
+    if (!document.body.classList.contains('page-home')) return;
     const cards = document.querySelectorAll('.release-card');
     if (!cards || cards.length === 0) return;
     cards.forEach(function (card) {
       if (card.__ctaAdded) return;
+      if (card.querySelector('.buy-btn')) { card.__ctaAdded = true; return; }
       const titleNode = card.querySelector('h3');
       const releaseTitle = titleNode ? titleNode.textContent.trim() : 'Poison Well Records release';
       const existing = card.querySelector('a[href^="mailto:"]');
@@ -527,126 +565,74 @@
     });
   }
 
+  function initStoreSearch() {
+    const searchInput = document.getElementById('store-search') || document.getElementById('storeSearch');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function (e) {
+      const term = e.target.value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.release-grid .release-card, .release-grid .vinyl-card');
+      cards.forEach(function (card) {
+        const h3 = card.querySelector('h3');
+        const artist = card.querySelector('.artist');
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const text = ((h3 ? h3.textContent : '') + ' ' + (artist ? artist.textContent : '') + ' ' + tags).toLowerCase();
+        card.style.display = !term || text.indexOf(term) !== -1 ? '' : 'none';
+      });
+    });
+  }
+
+  function initContactWholesale() {
+    const forms = document.querySelectorAll('form[name="contact"]');
+    forms.forEach(function (form) {
+      if (!form.hasAttribute('netlify')) return;
+      if (form.__pwNetlifyAjax) return;
+      form.__pwNetlifyAjax = true;
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.disabled = true;
+        const fd = new FormData(form);
+        if (!fd.get('form-name')) fd.append('form-name', form.getAttribute('name') || 'contact');
+        const params = new URLSearchParams();
+        for (const pair of fd.entries()) params.append(pair[0], pair[1]);
+        fetch(netlifyFormPostPath(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        }).then(function (res) {
+          if (res.ok || res.status === 200 || res.status === 302) {
+            window.location.href = '/thank-you';
+            return;
+          }
+          form.submit();
+        }).catch(function () {
+          form.submit();
+        }).finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+      });
+    });
+  }
+
 /* --- CONSOLIDATED INITIALIZATION --- */
 function initAll() {
-    console.log("Poison Well Records: Initializing Site Engine...");
-    
-    // Core Layout
     ensureGeoMeta();
     ensureFavicon();
     ensureAlertBar();
     ensureVinylBackground();
-    
-    // Interactive Components
     initNavToggle();
     initBackToTop();
     initApparelUI();
-    initLatestRelease();
+    // Keep catalog order stable; avoid duplicating top release cards.
+    // initLatestRelease();
+    initReleaseCTAs();
     initStoreSearch();
-    initStoreTabs(); // Integrated tab controller
     initContactWholesale();
-    
-    // Visual Polish
     markCurrentNavLink();
 }
 
-/* --- STORE TABS CONTROLLER --- */
-function initStoreTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    if (!tabBtns.length || !tabContents.length) return;
-
-    function switchTab(tabId) {
-        tabBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.tab === tabId);
-        });
-        
-        tabContents.forEach(content => {
-            content.classList.toggle('active', content.id === tabId);
-        });
-        
-        // Update URL hash without jumping
-        history.replaceState(null, null, `#${tabId}`);
-    }
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
-    });
-
-    // Handle initial state from URL hash
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash)) {
-        switchTab(hash);
-    } else {
-        // Default to first tab if no valid hash
-        switchTab(tabBtns[0].dataset.tab);
-    }
-}
-
 document.addEventListener('DOMContentLoaded', initAll);
-
-// Global Nav & UX
-function initNavToggle() {
-    const toggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-    if (!toggle || !navLinks) return;
-
-    toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !expanded);
-        navLinks.classList.toggle('active');
-    });
-}
-
-function ensureGeoMeta() {
-    const meta = document.createElement('meta');
-    meta.name = "geo.region";
-    meta.content = "US-CA";
-    document.head.appendChild(meta);
-    
-    const geoPos = document.createElement('meta');
-    geoPos.name = "geo.position";
-    geoPos.content = "34.2804;-119.2945";
-    document.head.appendChild(geoPos);
-    
-    const geoPlace = document.createElement('meta');
-    geoPlace.name = "geo.placename";
-    geoPlace.content = "Ventura";
-    document.head.appendChild(geoPlace);
-}
-
-function ensureFavicon() {
-    let link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-    }
-    // Preferred asset from the Pitts requested by user
-    link.href = '/assets/Jamestown the pitts.png';
-}
-
-// Search utility
-function initStoreSearch() {
-    const searchInput = document.getElementById('storeSearch');
-    if (!searchInput) return;
-
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.release-grid .release-card');
-        
-        cards.forEach(card => {
-            const h3 = card.querySelector('h3');
-            const p = card.querySelector('p');
-            const text = (h3 ? h3.textContent : '') + ' ' + (p ? p.textContent : '');
-            card.style.display = text.toLowerCase().includes(term) ? '' : 'none';
-        });
-    });
-}
-
-// Auto-run on load
-window.addEventListener('DOMContentLoaded', initAll);
 
   const gate = document.getElementById('splash-gate');
   const splashVideo = document.getElementById('splash-video');
@@ -707,6 +693,7 @@ window.addEventListener('DOMContentLoaded', initAll);
       resetIntroView();
       introFollowRaf = window.requestAnimationFrame(runIntroFollow);
     };
+    const extraIntroMs = 5000;
     const scheduleGateFallback = function () {
       if (gateReleased || gate.classList.contains('video-awaiting-input')) {
         return;
@@ -715,7 +702,7 @@ window.addEventListener('DOMContentLoaded', initAll);
         window.clearTimeout(forcedOpenTimer);
       }
       const durationMs = Number.isFinite(splashVideo.duration) && splashVideo.duration > 0
-        ? Math.ceil(Math.max(2, splashVideo.duration - splashVideo.currentTime + 0.35) * 1000)
+        ? Math.ceil(Math.max(2, splashVideo.duration - splashVideo.currentTime + 0.35) * 1000) + extraIntroMs
         : 12000;
       forcedOpenTimer = window.setTimeout(function () {
         openGate();
@@ -817,7 +804,7 @@ window.addEventListener('DOMContentLoaded', initAll);
           console.log("Splash bypass via safety timeout after 5s");
           openGate();
         }
-      }, 5000); // 5s total for 10s video is safer than 12s exact
+      }, 12500); // give video + logo reveal noticeably longer runway
       
       // Expose to global for the skip button in index.html
       window.PW_dismissSplash = openGate;
@@ -840,22 +827,22 @@ window.addEventListener('DOMContentLoaded', initAll);
       }
     }, 2000);
 
-    splashVideo.addEventListener('ended', openGate);
+    splashVideo.addEventListener('ended', function () {
+      window.setTimeout(openGate, extraIntroMs);
+    });
     splashVideo.addEventListener('loadedmetadata', scheduleGateFallback);
     splashVideo.addEventListener('playing', function() {
       const fallback = document.getElementById('splash-logo-fallback');
-      if(fallback) fallback.style.opacity = '0';
+      if (fallback) {
+        window.setTimeout(function () {
+          fallback.style.opacity = '0';
+        }, 1200);
+      }
     });
     splashVideo.addEventListener('canplay', scheduleGateFallback);
     splashVideo.addEventListener('timeupdate', function () {
-      if (
-        !gateReleased &&
-        Number.isFinite(splashVideo.duration) &&
-        splashVideo.duration > 0 &&
-        splashVideo.currentTime >= splashVideo.duration - 0.15
-      ) {
-        openGate();
-      }
+      // Intentionally no auto-open near the end; we keep the final frame
+      // visible longer for the logo/album reveal.
     });
 
     const startFromUser = function (e) {
@@ -914,7 +901,7 @@ window.addEventListener('DOMContentLoaded', initAll);
       if (!gateReleased && !gate.classList.contains('video-awaiting-input')) {
         openGate();
       }
-    }, 18000);
+    }, 23000);
   }
 
   // Newsletter form handling (Netlify-friendly + AJAX fallback)
@@ -933,7 +920,7 @@ window.addEventListener('DOMContentLoaded', initAll);
         const params = new URLSearchParams();
         for (const pair of fd.entries()) params.append(pair[0], pair[1]);
 
-        fetch('/', {
+        fetch(netlifyFormPostPath(), {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: params.toString()
@@ -969,13 +956,14 @@ window.addEventListener('DOMContentLoaded', initAll);
     'rarities': 'Hard-to-find recordings, historic releases, and underground artifacts preserved for the dedicated listener.'
   };
 
-  const storeTabs = document.querySelectorAll('.store-tab');
+  const storeTabs = document.querySelectorAll('.tab-btn, .store-tab');
   const tabContents = document.querySelectorAll('.tab-content');
   const tabFootnote = document.getElementById('tab-footnote');
 
-  // Helper to activate a store tab by name (e.g. 'vinyl', 'test-pressings')
+  // Helper to activate a store tab by name (e.g. 'vinyl', 'rarities')
   function setActiveStoreTab(targetTab) {
     if (!targetTab) return;
+    if (targetTab.indexOf('tab-') === 0) targetTab = targetTab.slice(4);
     // Update active tab button
     storeTabs.forEach(function (t) { t.classList.remove('active'); if (t.getAttribute('data-tab') === targetTab) t.classList.add('active'); });
     // Update active content
@@ -990,11 +978,11 @@ window.addEventListener('DOMContentLoaded', initAll);
       tabFootnote.textContent = tabFootnotes[targetTab];
     }
 
-    if (window.location.hash !== '#tab-' + targetTab) {
+    if (window.location.hash.replace(/^#/, '') !== 'tab-' + targetTab) {
       history.replaceState(null, '', '#tab-' + targetTab);
     }
 
-    const activeTabButton = document.querySelector('.store-tab[data-tab="' + targetTab + '"]');
+    const activeTabButton = document.querySelector('.tab-btn[data-tab="' + targetTab + '"], .store-tab[data-tab="' + targetTab + '"]');
     if (activeTabButton && window.matchMedia('(max-width: 768px)').matches) {
       activeTabButton.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
     }
@@ -1008,10 +996,11 @@ window.addEventListener('DOMContentLoaded', initAll);
       });
     });
 
-    // If the page loaded with a hash like #tab-vinyl, activate that tab
     if (window.location.hash && window.location.hash.indexOf('#tab-') === 0) {
-      const ht = window.location.hash.replace('#tab-', '');
+      const ht = window.location.hash.replace(/^#tab-/, '');
       setActiveStoreTab(ht);
+    } else if (storeTabs[0]) {
+      setActiveStoreTab(storeTabs[0].getAttribute('data-tab'));
     }
 
     // Wire header dropdown links to activate tabs client-side when on the store page
@@ -1022,9 +1011,9 @@ window.addEventListener('DOMContentLoaded', initAll);
           // If already on the store page, prevent navigation and activate tab directly
           if (window.location.pathname === '/ventura-punk-record-store-online' || window.location.pathname === '/ventura-punk-record-store-online.html') {
             e.preventDefault();
-            const hash = this.hash || this.getAttribute('href').split('#')[1] || '';
-            const target = hash.replace('tab-', '');
-            setActiveStoreTab(target);
+            var hrefHash = (this.hash || '').replace(/^#/, '') || (this.getAttribute('href') || '').split('#')[1] || '';
+            if (hrefHash.indexOf('tab-') === 0) hrefHash = hrefHash.slice(4);
+            setActiveStoreTab(hrefHash);
             // close any open dropdowns by blurring and updating aria
             this.blur();
             const navDrop = this.closest('.nav-dropdown');

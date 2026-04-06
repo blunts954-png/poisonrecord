@@ -11,4 +11,7 @@
 /805-punk-shows-events /805-punk-shows-events.html 200
 /order-confirmation /order-confirmation.html 200
 /checkout-cancelled /checkout-cancelled.html 200
+/digital-music-hub /digital-music-hub.html 200
+/privacy-policy /privacy-policy.html 200
 /api/create-checkout-session /.netlify/functions/create-checkout-session 200
+/thank-you /thank-you.html 200

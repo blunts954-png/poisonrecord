@@ -70,19 +70,8 @@
 }
 
 .highlight-card::before {
-    content: "FEATURED RELEASE";
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #ffd700;
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 900;
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-    z-index: 10;
-    letter-spacing: 1px;
-    animation: pulseGold 2s infinite;
+    content: "";
+    display: none;
 }
 
 @keyframes pulseGold {
@@ -196,9 +185,11 @@ body::before {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.06;
+  opacity: 0.2;
   pointer-events: none;
   z-index: -1;
+  filter: brightness(1.35) contrast(1.08);
+  mix-blend-mode: screen;
 }
 
 a {
@@ -783,7 +774,7 @@ h3 {
 
 .highlight-card .card-badge {
   position: absolute;
-  top: -12px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffd700;
@@ -1242,6 +1233,20 @@ textarea {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.22));
   pointer-events: none;
   z-index: 2;
+}
+
+.splash-corner-album {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: clamp(78px, 11vw, 140px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+  opacity: 0.86;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .splash-video {
@@ -1864,20 +1869,21 @@ nav a[aria-current="page"],
 .alert-bar .alert-marquee {
   display: inline-flex;
   width: max-content;
-  animation: pwr-marquee 28s linear infinite;
+  animation: pwr-marquee 22s linear infinite;
   font-size: 0.72rem;
   letter-spacing: 1.5px;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  gap: 100px;
-  padding-left: 24px;
+  gap: 0;
+  padding-left: 0;
 }
 
 .alert-bar .alert-marquee span {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  padding-right: 4rem;
 }
 
 .alert-bar .alert-marquee a {
@@ -4369,7 +4375,7 @@ body.nav-open {
 
 .card-badge {
   position: absolute;
-  top: -12px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffd700;
@@ -4419,4 +4425,373 @@ body.nav-open {
   font-weight: 700;
   margin-bottom: 1rem;
   font-size: 0.95rem;
+}
+
+/* ===============================
+   Brand System Polish Pass (2026)
+   =============================== */
+
+:root {
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --text-dim: #cfc3b8;
+  --card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.2));
+}
+
+body {
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
+
+/* subtle grain layer to unify pages without changing markup */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.06;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.22) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(255, 255, 255, 0.18) 0.5px, transparent 0.5px);
+  background-size: 2px 2px, 3px 3px;
+  background-position: 0 0, 1px 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.7rem); }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 2.4vw, 1.75rem); }
+
+p, li, input, textarea, select, button {
+  font-family: var(--font-body);
+}
+
+.lead {
+  color: var(--text-dim);
+  max-width: 72ch;
+}
+
+.section,
+.releases,
+.about,
+.connect,
+.hero,
+.page-hero,
+.hub-main {
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.hero h1,
+.page-hero h1,
+.releases h2,
+.about h2,
+.connect h2 {
+  text-transform: uppercase;
+}
+
+.release-grid,
+.hub-grid {
+  gap: clamp(1.3rem, 2.2vw, 2.3rem);
+}
+
+.release-card,
+.vinyl-card,
+.hub-card,
+.card,
+.why-card {
+  background: var(--card-bg), var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(1px);
+}
+
+.release-card:hover,
+.vinyl-card:hover,
+.hub-card:hover,
+.card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 60%, #fff 40%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.release-cover,
+.hub-cover {
+  border-radius: 6px;
+}
+
+.release-cover-image,
+.product-image,
+.hub-cover img {
+  filter: saturate(0.94) contrast(1.02);
+}
+
+.release-card:hover .release-cover-image,
+.hub-card:hover .hub-cover img {
+  filter: saturate(1.04) contrast(1.05);
+}
+
+.btn,
+button.btn,
+.release-links a,
+.release-links button {
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover,
+button.btn:hover,
+.release-links a:hover,
+.release-links button:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(232, 92, 13, 0.22);
+}
+
+.site-header,
+.topbar {
+  border-bottom-color: color-mix(in srgb, var(--line) 75%, var(--accent) 25%);
+}
+
+.nav-links a {
+  letter-spacing: 0.045em;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--accent-2);
+  text-underline-offset: 0.3em;
+}
+
+/* User-requested: remove these global header links */
+.nav-links .nav-merch,
+.nav-links .nav-youtube {
+  display: none !important;
+}
+
+input,
+textarea,
+select {
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #120f12;
+  color: var(--text);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, #fff 45%);
+  outline-offset: 1px;
+}
+
+@media (max-width: 780px) {
+  .release-card,
+  .vinyl-card,
+  .hub-card,
+  .card {
+    border-radius: 8px;
+  }
+}
+
+/* Final spacing + homepage art direction pass */
+@media (min-width: 981px) {
+  .site-header .nav,
+  .topbar .nav {
+    gap: 0.75rem;
+    padding-block: 0.7rem;
+  }
+
+  .site-header .nav-links,
+  .topbar .nav-links {
+    gap: 0.55rem;
+    margin-left: auto;
+  }
+
+  .site-header .nav-links a,
+  .topbar .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.11em;
+    padding-inline: 0.35rem;
+  }
+}
+
+.page-home .hero {
+  border-top: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background:
+    radial-gradient(ellipse at 30% 12%, rgba(255, 190, 110, 0.12), transparent 58%),
+    radial-gradient(ellipse at 80% 4%, rgba(232, 92, 13, 0.16), transparent 42%);
+}
+
+.page-home .hero h1 {
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.045em;
+}
+
+.page-home .release-card {
+  border-color: color-mix(in srgb, var(--line) 72%, var(--accent) 28%);
+}
+
+.page-home .release-cover {
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--line) 45%, var(--accent) 55%);
+}
+
+.page-home .release-cover-image {
+  filter: saturate(1.05) contrast(1.07) brightness(1.02);
+}
+
+.page-home .release-card:hover .release-cover-image {
+  filter: saturate(1.13) contrast(1.1) brightness(1.04);
+}
+
+/* Global alignment normalization */
+.hero .container,
+.page-hero .container,
+.section > .container > h2,
+.section > .container > p.lead,
+.section > .container > p {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.section > .container > p,
+.hero .container p,
+.page-hero .container p {
+  max-width: 70ch;
+}
+
+.release-grid,
+.grid,
+.hub-grid {
+  justify-items: center;
+}
+
+/* Vinyl page layout cleanup */
+.page-ventura-punk-record-store-online .release-grid {
+  justify-items: center;
+}
+
+.page-ventura-punk-record-store-online .release-card,
+.page-ventura-punk-record-store-online .vinyl-card {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.page-ventura-punk-record-store-online .price-row {
+  justify-content: center;
+}
+
+.page-ventura-punk-record-store-online .card-links,
+.page-ventura-punk-record-store-online .release-links {
+  display: flex;
+  justify-content: center;
+}
+
+/* Contact page professional form treatment */
+.page-contact-wholesale .form {
+  background: linear-gradient(180deg, rgba(232, 92, 13, 0.06), rgba(0, 0, 0, 0.15));
+  border: 1px solid color-mix(in srgb, var(--line) 70%, var(--accent) 30%);
+  border-radius: 12px;
+  padding: 1.1rem;
+}
+
+.page-contact-wholesale .form label {
+  display: block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.page-contact-wholesale .form input,
+.page-contact-wholesale .form textarea,
+.page-contact-wholesale .form select {
+  width: 100%;
+}
+
+.page-contact-wholesale .form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* FAQ cards in red outline style */
+.page-faq .faq-item {
+  border: 1px solid color-mix(in srgb, var(--accent) 70%, #fff 30%);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(232, 92, 13, 0.06), rgba(0, 0, 0, 0.2));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  padding: 1rem 1.1rem;
+}
+
+.page-faq .faq-item h2 {
+  color: var(--accent-2);
+}
+
+.featured-release-note {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffd98f;
+  opacity: 0.85;
+}
+
+.youtube-icon-link {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.32);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.youtube-icon-link:hover {
+  border-color: var(--accent);
+  background: rgba(232, 92, 13, 0.2);
+  transform: translateY(-1px);
+}
+
+.youtube-icon-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Archive cards: icon-only YouTube action */
+.page-805-punk-bands .release-links .btn {
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 0;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-805-punk-bands .release-links .btn::before {
+  content: "▶";
+  font-size: 1rem;
+  color: #fff;
+  transform: translateX(1px);
 }

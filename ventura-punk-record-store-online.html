@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Archive Store | Poison Well Records Ventura</title>
+  <title>Vinyl | Poison Well Records Ventura</title>
   <meta name="description" content="Browse archive vinyl, test pressings, rarity drops, and limited edition inventory from Poison Well Records in Ventura." />
   <link rel="canonical" href="https://poisonwellrecords.netlify.app/ventura-punk-record-store-online" />
   <!-- SEO/GEO and Schema handled dynamically by site.js -->
   <link rel="preload" as="style" href="styles.css">
   <link rel="stylesheet" href="styles.css" />
-  <link rel="preload" as="image" href="hero-background.jpg" type="image/jpeg">
+  <link rel="preload" as="image" href="assets/raw.jpg" type="image/jpeg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -76,13 +76,11 @@
         <span class="hamburger"></span>
       </button>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
-        <a href="https://www.redbubble.com/people/poisonwell" target="_blank" class="nav-merch">Shop Merch</a>
-        <a href="https://www.youtube.com/@poisonwellrecords" target="_blank" class="nav-youtube">YouTube</a>
-        <a href="index.html">Home</a>
+                        <a href="index.html">Home</a>
         <div class="nav-dropdown">
           <a class="nav-main" href="ventura-punk-record-store-online.html" aria-current="page">Shop</a>
           <div class="dropdown-content">
-            <a href="ventura-punk-record-store-online.html">All Shop</a>
+            <a href="ventura-punk-record-store-online.html">Shop</a>
             <a href="ventura-punk-record-store-online.html#tab-vinyl">Buy Vinyl</a>
             <a href="rarities.html">Rarities</a>
           </div>
@@ -100,7 +98,7 @@
   <main>
     <section class="hero hero-vinyl">
       <div class="container">
-        <h1>Ventura Punk Record Store Online</h1>
+        <h1>Vinyl</h1>
         <p class="lead">Ventura and Southern California's finest underground punk, hardcore, and post-punk on limited physical vinyl. Hand-shipped directly from the well.</p>
       </div>
     </section>
@@ -114,7 +112,7 @@
           </div>
           <div class="tabs">
             <button class="tab-btn active" data-tab="vinyl">Vinyl Catalog</button>
-            <button class="tab-btn" data-tab="rarities">Rarities & Archive</button>
+            <a class="tab-btn" href="rarities.html">Rarities</a>
           </div>
         </div>
 
@@ -129,8 +127,18 @@
               <div class="price-row">
                 <span class="price">$49.00</span>
               </div>
-              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Captured from the soundboard on high-fidelity reel-to-reel.</p>
               <button class="btn primary buy-btn" type="button" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Vinyl</button>
+            </article>
+
+            <!-- The Pitts -->
+            <article class="release-card" data-tags="the pitts jamestown rocky vinyl punk rock">
+              <img class="product-image" loading="lazy" width="400" height="400" src="assets/Jamestown the pitts.png" alt="The Pitts Jamestown vinyl cover" />
+              <h3>Jamestown</h3>
+              <p class="artist">The Pitts</p>
+              <div class="price-row">
+                <span class="price">$25.00</span>
+              </div>
+              <a class="btn primary buy-btn" href="https://thepittsnd.bandcamp.com" target="_blank" rel="noopener noreferrer">Buy Digital</a>
             </article>
 
             <!-- Los Bonedrivers -->
@@ -151,21 +159,7 @@
               <div class="price-row">
                 <span class="price">$25.00</span>
               </div>
-              <p class="restoration-note" style="font-size: 0.8rem; opacity: 0.7; font-style: italic; margin-bottom: 0.5rem;">Restoration Note: Mastered from the original 1984 cassette tapes found in a garage in Oxnard.</p>
               <button class="btn primary buy-btn" type="button" onclick="goToCheckout('slimComeQuickDenimLeatherAndChains', this)">Buy Vinyl</button>
-            </article>
-
-            <!-- The Pitts -->
-            <article class="release-card" data-tags="the pitts jamestown rocky vinyl punk rock">
-              <img class="product-image" loading="lazy" width="400" height="400" src="assets/Jamestown the pitts.png" alt="The Pitts Jamestown vinyl cover" />
-              <h3>Jamestown</h3>
-              <p class="artist">The Pitts</p>
-              <div class="price-row">
-                <span class="price">$25.00</span>
-              </div>
-              <div class="card-links">
-              <!-- Buy Vinyl removed per user request -->
-            </div>
             </article>
 
             <!-- Narthex Structure -->
@@ -273,7 +267,7 @@
     <section class="section">
       <div class="container">
         <h2>Shop By Scene</h2>
-        <p><a href="/ventura-punk-vinyl">Ventura punk vinyl</a> and <a href="/805-punk-bands">805 punk bands</a> are
+        <p><a href="ventura-punk-vinyl.html">Ventura punk vinyl</a> and <a href="805-punk-bands.html">805 punk bands</a> are
           linked across this store to keep browsing fast for fans and search crawlers.</p>
       </div>
     </section>
@@ -327,9 +321,11 @@
           </svg>
         </a>
       </div>
-    <div class="footer-credit">Powered by chaoticallyorganizedai.com</div></div>
+    <div class="footer-credit">Powered by <a href="https://chaoticallyorganizedai.com" target="_blank" rel="noopener noreferrer">Chaotically Organized AI.com</a></div></div>
   </footer>
   <script src="stripe-config.js" defer></script>
 </body>
 
 </html>
+
+
