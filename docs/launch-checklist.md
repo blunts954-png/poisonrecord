@@ -9,7 +9,7 @@ Your live site URL (replace if you use a custom domain):
 ## 1. Google Rich Results (schema / FAQ)
 
 1. Open **[Google Rich Results Test](https://search.google.com/test/rich-results)**.
-2. Paste your URL (start with the homepage, then `/faq.html`).
+2. Paste your URL (start with the homepage, then `/faq`).
 3. Click **Test URL**.
 4. Fix any **errors** (warnings are optional). If something fails, note which page and which schema type.
 
@@ -71,3 +71,17 @@ If you add **`assets/pwricon.png`**, you can point Organization schema / admin l
 - [ ] Real Payment Link URLs in `stripe-config.js` (or rely only on API)  
 - [ ] Test checkout completes or cancels cleanly  
 - [ ] Spot-check **Buy Vinyl** from homepage and shop on mobile  
+
+---
+
+## Residual gaps (honest list)
+
+| Issue | Severity | Fix |
+|--------|-----------|-----|
+| `stripe-config.js` still uses `REPLACE_25` / `REPLACE_49` placeholders | **P1** if API fails | Create real Stripe Payment Links and paste URLs, or rely 100% on Netlify checkout when `STRIPE_SECRET_KEY` works |
+| `$65` free shipping | **P2** | Confirm in Stripe Dashboard + one test order at $65+ |
+| `ventura-punk-vinyl.html` uses `href="#"` + `onclick` for checkout | **P3** | Works with JS; for semantics use `<button type="button">` (optional refactor) |
+| Custom domain | **P3** | When you move off `poisonwellrecords.netlify.app`, update canonicals, `og:url`, schema `@id` URLs, and `sitemap.xml` in one pass |
+| `music-videos.html` is `noindex` | **Info** | Intentional or not — if you want it indexed, remove `noindex` |
+
+**Canonical tags** were added to **About**, **Press**, **Music Videos**, and **Privacy Policy** (they were missing vs the rest of the site).
