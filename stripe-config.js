@@ -1,10 +1,19 @@
 /**
  * Optional Stripe Payment Link fallbacks (public URLs only).
  * Used by site.js when Checkout API fails; keys must match product `id` in _data/products/*.json
+ *
+ * Production checklist (Netlify → Site settings → Environment variables):
+ *   STRIPE_SECRET_KEY           — required for /api/create-checkout-session
+ *   STRIPE_SHIPPING_RATE_STANDARD_ID — required for vinyl / rarity / test-pressing checkout
+ *   SITE_URL                    — canonical site URL (no trailing slash)
+ *   STRIPE_ALLOWED_COUNTRIES    — optional, default US (comma-separated ISO codes)
+ *   STRIPE_AUTOMATIC_TAX          — optional, set to "true" to enable Stripe Tax
+ *
+ * Replace the placeholder Payment Links below with your real buy.stripe.com URLs
+ * (one per price tier is fine; map each product id to the correct link).
  */
 window.POISON_WELL_STRIPE_LINKS = window.POISON_WELL_STRIPE_LINKS || {};
 
-// TODO: replace with your real Stripe Payment Links.
 const STRIPE_LINK_25 = "https://buy.stripe.com/REPLACE_25_DOLLAR_LINK";
 const STRIPE_LINK_49 = "https://buy.stripe.com/REPLACE_49_DOLLAR_LINK";
 

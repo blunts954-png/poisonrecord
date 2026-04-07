@@ -1,23 +1,70 @@
+# Decap CMS (Netlify Git Gateway). Branch must match your Netlify production branch (usually main).
+# Enable in Netlify: Identity + Git Gateway; invite editors under Identity tab.
+
 backend:
   name: git-gateway
-  branch: master
+  branch: main
 
-media_folder: "/"
-public_folder: "/"
+# Public site (used in CMS header links)
+site_url: https://poisonwellrecords.netlify.app
+display_url: https://poisonwellrecords.netlify.app
+logo_url: /assets/pwricon.png
+show_preview_links: false
+
+# Uploads go here; paths in JSON should start with /assets/cms-uploads/...
+media_folder: assets/cms-uploads
+public_folder: /assets/cms-uploads
 
 collections:
-  - name: "products"
-    label: "Vinyl/Store Catalog"
-    folder: "_data/products"
+  - name: products
+    label: Store catalog (Stripe + site)
+    folder: _data/products
     create: true
-    slug: "{{id}}"
-    extension: "json"
-    format: "json"
+    identifier_field: id
+    slug: "{{slug}}"
+    extension: json
+    format: json
+    summary: "{{name}} — {{inventoryType}}"
     fields:
-      - {label: "System ID (Must match Stripe key)", name: "id", widget: "string"}
-      - {label: "Album Name", name: "name", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Price in Cents (e.g. 2500 = $25)", name: "unitAmount", widget: "number"}
-      - {label: "Image Upload", name: "imagePath", widget: "image"}
-      - {label: "Section", name: "inventoryType", widget: "select", options: ["vinyl", "rarity", "test-pressing"]}
-      - {label: "Max Quantity Per Order", name: "maxQuantity", widget: "number", default: 6}
+      - label: Product ID (must match site buttons)
+        name: id
+        widget: string
+        hint: "CamelCase key used in HTML (data-checkout) and Stripe. Example drKnowLiveCbgb1989. Do not change lightly — update every page that references it."
+      - label: Title / album name
+        name: name
+        widget: string
+      - label: Short description
+        name: description
+        widget: text
+        required: false
+        hint: "Shown in Stripe checkout line item. Optional for minimal listings."
+      - label: Price (USD, cents)
+        name: unitAmount
+        widget: number
+        value_type: int
+        min: 0
+        step: 1
+        hint: "2500 = $25.00. Must match your Stripe product/price if you mirror catalog there."
+      - label: Cover image
+        name: imagePath
+        widget: image
+        allow_multiple: false
+        hint: "After upload, path should look like /assets/cms-uploads/yourfile.jpg"
+      - label: How this item sells
+        name: inventoryType
+        widget: select
+        options:
+          - { label: "Vinyl — on-site Stripe checkout", value: vinyl }
+          - { label: "Rarity — on-site Stripe checkout", value: rarity }
+          - { label: "Test pressing — on-site Stripe checkout", value: test-pressing }
+          - { label: "Digital only (Bandcamp / external — not Stripe cart)", value: digital }
+        hint: "Only vinyl, rarity, and test-pressing use the built-in Stripe checkout. Digital uses external links on the site."
+      - label: Max quantity per order
+        name: maxQuantity
+        widget: number
+        value_type: int
+        default: 6
+        min: 1
+        max: 99
+        required: false
+        hint: "Caps quantity in checkout. Ignored for digital-only items."

@@ -1,13 +1,108 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Portal | Poison Well Records</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin | Poison Well Records</title>
+  <link rel="icon" href="/assets/pwricon.png" type="image/png" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --admin-bg: #1a0a00;
+      --admin-panel: #2a1200;
+      --admin-accent: #e85c0d;
+      --admin-text: #f5f0eb;
+      --admin-muted: #b8a99a;
+      --admin-line: #3b1e0b;
+    }
+    html {
+      background: var(--admin-bg);
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(232, 92, 13, 0.12), transparent 50%),
+        var(--admin-bg);
+      color: var(--admin-text);
+    }
+    .admin-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.25rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--admin-panel);
+      border-bottom: 1px solid var(--admin-line);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+    .admin-top h1 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .admin-top p {
+      margin: 0.2rem 0 0;
+      font-size: 0.8rem;
+      color: var(--admin-muted);
+      max-width: 42rem;
+      line-height: 1.4;
+    }
+    .admin-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .admin-top a {
+      color: var(--admin-accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .admin-top a:hover {
+      text-decoration: underline;
+    }
+    /* Decap mounts inside #nc-root */
+    #nc-root {
+      min-height: calc(100vh - 72px);
+    }
+    /* Light touches on Decap’s default UI (class names may vary by version) */
+    [class*="AppHeaderContent"] {
+      border-bottom-color: var(--admin-line) !important;
+    }
+  </style>
 </head>
 <body>
-  <!-- Decap CMS: config at /admin/config.yml -->
+  <header class="admin-top" role="banner">
+    <div>
+      <h1>Poison Well Records — CMS</h1>
+      <p>
+        Edit the JSON catalog in <code style="color: var(--admin-accent);">_data/products</code>.
+        Changes commit to Git and go live after Netlify deploys. Stripe checkout reads the same files server-side.
+      </p>
+    </div>
+    <div class="admin-top-actions">
+      <a href="/">View site</a>
+      <span data-netlify-identity-menu></span>
+    </div>
+  </header>
+  <div id="nc-root"></div>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function (user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function () {
+            window.location.reload();
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

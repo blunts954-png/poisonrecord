@@ -34,7 +34,8 @@ exports.handler = async function (event) {
     return json(400, { error: `Product '${productKey}' not found in catalog. Verify _data/products/ for correct JSON filename.` });
   }
 
-  const isOnSiteStripeProduct = product.inventoryType === "rarity" || product.inventoryType === "vinyl";
+  const sellableTypes = ["vinyl", "rarity", "test-pressing"];
+  const isOnSiteStripeProduct = sellableTypes.includes(product.inventoryType);
   if (!isOnSiteStripeProduct) {
     return json(400, {
       error: "This item is not sold directly on the site. Please use its linked platform or contact Poison Well Records."
@@ -58,7 +59,7 @@ exports.handler = async function (event) {
   }
 
   const shippingRate = process.env.STRIPE_SHIPPING_RATE_STANDARD_ID;
-  const isPhysicalProduct = true;
+  const isPhysicalProduct = sellableTypes.includes(product.inventoryType);
   if (isPhysicalProduct) {
     if (!shippingRate) {
       return json(500, { error: "STRIPE_SHIPPING_RATE_STANDARD_ID is not configured for physical products." });
