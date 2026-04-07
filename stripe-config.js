@@ -28,6 +28,9 @@ Object.assign(window.POISON_WELL_STRIPE_LINKS, {
   iDeclineFailureByDesign: STRIPE_LINK_25,
   iDecline: STRIPE_LINK_25,
   frontStreetKnuckleDraggers: STRIPE_LINK_25,
+  /** Rarity-tier fallbacks — replace with real $80 Payment Links when placeholders are swapped */
+  fluidFilledIDecline: STRIPE_LINK_49,
+  splatterIDecline: STRIPE_LINK_49,
   shimComeQuickInBetween: STRIPE_LINK_25,
   stalag13InControl: STRIPE_LINK_25,
   illReputeWhatsNext: STRIPE_LINK_25,

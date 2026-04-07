@@ -8,7 +8,7 @@ backend:
 # Public site (used in CMS header links)
 site_url: https://poisonwellrecords.netlify.app
 display_url: https://poisonwellrecords.netlify.app
-logo_url: /assets/pwricon.png
+logo_url: /assets/jamestown the pitts.png
 show_preview_links: false
 
 # Uploads go here; paths in JSON should start with /assets/cms-uploads/...

@@ -264,7 +264,7 @@
       name: 'Poison Well Records',
       description: 'Ventura 805 punk vinyl label and online store archiving SoCal punk rock',
       url: baseUrl,
-      logo: baseUrl + '/assets/pwricon.png',
+      logo: baseUrl + '/assets/jamestown%20the%20pitts.png',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Ventura',
@@ -291,7 +291,7 @@
       '@context': 'https://schema.org',
       '@type': 'Store',
       'name': 'Poison Well Records Shop',
-      'image': baseUrl + '/assets/pwricon.png',
+      'image': baseUrl + '/assets/jamestown%20the%20pitts.png',
       'description': '805 and SoCal punk vinyl record store and label shipping worldwide from Ventura, California',
       'address': {
         '@type': 'PostalAddress',

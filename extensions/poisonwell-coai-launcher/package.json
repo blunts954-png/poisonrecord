@@ -1,0 +1,33 @@
+{
+  "name": "poisonwell-coai-launcher",
+  "displayName": "Poisonwell COAI Launcher",
+  "description": "Status bar button to run COAI / SEO suite audits (copies prompt for Cursor Chat).",
+  "version": "0.1.0",
+  "publisher": "poisonwell",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "poisonwell.coaiPicker",
+        "title": "COAI: Suite launcher (pick workflow)"
+      },
+      {
+        "command": "poisonwell.coaiFull",
+        "title": "COAI: Full suite (14 agents) — copy prompt"
+      },
+      {
+        "command": "poisonwell.seoSix",
+        "title": "COAI: SEO suite (6 agents) — copy prompt"
+      },
+      {
+        "command": "poisonwell.auditPage",
+        "title": "COAI: Audit page — copy prompt"
+      }
+    ]
+  }
+}
