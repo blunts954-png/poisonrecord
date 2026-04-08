@@ -19,6 +19,7 @@
     'thank-you.html': '/thank-you'
   };
   let pageGateFailSafeTimer = null;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function forceOpenSplashGate() {
     const gate = document.getElementById('splash-gate');
@@ -32,7 +33,7 @@
 
   // Never let the intro gate block access if a later initializer throws.
   const gateCheck = document.getElementById('splash-gate');
-  if (gateCheck) {
+  if (gateCheck && !prefersReducedMotion) {
     pageGateFailSafeTimer = window.setTimeout(forceOpenSplashGate, 14000);
   } else if (document.body.classList.contains('gate-active')) {
     // Immediate cleanup if class is present but gate is missing (ghosting fix)
@@ -209,7 +210,7 @@
       if (window.scrollY > 400) btn.classList.add('visible');
       else btn.classList.remove('visible');
     });
-    btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }); });
   }
 
 
@@ -223,7 +224,7 @@
     '/assets/Narthex Structure - Expression.jpg': '/assets/narthex structure - expression.jpg',
     '/assets/Rubberband - babe magnet.webp': '/assets/rubberband - babe magnet.webp'
   };
-  const fallbackCover = '/assets/idecline-skull-headed.jpg';
+  const fallbackCover = '/assets/jamestown the pitts.png';
   images.forEach(function (img) {
     const currentSrc = img.getAttribute('src');
     if (currentSrc && imagePathFixes[currentSrc]) {
@@ -640,6 +641,10 @@ document.addEventListener('DOMContentLoaded', initAll);
   const splashVideoCta = document.getElementById('splash-video-cta');
   const enterHint = document.getElementById('enter-hint');
   if (gate && splashVideo) {
+    if (prefersReducedMotion) {
+      forceOpenSplashGate();
+      return;
+    }
     document.body.classList.add('gate-active');
     let introFollowRaf = null;
     let hideGateTimer = null;
