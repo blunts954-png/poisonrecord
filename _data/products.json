@@ -87,11 +87,11 @@
     "inventoryType": "rarity",
     "maxQuantity": 1
   },
-  "chaoticEvilEP": {
-    "name": "Chaotic Evil EP",
-    "description": "Digital release from the Poison Well archives.",
+  "allABlurSelfTitled": {
+    "name": "Self Titled - All a Blur",
+    "description": "Digital release from the Poison Well catalog.",
     "unitAmount": 1000,
-    "imagePath": "/assets/Chaotic Evil.jpg",
+    "imagePath": "/assets/allblur.png",
     "inventoryType": "digital",
     "maxQuantity": 1
   },

@@ -30,7 +30,5 @@ Object.assign(window.POISON_WELL_STRIPE_LINKS, {
   frontStreetKnuckleDraggers: STRIPE_LINK_25,
   /** Rarity-tier fallbacks — replace with real $80 Payment Links when placeholders are swapped */
   fluidFilledIDecline: STRIPE_LINK_49,
-  splatterIDecline: STRIPE_LINK_49,
-  agressionFullCircle: STRIPE_LINK_25,
-  chaoticEvilEP: STRIPE_LINK_25
+  splatterIDecline: STRIPE_LINK_49
 });
