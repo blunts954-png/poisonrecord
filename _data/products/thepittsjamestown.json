@@ -1,7 +1,7 @@
 {
   "name": "Jamestown - The Pitts",
   "unitAmount": 1000,
-  "imagePath": "/assets/the-pitts-jamestown.png",
+  "imagePath": "/assets/jamestown the pitts.png",
   "inventoryType": "digital",
   "id": "thePittsJamestown"
 }

@@ -1,9 +1,0 @@
-{
-  "id": "stalag13InControl",
-  "name": "In Control - Stäläg 13",
-  "description": "Ventura-area hardcore punk vinyl — archival pressing.",
-  "unitAmount": 2500,
-  "imagePath": "/assets/stalag-13-in-control-ventura-punk-vinyl.jpg",
-  "inventoryType": "vinyl",
-  "maxQuantity": 6
-}

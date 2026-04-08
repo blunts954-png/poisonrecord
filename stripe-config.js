@@ -31,11 +31,6 @@ Object.assign(window.POISON_WELL_STRIPE_LINKS, {
   /** Rarity-tier fallbacks — replace with real $80 Payment Links when placeholders are swapped */
   fluidFilledIDecline: STRIPE_LINK_49,
   splatterIDecline: STRIPE_LINK_49,
-  shimComeQuickInBetween: STRIPE_LINK_25,
-  stalag13InControl: STRIPE_LINK_25,
-  illReputeWhatsNext: STRIPE_LINK_25,
-  falseConfession1984: STRIPE_LINK_25,
   agressionFullCircle: STRIPE_LINK_25,
-  rklLiveBerlin: STRIPE_LINK_25,
-  scaredStraightBornWild: STRIPE_LINK_25
+  chaoticEvilEP: STRIPE_LINK_25
 });

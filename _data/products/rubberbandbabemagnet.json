@@ -1,7 +1,7 @@
 {
   "name": "Babe Magnet - Rubberband",
   "unitAmount": 1000,
-  "imagePath": "/assets/Rubberband - babe magnet.webp",
+  "imagePath": "/assets/rubberband - babe magnet.webp",
   "inventoryType": "digital",
   "id": "rubberbandBabeMagnet"
 }

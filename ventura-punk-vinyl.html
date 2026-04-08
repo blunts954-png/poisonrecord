@@ -12,9 +12,9 @@
   <meta name="description" content="Browse Ventura punk vinyl and 805 SoCal punk releases with scene tags, format filters, and archival records." />
   <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel='canonical' href='https://poisonwellrecords.netlify.app/ventura-punk-vinyl' />
+  <link rel="canonical" href="https://poisonwellrecords.netlify.app/ventura-punk-vinyl" />
 </head>
-<body>
+<body id="top">
   <div class="promo-banner">Free Shipping on every $65 order</div>
   <header class="topbar">
     <div class="container nav">
@@ -67,7 +67,7 @@
           <img class="product-image" src="assets/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg" alt="Dr. Know Live CBGB 1989" loading="lazy" />
           <h3>Dr. Know - Live CBGB 1989</h3>
           <span class="price">$49.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('drKnowLiveCbgb1989', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('drKnowLiveCbgb1989', this)">Buy Vinyl</button></p>
         </article>
 
 
@@ -84,7 +84,7 @@
           <img class="product-image" src="assets/narthex-structure-1984-ventura-805-punk-vinyl.jpg" alt="Narthex Structure 1984" loading="lazy" />
           <h3>Narthex Structure - 1984</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('narthexStructure1984', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('narthexStructure1984', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- RAW -->
@@ -92,7 +92,7 @@
           <img class="product-image" src="assets/raw-radioactive-waste-805-punk-vinyl.jpg" alt="RAW - Sick Love / Quarantine" loading="lazy" />
           <h3>RAW - Sick Love / Quarantine</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('rawSickLove', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('rawSickLove', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- The Missing 23rd -->
@@ -100,7 +100,7 @@
           <img class="product-image" src="assets/the-missing-23rd-the-end-of-an-error-ventura-hardcore-vinyl.jpg" alt="The Missing 23rd" loading="lazy" />
           <h3>The Missing 23rd - The End of an Error</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('theMissing23rdEndOfAnError', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('theMissing23rdEndOfAnError', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- Front Street Knuckle Draggers -->
@@ -108,7 +108,7 @@
           <img class="product-image" src="assets/front-street-knuckle-draggers-805-punk-record.jpg" alt="Front Street Knuckle Draggers" loading="lazy" />
           <h3>Front Street Knuckle Draggers</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('frontStreetKnuckleDraggers', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('frontStreetKnuckleDraggers', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- I Decline - Failure By Design -->
@@ -116,7 +116,7 @@
           <img class="product-image" src="assets/i-decline-failure-by-design-socal-punk-vinyl.jpg" alt="I Decline - Failure By Design" loading="lazy" />
           <h3>I Decline - Failure By Design</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('iDeclineFailureByDesign', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('iDeclineFailureByDesign', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- I Decline -->
@@ -124,7 +124,7 @@
           <img class="product-image" src="assets/i-decline-socal-punk-vinyl.jpg" alt="I Decline" loading="lazy" />
           <h3>I Decline</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('iDecline', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('iDecline', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- Shim Come Quick -->
@@ -132,7 +132,7 @@
           <img class="product-image" src="assets/slim-come-quick-denim-leather-and-chains-punk-vinyl.jpg" alt="Shim Come Quick" loading="lazy" />
           <h3>Shim Come Quick - Denim, Leather &amp; Chains</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('slimComeQuickDenimLeatherAndChains', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('slimComeQuickDenimLeatherAndChains', this)">Buy Vinyl</button></p>
         </article>
 
         <!-- Los Bonedrivers -->
@@ -140,7 +140,7 @@
           <img class="product-image" src="assets/los-bonedrivers-socal-punk-vinyl.jpg" alt="Los Bonedrivers" loading="lazy" />
           <h3>Los Bonedrivers</h3>
           <span class="price">$25.00</span>
-          <p><a class="btn primary" href="#" onclick="goToCheckout('losBonedrivers', this); return false;">Buy Vinyl</a></p>
+          <p><button class="btn primary" type="button" onclick="goToCheckout('losBonedrivers', this)">Buy Vinyl</button></p>
         </article>
       </div>
     </section>
@@ -179,6 +179,7 @@
   <script src="site.js" defer></script>
 </body>
 </html>
+
 
 
 
