@@ -1,2 +1,3 @@
 # Local IDE (optional — remove this line if you want Cursor rules in the repo)
 .cursor/
+.claude/worktrees/
