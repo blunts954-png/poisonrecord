@@ -347,8 +347,6 @@
     document.head.appendChild(crumbNode);
   }
 
-  const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
-
   /** Netlify Forms expects POST to the current page path (not always `/`). */
   function netlifyFormPostPath() {
     var p = window.location.pathname || '/';
@@ -373,6 +371,7 @@
   }
 
   function fallbackToStripePaymentLink(productKey, quantity) {
+    const stripeLinks = window.POISON_WELL_STRIPE_LINKS || {};
     const checkoutUrl = stripeLinks[productKey];
     if (!checkoutUrl) return false;
     const trimmed = String(checkoutUrl).trim();
@@ -408,19 +407,12 @@
 
   window.goToCheckout = async function (productKey, triggerEl) {
     setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
-    try {
-      const payload = await createStripeCheckoutSession(productKey, {
-        quantity: 1,
-        cancelPath: window.location.pathname + window.location.search + window.location.hash
-      });
-      window.location.href = payload.url;
-    } catch (error) {
+    if (fallbackToStripePaymentLink(productKey, 1)) {
       setCheckoutBusy(triggerEl, false);
-      if (fallbackToStripePaymentLink(productKey, 1)) {
-        return;
-      }
-      alert(error && error.message ? error.message : 'Stripe checkout is unavailable right now.');
+      return;
     }
+    setCheckoutBusy(triggerEl, false);
+    alert('No Stripe Payment Link is configured for this product yet.');
   };
 
   // Variant-aware checkout helper: accepts a base product key and the card element
@@ -430,19 +422,12 @@
     const qty = clampCheckoutQuantity((cardEl.querySelector('.qty-input') && cardEl.querySelector('.qty-input').value) || 1, 10);
     const variantKey = size ? (baseKey + '_' + size) : baseKey;
     setCheckoutBusy(triggerEl, true, 'Opening Stripe...');
-    try {
-      const payload = await createStripeCheckoutSession(variantKey, {
-        quantity: qty
-      });
-      window.location.href = payload.url;
-      return;
-    } catch (error) {
+    if (fallbackToStripePaymentLink(variantKey, qty) || fallbackToStripePaymentLink(baseKey, qty)) {
       setCheckoutBusy(triggerEl, false);
-      if (fallbackToStripePaymentLink(variantKey, qty) || fallbackToStripePaymentLink(baseKey, qty)) {
-        return;
-      }
-      alert(error && error.message ? error.message : ('No checkout path configured for ' + variantKey + '.'));
+      return;
     }
+    setCheckoutBusy(triggerEl, false);
+    alert('No Stripe Payment Link is configured for ' + variantKey + '.');
   };
 
   // Update buy button labels to reflect selected size and quantity
