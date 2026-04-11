@@ -14,8 +14,8 @@
  */
 window.POISON_WELL_STRIPE_LINKS = window.POISON_WELL_STRIPE_LINKS || {};
 
-const STRIPE_LINK_25 = "https://buy.stripe.com/REPLACE_25_DOLLAR_LINK";
-const STRIPE_LINK_49 = "https://buy.stripe.com/REPLACE_49_DOLLAR_LINK";
+const STRIPE_LINK_25 = "https://buy.stripe.com/test_9B68wR9gL54x7gmghs8AE00";
+const STRIPE_LINK_49 = "https://buy.stripe.com/test_8x200l50vdB3asy2qC8AE01";
 
 Object.assign(window.POISON_WELL_STRIPE_LINKS, {
   drKnowLiveCbgb1989: STRIPE_LINK_49,

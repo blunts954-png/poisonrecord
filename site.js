@@ -375,7 +375,13 @@
   function fallbackToStripePaymentLink(productKey, quantity) {
     const checkoutUrl = stripeLinks[productKey];
     if (!checkoutUrl) return false;
-    const url = quantity > 1 ? (checkoutUrl + '?qty=' + quantity) : checkoutUrl;
+    const trimmed = String(checkoutUrl).trim();
+    const hasPlaceholder = trimmed.indexOf('REPLACE_') !== -1;
+    const isStripeBuyLink = /^https:\/\/buy\.stripe\.com\/.+/i.test(trimmed);
+    if (!trimmed || hasPlaceholder || !isStripeBuyLink) {
+      return false;
+    }
+    const url = quantity > 1 ? (trimmed + '?qty=' + quantity) : trimmed;
     window.location.href = url;
     return true;
   }
