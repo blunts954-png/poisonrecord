@@ -2,7 +2,7 @@
 
 Your live site URL (replace if you use a custom domain):
 
-**`https://poisonwellrecords.netlify.app`**
+**`https://poisonwellrecords.com`**
 
 ---
 
@@ -34,7 +34,7 @@ Twitter/X often uses the same `og:` / `twitter:` tags; after deploy, share a lin
 
 - `STRIPE_SECRET_KEY` — live secret from [Stripe Dashboard](https://dashboard.stripe.com/apikeys) (or test key for a test order).
 - `STRIPE_SHIPPING_RATE_STANDARD_ID` — required for physical vinyl (see `create-checkout-session.js`).
-- `SITE_URL` — e.g. `https://poisonwellrecords.netlify.app` (no trailing slash).
+- `SITE_URL` — e.g. `https://poisonwellrecords.com` (no trailing slash).
 
 **Payment Link fallbacks** (`stripe-config.js`):
 
@@ -47,6 +47,12 @@ Twitter/X often uses the same `og:` / `twitter:` tags; after deploy, share a lin
 3. Confirm you reach Stripe, totals look right, and **cancel** returns to your site (or complete a small test payment in **Test mode** first).
 
 **$65 free shipping:** Banner text is on the site; confirming the **discount or free shipping** actually applies requires one test cart at or above $65 in Stripe (or your shipping rules in Stripe Dashboard).
+
+**CLI preflight / session test (local):**
+
+1. Export env vars in your shell (`STRIPE_SECRET_KEY`, `STRIPE_SHIPPING_RATE_STANDARD_ID`, optional `SITE_URL`).
+2. Run `npm run stripe:test:preflight` to detect missing env vars, placeholder Payment Links, and product config issues.
+3. Run `npm run stripe:test:session` to create a real Stripe Checkout Session URL from your Netlify function logic.
 
 ---
 
@@ -81,7 +87,7 @@ If you add **`assets/pwricon.png`**, you can point Organization schema / admin l
 | `stripe-config.js` still uses `REPLACE_25` / `REPLACE_49` placeholders | **P1** if API fails | Create real Stripe Payment Links and paste URLs, or rely 100% on Netlify checkout when `STRIPE_SECRET_KEY` works |
 | `$65` free shipping | **P2** | Confirm in Stripe Dashboard + one test order at $65+ |
 | `ventura-punk-vinyl.html` uses `href="#"` + `onclick` for checkout | **P3** | Works with JS; for semantics use `<button type="button">` (optional refactor) |
-| Custom domain | **P3** | When you move off `poisonwellrecords.netlify.app`, update canonicals, `og:url`, schema `@id` URLs, and `sitemap.xml` in one pass |
+| Custom domain | **P3** | Keep canonicals, `og:url`, schema `@id` URLs, and `sitemap.xml` aligned to `poisonwellrecords.com` in one pass |
 | `music-videos.html` is `noindex` | **Info** | Intentional or not — if you want it indexed, remove `noindex` |
 
 **Canonical tags** were added to **About**, **Press**, **Music Videos**, and **Privacy Policy** (they were missing vs the rest of the site).

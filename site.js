@@ -1,5 +1,5 @@
 (function () {
-  const baseUrl = 'https://poisonwellrecords.netlify.app';
+  const baseUrl = 'https://poisonwellrecords.com';
   const pathMap = {
     'index.html': '/',
     'ventura-punk-vinyl.html': '/ventura-punk-vinyl',

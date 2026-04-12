@@ -14,11 +14,12 @@
  */
 window.POISON_WELL_STRIPE_LINKS = window.POISON_WELL_STRIPE_LINKS || {};
 
-const STRIPE_LINK_25 = "https://buy.stripe.com/test_9B68wR9gL54x7gmghs8AE00";
-const STRIPE_LINK_49 = "https://buy.stripe.com/test_8x200l50vdB3asy2qC8AE01";
+const STRIPE_LINK_25 = "https://buy.stripe.com/8x29AM7DdfsJdk6e57bEA01";
+const STRIPE_LINK_45 = "https://buy.stripe.com/28E9AM7Dd6Wdcg2d13bEA02";
+const STRIPE_LINK_80 = "https://buy.stripe.com/28EcMY9Ll80h0xkf9bbEA03";
 
 Object.assign(window.POISON_WELL_STRIPE_LINKS, {
-  drKnowLiveCbgb1989: STRIPE_LINK_49,
+  drKnowLiveCbgb1989: STRIPE_LINK_45,
   losBonedrivers: STRIPE_LINK_25,
   slimComeQuickDenimLeatherAndChains: STRIPE_LINK_25,
   thePittsJamestown: STRIPE_LINK_25,
@@ -28,7 +29,7 @@ Object.assign(window.POISON_WELL_STRIPE_LINKS, {
   iDeclineFailureByDesign: STRIPE_LINK_25,
   iDecline: STRIPE_LINK_25,
   frontStreetKnuckleDraggers: STRIPE_LINK_25,
-  /** Rarity-tier fallbacks — replace with real $80 Payment Links when placeholders are swapped */
-  fluidFilledIDecline: STRIPE_LINK_49,
-  splatterIDecline: STRIPE_LINK_49
+  /** Rarity-tier fallbacks — replace with real $80 Payment Link when available */
+  fluidFilledIDecline: STRIPE_LINK_80,
+  splatterIDecline: STRIPE_LINK_80
 });

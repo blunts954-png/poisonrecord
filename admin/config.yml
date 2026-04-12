@@ -6,8 +6,8 @@ backend:
   branch: main
 
 # Public site (used in CMS header links)
-site_url: https://poisonwellrecords.netlify.app
-display_url: https://poisonwellrecords.netlify.app
+site_url: https://poisonwellrecords.com
+display_url: https://poisonwellrecords.com
 logo_url: /assets/jamestown the pitts.png
 show_preview_links: false
 

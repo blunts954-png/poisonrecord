@@ -29,7 +29,7 @@ function loadProducts() {
   return {
     drKnowLiveCbgb1989: {
       name: "Live CBGB 1989 - Dr. Know",
-      unitAmount: 4900,
+      unitAmount: 4500,
       imagePath: "/dr-know-live-cbgb-1989-ventura-punk-vinyl.jpg",
       inventoryType: "vinyl",
       maxQuantity: 4

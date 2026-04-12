@@ -67,7 +67,7 @@ exports.handler = async function (event) {
   }
 
   const stripe = new Stripe(stripeSecretKey);
-  const siteUrl = (process.env.SITE_URL || "https://poisonwellrecords.netlify.app").replace(/\/$/, "");
+  const siteUrl = (process.env.SITE_URL || "https://poisonwellrecords.com").replace(/\/$/, "");
   const automaticTaxEnabled = String(process.env.STRIPE_AUTOMATIC_TAX || "").toLowerCase() === "true";
 
   try {
