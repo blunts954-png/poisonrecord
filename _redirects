@@ -15,3 +15,4 @@
 /privacy-policy /privacy-policy.html 200
 /api/create-checkout-session /.netlify/functions/create-checkout-session 200
 /thank-you /thank-you.html 200
+/success /success.html 200
